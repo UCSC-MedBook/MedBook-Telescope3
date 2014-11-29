@@ -1,0 +1,20 @@
+<template name="posts_list-medbook">
+  {{> UI.dynamic template=postsListIncoming data=incoming}}
+
+  {{#if collaborationName}}
+    <h3 class="collaborationGridTitle">Browse {{collaborationName}} Collaboration</h3>
+  {{else}}
+    <h3 class="collaborationGridTitle">Browse Recent Posts</h3>
+  {{/if}}
+  {{#if posts}}
+      <div class="posts-wrapper grid grid-module">
+        {{#each posts}}
+          {{> UI.dynamic template=post_item}}
+        {{/each}}
+      </div>
+  {{else}}
+      <h3 class="collaborationGridTitle">No Posts Yet</h3>
+
+  {{/if}}
+  {{> UI.dynamic template=postsLoadMore}}
+</template>
