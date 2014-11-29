@@ -1,0 +1,50 @@
+<template name="AddCollaboration">
+
+    <div class="collaboration-item" style="z-index:100!important;" >
+        <h3 style="color:white;text-align:center; margin:0; padding:0; font-size:26px;" >Add Collaboration</h3>
+
+        <form>
+            <div style="width:auto;" class="control-group inline">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td style="width:600px;padding-right:0px;">
+                            <div style="float:left; margin:0;" class="controls">
+                                <label class="collaboration-label">Collaboration Name</label>
+                                    <input class="collaboration-name" id="name" type="text" value="{{name}}" placeholder="A collaboration needs a simple name"/>
+                                <label class="collaboration-label">Description</label>
+                                    <input class="collaboration-description" id="description" type="text" value="{{description}}" placeholder="Fill in description"/>
+                                <label class="collaboration-label">Collaborators</label>
+                                    <input class="collaboration-collaborators" name="collaborators" id="collaborators" type="hidden" value="1,1,2"/>
+                                <label class="collaboration-label">Administrators</label>
+                                    <input class="collaboration-administrators" name="adminstrators" id="adminstrators" type="text" placeholder="Add adminstrators"/>
+                                <label class="collaboration-label">Invite</label>
+                                    <input class="collaboration-invitations" name="invitations" id="invitations" type="text" placeholder="invite collaborators"/>
+                            </div>
+                        </td>
+                        <td width="25px">
+                            <div style="float:right; align:center;">
+                                <a style=" width:100px;" class="button submit edit-link" href="#"><center>Save</center></a>
+
+                                <a style="margin-top:100px; width:100px;" class="button cancel edit-link" href="#" onclick="hideAddCollaboration()">Cancel</a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+        <!--
+          {{#autoForm collection="Collaboration" schema="collaborationSchema" id="insertcollaborationForm" type="insert"}}
+          <fieldset>
+            {{> afQuickField name='name'}}
+            {{> afQuickField name='description' rows=6}}
+            {{> afQuickField name='collaborators'  type="select2" multiple=true select2Options=potential}}
+            {{> afQuickField name='administrators'}}
+            {{> afQuickField name='invitations'}}
+          </fieldset>
+          {{/autoForm}}
+          -->
+    </div>
+
+</template>

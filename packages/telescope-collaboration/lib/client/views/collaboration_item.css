@@ -1,0 +1,23 @@
+
+.collaboration-item {
+    left: 10px;
+    background-color: lightsteelblue;
+    border: 2px solid black;
+
+
+}
+
+.search-field {
+    border: 1px  inset lightgray ! important;
+}
+
+
+.collaboration-label {
+    font-size: 20px;
+    padding-top:10px !important;
+    margin-bottom:0px !important;
+}
+
+.collaboration-item div {
+    margin: 10px;
+}

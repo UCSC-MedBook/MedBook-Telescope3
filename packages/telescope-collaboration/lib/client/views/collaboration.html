@@ -1,0 +1,57 @@
+<template name="collaborationGrid" xmlns="http://www.w3.org/1999/html">
+  <h3 class="collaborationGridTitle">Browse Collaborations</h3>
+  {{> AddCollaboration}}
+  <div class="collaboration posts list">
+    {{#each collaboration}}
+      {{> collaborationGridElement}}
+    {{/each}}
+  </div>
+</template>
+
+
+<template name="collaborationGridElement">
+  <a class="collaboration" href="/collaboration/{{slug}}">
+    <div class="collaborationMarquee collaboration post">
+        <H2><a  href="/collaboration/{{slug}}">{{name}}</a></H2>
+        <p>
+        {{description}}
+        </p>
+        <h3 class="collaboration-h3">Collaborators</h3> <div class="collaboration-token">{{collaborators}}</div>
+
+        {{#if isAdministrator}}
+<!--
+            {{#if isPrivate}}
+                <button data-collaborationName="{{name}}" id="makePublic" type="button" class="btn btn-default btn-lg">Make Public</button>
+            {{else}}
+                <button data-collaborationName="{{name}}" id="makePrivate" type="button" class="btn btn-default btn-lg">Make Private</button>
+            {{/if}}
+-->
+            <b>Administrators</b> <div class="collaboration-token">{{administrators}}</div><br/>
+            <b>Invitations</b> <div class="collaboration-token">{{invitations}}</div>
+
+
+
+            <b>{{invitations}}</b>
+            <br/>
+            <b>Applications</b> <div class="collaboration-token">{{applications}}</div><br/>
+
+        {{/if}}
+
+
+
+
+        <h3 class="collaboration-h3">Membership</H3>
+        {{#if isMember}}
+            <button data-collaborationName="{{name}}" id="leave" name="leave" type="button" class="btn btn-default btn-lg">Leave this collaboration</button>
+        {{else}}
+            {{#if requiresApproval}}
+            <button data-collaborationName="{{name}}" id="apply" name="apply" type="button" class="btn btn-default btn-lg">Apply for membership</button>
+        {{else}}
+            <button data-collaborationName="{{name}}" id="join" name="join" type="button" class="btn btn-default btn-lg">Join this collaboration</button>
+            {{/if}}
+        {{/if}}
+
+    </div>
+  </a>
+
+</template>
