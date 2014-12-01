@@ -16,19 +16,19 @@ collaborationSchema = new SimpleSchema({
     },
     collaborators: {
         type:[String],
-        /*
         autoform: {
             type: "select2",
             afFieldInput: {
                 multiple: true
             }
         }
-        */
     },
+        /*
     administrators: {
         type:[String],
         optional: true
     }
+        */
 
 });
 
@@ -36,7 +36,9 @@ Collaboration = new Meteor.Collection("collaboration", {
  // schema: collaborationSchema
 });
 
-// Collaboration.attachSchema(collaborationSchema);
+Collaboration.attachSchema(collaborationSchema);
+
+Schemas = { collaboration: collaborationSchema };
 
 
 // collaboration post list parameters
