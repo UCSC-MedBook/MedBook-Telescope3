@@ -1,5 +1,4 @@
 <template name="collaborationTagList">
-begin
 
   {{#each collaboration}}
       <a href="{{collaborationLink}}" class="post-collaboration">{{collaborationName}}</a>
@@ -18,4 +17,8 @@ what
   </a>
   </form>
   end
+</template>
+
+<template name="selectCollaborators">
+  <input  class="selectCollaborators"  name="selectCollaborators"  type="text" placeHolder="select collaborators(s)"/>
 </template>
