@@ -71,7 +71,6 @@ addOneCollaborator = function() {
        Meteor.call('addCollaboratorToCollaboration', { collaboration_name: collaboration_name, post_id: post_id }, 
          function(error, categoryName) {
         if (error){
-          console.log(error);
           throwError(error.reason);
           clearSeenErrors();
         } else {
@@ -88,7 +87,6 @@ Meteor.startup(function () {
   Template[getTemplate('collaborationTagList')].helpers({
 
     collaboration: function(foo) {
-      console.log("XXX", this, foo);
       if ('collaboration' in this)
         return this.collaboration;
       var cs = Session.get("collaborationSlug");
@@ -98,13 +96,11 @@ Meteor.startup(function () {
     },
 
     collaborationLink: function(){
-      console.log("postCollabration collaborationLink", this)
       var col = Collaboration.findOne({name: String(this)});
       if (col == null) return "";
       return "/collaboration/"+col.slug;
     },
     collaborationName: function(){
-      console.log("this=", this)
       return this;
     }
 
@@ -114,31 +110,29 @@ Meteor.startup(function () {
     var cols = Collaboration.find({},{fields: {name:1}}).fetch();
     var names = users.map(function(f){return f.username}).concat(cols.map(function(f){return f.name}));
     names = names.filter(function(f){return f && f.length > 0});
-    return names;
+    var data = names.map(function(f) { return {id:f, text:f}});
+    return data;
   }
   window.collabNames = collabNames;
 
-  Template[getTemplate('collaborationTagList')].rendered = function(){
-        var users = Meteor.users.find({},{fields: {username:1}}).fetch();
-        var cols = Collaboration.find({},{fields: {name:1}}).fetch();
-        var names = users.map(function(f){return f.username}).concat(cols.map(function(f){return f.name}));
-        names = names.filter(function(f){return f && f.length > 0});
-        $('#addCollaborators').select2({tags: names, width:"300px"});
-  };
 
-  Template[getTemplate('selectCollaborators')].rendered = function(){
-         console.log("Template[getTemplate('selectCollaborators')].rendered");
-        $('.selectCollaborators').select2({tags: collabNames(), width:"300px"});
-  };
 
   postSubmitClientCallbacks.push(function(properties) {
         var data =  $('.selectCollaborators').select2("data");
         var dataIds = data.map(function(d) { return d.id });
-        console.log(" postSubmitClientCallbacks ", data, dataIds);
         properties.collaboration = dataIds;
         return properties;
   });
+  Template.addCollaboratorsPoppup.helpers({
+    something: function(t) { 
+       console.log("something", this);
+    }
+   });
 
+  window.doneAddCollaborators = function() {
+      $('#addCollaboratorsPoppup').remove();
+      setTimeout(function() { $('.cover').remove();}, 100);
+  }
 
   Template[getTemplate('collaborationTagList')].events({
     // 'keyup input[id="addCollaborators"]' : addCollaborator,
@@ -148,23 +142,38 @@ Meteor.startup(function () {
         var cols = Collaboration.find({},{fields: {name:1}}).fetch();
         var names = users.map(function(f){return f.username}).concat(cols.map(function(f){return f.name}));
         names = names.filter(function(f){return f && f.length > 0});
-        console.log("this", this, "names", names, $('#addCollaborators').length)
+        alert("fuck");
         $('#addCollaborators').select2({tags: names});
     },
     */
+    'click .addCollaborators': function(e, t) {
+        var _id = this._id;
+        var data = this.collaboration.map(function(f) { return {id:f, text:f}});
+        var ppp =  Blaze.toHTMLWithData(Template.addCollaboratorsPoppup, this);
+        $(event.target).append(ppp);
+        $(document).ready(function() {
+            var $sc = $(event.target).find('.selectCollaborators');
+            console.log("click addCol data", data, _id, $sc);
+            $sc.select2({tags: collabNames(), width:"600px"});
+            $sc.select2( "data", data); // unclear why this needs to be done this way
+            $('body').append('<div onclick="doneAddCollaborators()" class="cover"></div>');
+        });
+    },
 
     'submit #addCollaboratorsForm' : function(e, t) {
         e.preventDefault();
-        if ('collaboration' in this)
-            this.collabration = ["fee","fie", "fo", "fum"];
-
+        return;
     },
 
+
     'click  #addCollaboratorsDone':function(event, template) {
-       event.preventDefault();
-      $('#addCollaboratorsPoppup').hide();
-        if ('collaboration' in this)
-            this.collabration = ["fee","fie", "fo", "fum"];
+        event.preventDefault();
+        var $sc = $(event.target).parent().find('input[class="selectCollaborators"]');
+        var newCollabs = $sc.select2("data").map(function(f){ return f.id});
+        var _id = $(event.target).data("_id");
+        console.log("YYY", newCollabs, _id);
+        Posts.update({_id:_id}, { $set: {collaboration: newCollabs}});
+        doneAddCollaborators();
      }
   });
 });

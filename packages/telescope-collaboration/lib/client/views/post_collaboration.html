@@ -3,22 +3,19 @@
   {{#each collaboration}}
       <a href="{{collaborationLink}}" class="post-collaboration">{{collaborationName}}</a>
   {{/each}}
+  <a class='addCollaborators'> <i class="fa fa-plus-square"  title="add collaboration"></i> </a>
 
-what
+</template>
 
-
-  <form id="addCollaboratorsForm" type="button">
-  <a onclick="show('addCollaboratorsPoppup')">
-      <i class="fa fa-plus-square"  title="add collaboration"></i>
-      <div hidden class="popupControl" id="addCollaboratorsPoppup" ><h4>Type in names of users or other collaborations:</h4>
-          <input  data-_id={{_id}} id="addCollaborators"  name="addCollaborators"  type="text" placeHolder="collaborator(s)"/>
-          <button id="addCollaboratorsDone">Done</button>
+<template name="addCollaboratorsPoppup">
+      <div class="popupControl" style="background:white;position:absolute;display:block;z-index:1001" id="addCollaboratorsPoppup" ><h4>Type in names of users or other collaborations:</h4>
+         {{>selectCollaborators}}
+          <button id="addCollaboratorsDone" data-_id="{{_id}}" >Done</button>
       </div>
-  </a>
-  </form>
-  end
+  <div id="scrim" style="position:fixed;left:0,top:0;width:100%;height100%;opacity=0.9;background-color:gray; z-index:500"></div>
 </template>
 
 <template name="selectCollaborators">
   <input  class="selectCollaborators"  name="selectCollaborators"  type="text" placeHolder="select collaborators(s)"/>
+
 </template>
