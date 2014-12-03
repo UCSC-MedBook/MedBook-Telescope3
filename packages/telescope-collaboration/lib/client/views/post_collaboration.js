@@ -61,6 +61,11 @@ Meteor.startup(function () {
   }
   window.collabNames = collabNames;
 
+  postSubmitRenderedCallbacks.push(function(postTemplate) {
+      var $sc = $(postTemplate.find(".selectCollaborators"));
+      console.log("postSubmitRenderedCallbacks", $sc);
+      $sc.select2({tags: collabNames(), width:"600px"});
+  });
 
 
   postSubmitClientCallbacks.push(function(properties) {
