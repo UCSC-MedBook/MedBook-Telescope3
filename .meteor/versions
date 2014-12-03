@@ -5,9 +5,12 @@ accounts-password@1.0.4
 accounts-twitter@1.0.2
 accounts-ui-unstyled@1.1.4
 accounts-ui@1.1.3
+aldeed:autoform-select2@1.0.2
 aldeed:autoform@4.0.2
 aldeed:collection2@2.2.0
+aldeed:http@0.2.0
 aldeed:simple-schema@1.1.0
+aldeed:template-extension@3.1.1
 application-configuration@1.0.3
 artwells:queue@0.0.3
 autoupdate@1.1.3
@@ -20,6 +23,7 @@ blaze@2.0.3
 boilerplate-generator@1.0.1
 callback-hook@1.0.1
 ccan:cssreset@1.0.0
+cfs:http-methods@0.0.24
 check@1.0.2
 chuangbo:cookie@1.1.0
 chuangbo:marked@0.3.5
@@ -68,8 +72,8 @@ meteor@1.1.3
 meteorhacks:async@1.0.0
 meteorhacks:fast-render@1.2.1
 meteorhacks:kadira-binary-deps@1.3.1
-meteorhacks:kadira@2.14.0
-meteorhacks:meteorx@1.2.0
+meteorhacks:kadira@2.15.1
+meteorhacks:meteorx@1.2.1
 meteorhacks:npm@1.2.1
 meteorhacks:subs-manager@1.2.0
 minifiers@1.1.2
@@ -89,6 +93,7 @@ oauth@1.1.2
 observe-sequence@1.0.3
 ordered-dict@1.0.1
 percolatestudio:synced-cron@1.0.0
+pfafman:font-awesome-4@4.2.0
 rajit:bootstrap3-datepicker@1.3.1
 random@1.0.1
 reactive-dict@1.0.4
@@ -112,6 +117,7 @@ tap:http-methods@0.0.23
 tap:i18n@1.2.1
 telescope-api@0.0.0
 telescope-base@0.0.0
+telescope-collaboration@0.0.0
 telescope-daily@0.0.0
 telescope-email@0.2.9
 telescope-i18n@0.0.0
@@ -126,6 +132,7 @@ telescope-search@0.0.0
 telescope-tags@0.0.0
 telescope-theme-base@0.0.0
 telescope-theme-hubble@0.0.0
+telescope-theme-medbook@0.0.0
 telescope-update-prompt@0.1.0
 templating@1.0.9
 tracker@1.0.3
@@ -135,5 +142,6 @@ underscore@1.0.1
 url@1.0.2
 useraccounts:core@1.2.3
 useraccounts:unstyled@1.2.3
+vsivsi:file-collection@0.3.0
 webapp-hashing@1.0.1
 webapp@1.1.4

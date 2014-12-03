@@ -29,60 +29,6 @@ createCollaboration = function (pack) {
 
 
 
-show = function(id){
- var $elem =  $("#"+id);
-  $elem.show();
-  $elem.find("input").focus();
-}
-
-hide = function(evt, id){
-  evt.preventDefault();
-  var $elem =  $("#"+id);
-  $elem.hide();
-};
-
-addCollaborator = function(e, i) {
-  var collaboration_name = e.currentTarget.value;
-  if (event.which === 27 || event.which === 13) {
-    e.preventDefault();
-    e.target.blur();
-
-  }
-}
-addOneCollaborator = function() {
-   var post_id = this._id;
-   var existsCol, existsUser;
-   if (collaboration_name.indexOf("@") >= 0) {
-     existsUser = Meteor.users.findOne({email: collaboration_name});
-   } else {
-      existsCol = Collaboration.findOne({name: collaboration_name});
-      existsUser = Meteor.users.findOne({username: collaboration_name});
-   }
-   var collaboration_name = $('#addCollaborators').val();
-   if (!(existsCol || existsUser)) {
-      if (confirm("The " + collaboration_name + " does not exist, do you want to create the " + collaboration_name + " collaboration?")) {
-        showCollaboration();
-      }
-      return;
-    }
-
-
-   if (post_id) 
-       Meteor.call('addCollaboratorToCollaboration', { collaboration_name: collaboration_name, post_id: post_id }, 
-         function(error, categoryName) {
-        if (error){
-          throwError(error.reason);
-          clearSeenErrors();
-        } else {
-          e.currentTarget.value = "";
-          // throwError('New category "'+categoryName+'" created')
-        }
-      });
-   else 
-       Session.set("CollaboratorsTemp", Session.get("CollaboratorsTemp").push(collaboration_name));
-};
-
-
 Meteor.startup(function () {
   Template[getTemplate('collaborationTagList')].helpers({
 
@@ -135,17 +81,6 @@ Meteor.startup(function () {
   }
 
   Template[getTemplate('collaborationTagList')].events({
-    // 'keyup input[id="addCollaborators"]' : addCollaborator,
-          /*
-    'focus #addCollaboratorsForm' : function(e, t) {
-        var users = Meteor.users.find({},{fields: {username:1}}).fetch();
-        var cols = Collaboration.find({},{fields: {name:1}}).fetch();
-        var names = users.map(function(f){return f.username}).concat(cols.map(function(f){return f.name}));
-        names = names.filter(function(f){return f && f.length > 0});
-        alert("fuck");
-        $('#addCollaborators').select2({tags: names});
-    },
-    */
     'click .addCollaborators': function(e, t) {
         var _id = this._id;
         var data = this.collaboration.map(function(f) { return {id:f, text:f}});

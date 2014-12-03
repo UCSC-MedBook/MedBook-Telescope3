@@ -74,4 +74,9 @@ telescope-notifications
 
 # Accounts Templates
 useraccounts:unstyled
+telescope-theme-medbook
+telescope-collaboration
+http
+aldeed:template-extension
+aldeed:autoform-select2@1.0.2
 

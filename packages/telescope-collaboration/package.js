@@ -9,6 +9,7 @@ Package.onUse(function (api) {
     'http',
     'cfs:http-methods',
     'aldeed:http',
+    'aldeed:template-extension',
     'underscore',
     'iron:router',
     'templating',
