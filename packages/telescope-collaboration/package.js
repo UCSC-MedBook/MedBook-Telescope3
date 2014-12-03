@@ -5,6 +5,7 @@ Package.onUse(function (api) {
   api.use(['telescope-lib', 'telescope-base', 'aldeed:simple-schema', 'telescope-theme-hubble'], ['client', 'server']);
 
   api.use([
+    'coffeescript',
     'jquery',
     'http',
     'cfs:http-methods',
@@ -56,11 +57,12 @@ Package.onUse(function (api) {
     'client/views/posts/post_submit.html',
     'client/views/posts/post_submit.js',
 
-    'client/views/files/file-upload.coffee',
-    'client/views/files/file-upload.css',
-    'client/views/files/file-upload.html',
-    'client/views/files/folder.html',
-    'client/views/files/folder.js',
+    // 'client/views/files/file-upload.coffee',
+    // 'client/views/files/file-upload.js',
+    // 'client/views/files/file-upload.css',
+    // 'client/views/files/file-upload.html',
+    // 'client/views/files/folder.html',
+    // 'client/views/files/folder.js',
 
 
   ], ['client']);
