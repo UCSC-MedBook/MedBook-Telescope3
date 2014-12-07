@@ -5,6 +5,7 @@ Package.onUse(function (api) {
   api.use(['telescope-lib', 'telescope-base', 'aldeed:simple-schema', 'telescope-theme-hubble'], ['client', 'server']);
 
   api.use([
+    'telescope-post-files',
     'coffeescript',
     'jquery',
     'http',

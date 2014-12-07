@@ -4,6 +4,15 @@ body{
   font-size: 20px !important;
 }
 
+.grid-module {
+  padding: 60px !important;
+  width: 800px !important;
+  max-width: 10240px !important;
+}
+.settings {
+}
+
+
 .ui-widget-content {
 }
 
