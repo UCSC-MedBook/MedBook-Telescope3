@@ -1,7 +1,11 @@
 <template name="AddCollaboration">
 
-    <div class="collaboration-item" style="z-index:100!important;" >
-        <h3 style="color:white;text-align:center; margin:0; padding:0; font-size:26px;" >Add Collaboration</h3>
+    <div onclick='$(".collapsed").toggle()' class="collaboration-item" style="cursor:pointer;">
+
+
+
+        <h3 class="short" style="color:white;text-align:center; margin:10px; padding:0; font-size:26px;" >Add Collaboration</h3>
+        <div class="collapsed" style="display:none;">
 
         <form>
             <div style="width:auto;" class="control-group inline">
@@ -45,6 +49,7 @@
           </fieldset>
           {{/autoForm}}
           -->
+       </div>
     </div>
 
 </template>

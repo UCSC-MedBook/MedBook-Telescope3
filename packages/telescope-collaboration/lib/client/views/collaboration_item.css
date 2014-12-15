@@ -1,10 +1,13 @@
 
+.collaboration-item-short {
+    height: 50px !important;
+}
+
 .collaboration-item {
     left: 10px;
     background-color: lightsteelblue;
     border: 2px solid black;
-
-
+    cursor: pointer;
 }
 
 .search-field {
@@ -21,3 +24,4 @@
 .collaboration-item div {
     margin: 10px;
 }
+
