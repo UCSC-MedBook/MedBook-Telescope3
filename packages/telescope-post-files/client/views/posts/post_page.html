@@ -6,13 +6,9 @@
     {{#if body}}
       {{> UI.dynamic template=post_body}}
     {{/if}}
-    {{#if medbookfiles.length}}
-      Medbookfiles
-      {{medbookfiles}}
-      {{> postedFiles}}
-    {{else}}
-       No files
-    {{/if}}
+
+    {{> postedFiles}}
+
     {{> UI.dynamic template=comment_form}}
     {{> UI.dynamic template=comment_list}}
   </div>
