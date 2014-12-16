@@ -1,0 +1,39 @@
+<template name="postedFiles">
+   <div class="files-module grid-block">
+   <h3>Files</h3>
+   {{#each medbookfiles}}
+      {{> uploadedFile}}
+   {{/each}}
+  </div>
+</template>
+
+<template name="files">
+  {{> upDown}}
+
+  <h1>Files</h1>
+  <div class="well">
+    <input type="file" multiple class="any">
+  </div>
+  <div class="fileArea">
+  {{#each uploadedFiles}}
+  {{> uploadedFile}}
+  {{/each}}
+  </div>
+</template>
+
+
+<template name="uploadedFile">
+  <h4>{{#with this.url}}<a href="{{this}}" target="_blank">{{../name}}</a>{{else}}{{this.name}}{{/with}} ({{this.size}} bytes)</h4>
+  {{#if this.isUploaded}}
+      {{getid}}
+      <div data-_id="{{getid}}" class="MedBookFile">
+          {{#with this.url }}
+              <img style="max-width:300px;max-height:300px;" src="{{this}}">
+              <a href="{{this}}" class="btn btn-danger btn-xs" role="button">Download</a>
+          {{/with}}
+      {{> FS.DeleteButton class="btn btn-danger btn-xs"}}
+      </div>
+  {{else}}
+      <p>{{> FS.UploadProgressBar semantic=true}} Uploading...</p>
+  {{/if}}
+</template>

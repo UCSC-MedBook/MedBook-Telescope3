@@ -1,0 +1,19 @@
+<template name="post_page2">
+  <div class="single-post grid">
+    <div class="posts">
+      {{> UI.dynamic template=post_item}}
+    </div>
+    {{#if body}}
+      {{> UI.dynamic template=post_body}}
+    {{/if}}
+    {{#if medbookfiles.length}}
+      Medbookfiles
+      {{medbookfiles}}
+      {{> postedFiles}}
+    {{else}}
+       No files
+    {{/if}}
+    {{> UI.dynamic template=comment_form}}
+    {{> UI.dynamic template=comment_list}}
+  </div>
+</template>
