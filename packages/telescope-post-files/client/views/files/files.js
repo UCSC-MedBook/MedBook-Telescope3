@@ -25,7 +25,7 @@ Meteor.startup(function () {
   });
 
   Template.files.uploadedFiles = function() {
-     return Collections.Files.find();
+     return Collections.Files.find( {post: { $exists: false }, owner: Meteor.userId()} );
   };
 
   Template.postedFiles.helpers({
