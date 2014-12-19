@@ -1,5 +1,8 @@
 Package.describe({summary: "Telescope share files using posts package"});
 
+Npm.depends({mime: "1.2.11"});
+
+
 Package.onUse(function (api) {
 
   api.use([
@@ -21,6 +24,11 @@ Package.onUse(function (api) {
     'mizzao:bootstrap-3',
     'mrt:jquery-easing',
     'mrt:numeral',
+
+    'patte:mime-npm',
+    'olragon:handsontable',
+
+
     'raix:ui-dropped-event',
     'sacha:spin',
 
@@ -47,6 +55,7 @@ Package.onUse(function (api) {
     'client/views/autoform/autoform.js',
     'client/views/files/files.html',
     'client/views/files/files.js',
+    'client/views/files/files.css',
     'client/views/home/home.html',
     'client/views/home/home.js',
     'client/views/images/images.css',
@@ -60,6 +69,7 @@ Package.onUse(function (api) {
     ], ['client']);
 
   api.add_files([
+    'server/files.js',
     'server/main.js',
     'server/publish.js',
     'server/posts.js',
@@ -72,6 +82,7 @@ Package.onUse(function (api) {
     'common/common.js',
     'common/routes.js',
     'common/posts.js',
+    'common/extend.js',
   ], ["client", "server"]);
  
   api.export(['preloadSubscriptions', 'adminNav', 'Categories', 'addToPostSchema', 'primaryNav', 'postModules', 'Collections', 

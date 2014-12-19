@@ -27,3 +27,6 @@ postAfterEditMethodCallbacks.push(function(post) {
 });
 */
 
+
+
+Template.registerHelper("PostUrl", function() { return PostUrl(this);});

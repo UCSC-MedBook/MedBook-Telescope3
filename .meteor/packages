@@ -22,7 +22,6 @@ iron:router
 
 meteorhacks:fast-render
 meteorhacks:subs-manager
-meteorhacks:npm
 
 aldeed:autoform
 aldeed:collection2
@@ -38,7 +37,6 @@ sacha:spin
 sacha:juice
 chuangbo:marked
 percolatestudio:synced-cron
-npm-container
 matb33:collection-hooks
 djedi:sanitize-html
 rajit:bootstrap3-datepicker
@@ -83,4 +81,6 @@ vsivsi:file-collection
 coffeescript
 telescope-post-files
 cfs:autoform
+patte:mime-npm
+iron:controller
 

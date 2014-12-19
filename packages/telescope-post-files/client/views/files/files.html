@@ -1,6 +1,6 @@
 <template name="postedFiles">
    <div class="files-module grid-block">
-   <h3>Files</h3>
+   <label class="control-label">Files</label>
 
    {{#each medbookfiles}}
       {{> uploadedFile}}
@@ -9,32 +9,49 @@
 </template>
 
 <template name="files">
+  <br>
+  <label class="control-label">Files</label>
+  <br>
   {{> upDown}}
 
-  <h1>Files</h1>
   <div class="well">
-    <input type="file" multiple class="any">
+    <input type="file" webkitdirectory  multiple class="any">
   </div>
   <div class="fileArea">
   {{#each uploadedFiles}}
-  {{> uploadedFile}}
+      {{> uploadedFile}}
+      <hr>
   {{/each}}
   </div>
 </template>
 
 
 <template name="uploadedFile">
-  <h4>{{#with this.url}}<a href="{{this}}" target="_blank">{{../name}}</a>{{else}}{{this.name}}{{/with}} ({{this.size}} bytes)</h4>
+  <h4><a href="{{PostUrl}}" target="_blank">{{name}}</a>({{this.size}} bytes)</h4>
   {{#if this.isUploaded}}
-      {{getid}}
-      <div data-_id="{{getid}}" class="MedBookFile">
-          {{#with this.url }}
-              <img style="max-width:300px;max-height:300px;" src="{{this}}">
-              <a href="{{this}}" class="btn btn-danger btn-xs" role="button">Download</a>
-          {{/with}}
-      {{> FS.DeleteButton class="btn btn-danger btn-xs"}}
+      <div data-_id="{{getid}}" class="MedBookFile"> 
+          <a href="{{PostUrl}}" class="btn btn-danger btn-xs" role="button" target="_blank">Download</a>
+          {{> FS.DeleteButton class="btn btn-danger btn-xs"}}
+          {{> previewFile}}
       </div>
   {{else}}
       <p>{{> FS.UploadProgressBar semantic=true}} Uploading...</p>
   {{/if}}
+</template>
+
+<template name="previewImage">
+  <img style="max-width:300px;max-height:300px;" src="{{PostUrl}}">
+</template>
+
+
+<template name="handsontablePreview">
+
+    <span class="HOTdivFence" >
+        <a href="#" class="btn btn-danger btn-xs edit" role="button">Edit</a>
+        <div class="HOTdiv"  style="overflow: scroll"  ></div>
+    </span>
+</template>
+
+<template name="noPreview">
+   {{this.type}}
 </template>

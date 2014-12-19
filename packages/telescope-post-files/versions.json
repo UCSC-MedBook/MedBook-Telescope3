@@ -285,8 +285,16 @@
       "1.0.3"
     ],
     [
+      "olragon:handsontable",
+      "0.11.3"
+    ],
+    [
       "ordered-dict",
       "1.0.1"
+    ],
+    [
+      "patte:mime-npm",
+      "0.0.1"
     ],
     [
       "raix:eventemitter",
