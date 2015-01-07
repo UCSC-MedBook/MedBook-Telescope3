@@ -1,0 +1,9 @@
+<script type="text/javascript">
+  var condition = 
+    window.Package && 
+    typeof Package['meteorhacks:fast-render'].__init_fast_render == 'function';
+  
+  if(condition) {
+    Package['meteorhacks:fast-render'].__init_fast_render("<%= ejsonString %>")
+  }
+</script>

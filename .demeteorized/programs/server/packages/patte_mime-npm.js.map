@@ -1,0 +1,1 @@
+{"version":3,"file":"/packages/patte:mime-npm.js","sources":["patte:mime-npm/lib/mime.js"],"names":[],"mappings":";;;;;;;;;;;;;;;;AAAA,0B","sourcesContent":["MIME = Npm.require(\"mime\")\n"]}
