@@ -1,6 +1,6 @@
 export MONGO_URL=mongodb://localhost:27017/MedBook
-export ROOT_URL=http://su2c-dev.ucsc.edu:40001/
-export PORT=40001
+export ROOT_URL=http://su2c-dev.ucsc.edu:10001/
+export PORT=10001
 cd demeteorized
 echo $ROOT_URL
 node main.js
