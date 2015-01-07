@@ -79,7 +79,6 @@ sendEmail = Package['telescope-email'].sendEmail;
 buildAndSendEmail = Package['telescope-email'].buildAndSendEmail;
 getEmailTemplate = Package['telescope-email'].getEmailTemplate;
 PostsDailyController = Package['telescope-daily'].PostsDailyController;
-compareVersions = Package['telescope-update-prompt'].compareVersions;
 Herald = Package['telescope-notifications'].Herald;
 buildEmailNotification = Package['telescope-notifications'].buildEmailNotification;
 getUnsubscribeLink = Package['telescope-notifications'].getUnsubscribeLink;

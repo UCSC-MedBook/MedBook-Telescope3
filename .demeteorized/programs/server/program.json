@@ -624,11 +624,6 @@
       "path": "packages/telescope-daily.js"
     },
     {
-      "sourceMap": "packages/telescope-update-prompt.js.map",
-      "sourceMapRoot": "packages",
-      "path": "packages/telescope-update-prompt.js"
-    },
-    {
       "node_modules": "npm/meteorhacks:kadira-binary-deps/node_modules",
       "sourceMap": "packages/meteorhacks_kadira-binary-deps.js.map",
       "sourceMapRoot": "packages",

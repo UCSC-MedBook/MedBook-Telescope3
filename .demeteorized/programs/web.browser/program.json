@@ -2,22 +2,22 @@
   "format": "web-program-pre1",
   "manifest": [
     {
-      "path": "e9f0ebff891fcf02843a732426d2251078258863.js",
+      "path": "2e0edac47d4049798876aa5f73eed7e6cd80913d.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/e9f0ebff891fcf02843a732426d2251078258863.js",
-      "size": 1704137,
-      "hash": "e9f0ebff891fcf02843a732426d2251078258863"
+      "url": "/2e0edac47d4049798876aa5f73eed7e6cd80913d.js",
+      "size": 1699767,
+      "hash": "2e0edac47d4049798876aa5f73eed7e6cd80913d"
     },
     {
-      "path": "ff22f29d77f904dba12917efb8a6555183df467f.css",
+      "path": "2ec792e9f90c28defae3ee576d127f494c7efdf9.css",
       "where": "client",
       "type": "css",
       "cacheable": true,
-      "url": "/ff22f29d77f904dba12917efb8a6555183df467f.css?meteor_css_resource=true",
-      "size": 276898,
-      "hash": "ff22f29d77f904dba12917efb8a6555183df467f"
+      "url": "/2ec792e9f90c28defae3ee576d127f494c7efdf9.css?meteor_css_resource=true",
+      "size": 276628,
+      "hash": "2ec792e9f90c28defae3ee576d127f494c7efdf9"
     },
     {
       "path": "packages/bengott_avatar/default.png",
