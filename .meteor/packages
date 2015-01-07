@@ -65,7 +65,6 @@ telescope-email
 telescope-module-embedly
 telescope-newsletter
 telescope-daily
-telescope-update-prompt
 telescope-kadira
 
 telescope-notifications
@@ -83,4 +82,3 @@ telescope-post-files
 cfs:autoform
 patte:mime-npm
 iron:controller
-
