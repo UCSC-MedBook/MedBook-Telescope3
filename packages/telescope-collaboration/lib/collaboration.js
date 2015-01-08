@@ -69,6 +69,25 @@ addToPostSchema.push(
   }
 );
 
+getCollaborations = function() {
+
+    var user = null;
+    if (Meteor.isClient) {
+        user = Meteor.user();
+    } else if (Meteor.isServer && this.userId) {
+        user = Meteor.users.find({_id: this.userId});
+    }
+    var who = [];
+    if (user) {
+        who.push(user.username);
+        _.map(user.emails, function(em) { who.push( em.address)})
+    }
+    var cols = [];
+    if (who.length > 0)
+        Collaboration.find({collaborators: {$in: who}}).forEach(function(col) { if (col.name.length > 0) cols.push( col.name) });
+    return cols
+}
+
 var getCheckedCollaboration = function (properties) {
   properties.collaboration = [];
   $('input[name=collaboration]:checked').each(function() {
