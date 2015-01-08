@@ -19,10 +19,10 @@ Meteor.startup(function () {
     // Collaboration
 
     this.route('posts_collaboration', {
-      path: '/collaboration/:slug/:limit?',
+      path: '/collaboration/:name/:limit?',
       controller: PostsCollaborationController,
       onAfterAction: function() {
-        Session.set('collaborationSlug', this.params.slug);
+        Session.set('collaborationName', this.params.name);
       }
     });
 
@@ -31,7 +31,7 @@ Meteor.startup(function () {
     this.route('collaboration', {
         template: "collaborationGrid",
         onAfterAction: function() {
-          Session.set('collaborationSlug', "");
+          Session.set('collaborationName', "");
         }
     } );
 

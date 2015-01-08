@@ -90,8 +90,8 @@ Meteor.startup(function () {
 
 });
 
-getCollaborationUrl = function(slug){
-  return getSiteUrl()+'collaboration/'+slug;
+getCollaborationUrl = function(name){
+  return '/collaboration/'+name;
 };
 
 
