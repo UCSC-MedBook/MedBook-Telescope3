@@ -11,7 +11,7 @@ Package.onUse(function (api) {
     'http',
     'cfs:http-methods',
     'aldeed:http',
-    // 'aldeed:template-extension',
+    'aldeed:template-extension',
     'underscore',
     'iron:router',
     'templating',
@@ -47,6 +47,9 @@ Package.onUse(function (api) {
 
     'lib/client/views/select2.js',
     'lib/client/views/select2.css',
+
+    'client/views/posts/post_submit.js',
+    'client/views/posts/post_submit.html',
 
   ], ['client']);
 
