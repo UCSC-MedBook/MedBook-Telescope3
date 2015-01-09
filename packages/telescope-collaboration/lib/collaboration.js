@@ -70,21 +70,27 @@ addToPostSchema.push(
 );
 
 getCollaborations = function() {
+    console.log("getCollaborations this.userId", this.userId);
 
     var user = null;
     if (Meteor.isClient) {
         user = Meteor.user();
     } else if (Meteor.isServer && this.userId) {
-        user = Meteor.users.find({_id: this.userId});
+        user = Meteor.users.findOne({_id: this.userId});
     }
     var who = [];
+    console.log("getCollaborations user", user);
     if (user) {
         who.push(user.username);
         _.map(user.emails, function(em) { who.push( em.address)})
     }
+    console.log("getCollaborations who", who);
     var cols = [];
-    if (who.length > 0)
-        Collaboration.find({collaborators: {$in: who}}).forEach(function(col) { if (col.name.length > 0) cols.push( col.name) });
+    if (who.length > 0) {
+        var query = {collaborators: {$in: who}}
+        Collaboration.find(query).forEach(function(col) { if (col.name.length > 0) cols.push( col.name) });
+        console.log("getCollaborations cols", query, cols);
+    }
     return cols
 }
 

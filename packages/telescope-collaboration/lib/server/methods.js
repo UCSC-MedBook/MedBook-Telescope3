@@ -155,6 +155,22 @@ function MedBookPost(post,userId) {
     return post._id;
 }
 
+var moi = function() {
+    var user;
+    if (Meteor.isClient)
+        user = Meteor.user();
+    else
+        user = Meteor.users.findOne(this.userId);
+    var cols = [];
+    if (user) {
+        cols.push(user.username);
+        _.map( user.emails, function(ad) { cols.push(ad.address);});
+    }
+
+    console.log("moi", cols);
+    return cols;
+}
+
 
 Meteor.startup(function () {
 
@@ -169,22 +185,21 @@ Meteor.startup(function () {
           },
     joinCollaborationMethod: function(collaboration_id) {
           console.log("joinCollaborationMethod")
-          var ad = Meteor.user().emails[0].address;
-          Collaboration.update({_id: collaboration_id}, { $addToSet: { collaborators: ad, administrators:ad }}, function (err, err2){
-                  console.log("joinCollaborationMethod Collaboration.update", collaboration_id, ad, err, err2)
+          var cols = moi.call(this);
+          Collaboration.update({_id: collaboration_id}, { $addToSet: { collaborators:{$each: cols}, administrators:{$each: cols} }}, function (err, err2){
+                  console.log("joinCollaborationMethod Collaboration.update", collaboration_id, cols, err, err2)
               }
           );
 
       },
     leaveCollaborationMethod: function(collaboration_id) {
-        console.log("joinCollaborationMethod")
-        var ad = Meteor.user().emails[0].address;
-        Collaboration.update({_id: collaboration_id}, { $pull: { collaborators: ad, administrators:ad  }}, function (err, err2){
+        console.log("leaveCollaborationMethod")
+        var cols = moi.call(this);
+        Collaboration.update({_id: collaboration_id}, { $pull: { collaborators: {$in: cols}, administrators: {$in: cols }}}, function (err, err2){
               console.log("joinCollaborationMethod Collaboration.update", collaboration_id, ad, err, err2)
-          }
-    );
-
-          },
+            }
+        );
+    },
 
   });
 
