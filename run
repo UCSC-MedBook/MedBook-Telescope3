@@ -3,4 +3,4 @@ export ROOT_URL=http://su2c-dev.ucsc.edu:10001/
 export PORT=10001
 echo $ROOT_URL
 cd .demeteorized
-forever  main.js
+forever  -l "../logs/log"  -o ../logs/out  -e ../logs/err tel.js 
