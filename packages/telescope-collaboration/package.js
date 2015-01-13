@@ -48,27 +48,12 @@ Package.onUse(function (api) {
     'lib/client/views/select2.js',
     'lib/client/views/select2.css',
 
-     // files which replace functionality in core
-    'client/helpers/handlebars.js',
-    'client/views/nav/nav.js',
-    'client/views/nav/nav.html',
-    'client/views/posts/posts_list.js',
-    'client/views/posts/posts_list.html',
-    'client/views/posts/posts_list.css',
-    'client/views/posts/post_submit.html',
     'client/views/posts/post_submit.js',
-
-    // 'client/views/files/file-upload.coffee',
-    // 'client/views/files/file-upload.js',
-    // 'client/views/files/file-upload.css',
-    // 'client/views/files/file-upload.html',
-    // 'client/views/files/folder.html',
-    // 'client/views/files/folder.js',
-
+    'client/views/posts/post_submit.html',
 
   ], ['client']);
 
   api.add_files(['lib/server/publications.js', 'lib/server/methods.js'], ['server']);
  
-  api.export(['addCollaborator', 'Collaboration', 'show', 'hide', 'createCollaboration', 'collaborationSchema', 'Schemas']);
+  api.export(['addCollaborator', 'getCollaborations', 'Collaboration', 'show', 'hide', 'createCollaboration', 'collaborationSchema', 'Schemas']);
 });

@@ -35,7 +35,7 @@ Meteor.startup(function () {
     collaboration: function(foo) {
       if ('collaboration' in this)
         return this.collaboration;
-      var cs = Session.get("collaborationSlug");
+      var cs = Session.get("collaborationName");
       if (cs && cs.length > 0)
         return [cs];
       return [];

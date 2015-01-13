@@ -7,7 +7,7 @@ Meteor.startup(function () {
       return Collaboration.find({}, {sort: {name: 1}});
     },
     collaborationLink: function () {
-      return getCollaborationUrl(this.slug);
+      return getCollaborationUrl(this.name);
     }
   });
 });

@@ -4,6 +4,11 @@
   box-shadow: none;
 }
 
+.collaboration-focus {
+  border: 2px solid red;
+  box-shadow:0 1px 3px rgba(26,53,71,.08), 0 0 0 1px rgba(26,53,71,.04), 0 1px 1px rgba(26,53,71,.06);
+}
+
 .collaboration-h3 {
   margin-bottom: 20px !important;
   margin-top: 20px !important;

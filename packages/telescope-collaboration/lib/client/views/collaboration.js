@@ -41,6 +41,24 @@ Meteor.startup(
 
         });
 
+        Template[getTemplate('collaborationGrid')].hooks( {
+            rendered: function() {
+                var focusOn = Session.get("FocusName");
+                console.log( "collaborationGrid rendered focusOn", focusOn);
+                if (focusOn) {
+                    var box = $("[name='"+focusOn+"']");
+                    if (box && box.length > 0) {
+                        $(".collaboration-focus").removeClass("collaboration-focus");
+                        box.children().addClass("collaboration-focus");
+                        var y = box.offset().top;
+                        console.log("focusOn y=",y);
+                        $('html, body').animate({ scrollTop:y }, 2000);
+                    }
+                }
+            }
+        });
+
+
 
         Template[getTemplate('collaborationGrid')].events( {
 
