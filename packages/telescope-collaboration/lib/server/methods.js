@@ -196,7 +196,7 @@ Meteor.startup(function () {
         console.log("leaveCollaborationMethod")
         var cols = moi.call(this);
         Collaboration.update({_id: collaboration_id}, { $pull: { collaborators: {$in: cols}, administrators: {$in: cols }}}, function (err, err2){
-              console.log("joinCollaborationMethod Collaboration.update", collaboration_id, ad, err, err2)
+              console.log("joinCollaborationMethod Collaboration.update", collaboration_id, cols, err, err2)
             }
         );
     },
