@@ -43,13 +43,34 @@ Template[getTemplate('nav')].helpers({
   }
 });
 
+function fixMedBookImage() {
+    var $mbi = $("#MedBookImage");
+    $mbi.css({position:"absolute",top: -45, left:($("body").width()/2)-($mbi.width()/2)})
+}
+window.fixMedBookImage = fixMedBookImage;
+$(window).resize( fixMedBookImage );
+
 Template[getTemplate('nav')].rendered = function(){
   if(!Meteor.loggingIn() && !Meteor.user()){
     $('.login-link-text').text("Sign Up/Sign In");
   }
+  fixMedBookImage();
 };
 
 Template[getTemplate('nav')].events({
+  'mouseenter #MedBookImage': function(e) {
+    // $('#MedBookMenuPoint').load("/menu")
+
+    $.ajax({
+      url: "/menu",
+      success: function (data) { $(data).appendTo('body'); }, 
+      dataType: 'html'
+    });
+
+
+    console.log("loaded")
+  },
+
   'click #logout': function(e){
     e.preventDefault();
     Meteor.logout();
