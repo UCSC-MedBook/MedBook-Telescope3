@@ -1,5 +1,5 @@
 
-createCollaboration = function (pack) {
+createCollaboration = function (pack, success) {
   var slug = slugify(pack.name);
   pack.slug = slug;
   var yy = ["collaborators", "administrators", "invitations", "applications"];
@@ -11,8 +11,8 @@ createCollaboration = function (pack) {
       }).filter(function(n){ return n.length > 0});
   }
   var ad = Meteor.user().emails[0].address;
-  if (pack.administrators.indexOf(ad) <= 0) pack.administrators.push(ad);
-  if (pack.collaborators.indexOf(ad) <= 0) pack.collaborators.push(ad);
+  if (pack && pack.administrators && pack.administrators.indexOf(ad) <= 0) pack.administrators.push(ad);
+  if (pack && pack.collaborators  && pack.collaborators.indexOf(ad) <= 0) pack.collaborators.push(ad);
 
 
   Meteor.call('createCollaborationMethod',
@@ -23,6 +23,7 @@ createCollaboration = function (pack) {
           throwError(error.reason);
           clearSeenErrors();
         } else {
+          success();
         }
       });
 }

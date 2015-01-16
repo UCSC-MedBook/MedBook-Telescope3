@@ -1,6 +1,6 @@
 <template name="AddCollaboration">
 
-    <div onclick='$(".collapsed").toggle()' class="collaboration-item" style="cursor:pointer;">
+    <div onclick='$(".collapsed").show()' class="collaboration-item" style="cursor:pointer;">
 
 
 
@@ -19,7 +19,7 @@
                                 <label class="collaboration-label">Description</label>
                                     <input class="collaboration-description" id="description" type="text" value="{{description}}" placeholder="Fill in description"/>
                                 <label class="collaboration-label">Collaborators</label>
-                                    <input class="collaboration-collaborators" name="collaborators" id="collaborators" type="hidden" value="1,1,2"/>
+                                    <input class="collaboration-collaborators" name="collaborators" id="collaborators" type="hidden" value=""/>
                                 <label class="collaboration-label">Administrators</label>
                                     <input class="collaboration-administrators" name="adminstrators" id="adminstrators" type="text" placeholder="Add adminstrators"/>
                                 <label class="collaboration-label">Invite</label>
@@ -30,7 +30,7 @@
                             <div style="float:right; align:center;">
                                 <a style=" width:100px;" class="button submit edit-link" href="#"><center>Save</center></a>
 
-                                <a style="margin-top:100px; width:100px;" class="button cancel edit-link" href="#" onclick="hideAddCollaboration()">Cancel</a>
+                                <a style="margin-top:100px; width:100px;" class="button cancel" href="#" onclick="hideAddCollaboration()">Cancel</a>
                             </div>
                         </td>
                     </tr>

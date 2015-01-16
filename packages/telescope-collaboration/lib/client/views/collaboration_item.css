@@ -4,10 +4,28 @@
 }
 
 .collaboration-item {
-    left: 10px;
+    left: 2px;
     background-color: lightsteelblue;
     border: 2px solid black;
     cursor: pointer;
+}
+
+.select2-choices {
+    list-style-type: none;
+    padding-left: 4px !important;
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+    margin-top: 4px !important;
+    margin-bottom: 1px !important;
+}
+
+.select2-search-choice {
+    font-size: 14px;
+    padding-left: 4px !important;
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+    margin-top: 4px !important;
+    margin-bottom: 1px !important;
 }
 
 .search-field {
@@ -16,12 +34,12 @@
 
 
 .collaboration-label {
-    font-size: 20px;
+    font-size: 18px;
     padding-top:10px !important;
     margin-bottom:0px !important;
 }
 
 .collaboration-item div {
-    margin: 10px;
+    margin: 0px;
 }
 

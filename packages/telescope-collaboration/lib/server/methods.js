@@ -179,6 +179,7 @@ Meteor.startup(function () {
               console.log(collaboration)
               if (!Meteor.user() || !isAdmin(Meteor.user()))
                   throw new Meteor.Error(i18n.t('You need to login and be an admin to add a new collaboration.'));
+              collaboration.slug = slugify(collaboration.name);
 
               Collaboration.insert(collaboration);
               return collaboration.name;
