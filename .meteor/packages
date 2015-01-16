@@ -82,3 +82,5 @@ telescope-post-files
 cfs:autoform
 patte:mime-npm
 iron:controller
+fourseven:scss
+
