@@ -111,6 +111,26 @@ Meteor.startup(
             });
 
         Template[getTemplate('collaborationGridElement')].helpers({
+            collaborators: function() {
+               var answerSet = {};
+               var cols = this.collaborators;
+               cols.map(function(col,i) {
+                   if (col.indexOf("@") < 0) {
+                       var c = Collaboration.findOne({"_id":col});
+                       if (c)
+                           answerSet[c.name] = 1;
+                   } else {
+                       var u = Meteor.users.findOne({"emails.address": col})
+                       if (u && u.username)
+                           answerSet[u.username] = 1;
+                       else
+                           answerSet[col] = 1;
+                   }
+               });
+               var a = Object.keys(answerSet).sort();
+               console.log("cols", cols, a);
+               return a.length > 0 ? a.join(" ") : " no collaborators ";
+            },
             isAdministrator: function () {
                 return isAdministrator(this._id);
             },

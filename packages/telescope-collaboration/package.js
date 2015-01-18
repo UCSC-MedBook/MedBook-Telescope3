@@ -47,6 +47,7 @@ Package.onUse(function (api) {
 
     'lib/client/views/select2.js',
     'lib/client/views/select2.css',
+    'lib/client/views/select2.png',
 
     'client/views/posts/post_submit.js',
     'client/views/posts/post_submit.html',

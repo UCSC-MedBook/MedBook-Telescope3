@@ -57,6 +57,7 @@ Meteor.startup(function () {
   Template[getTemplate('AddCollaboration')].rendered = function() {
       var data = getCollabTags();
       $("#collaborators").select2({ tags: data, width: "100%", multiple: true});
+      $("#adminstrators").select2({ tags: data, width: "100%", multiple: true});
   }
 
 });
