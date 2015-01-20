@@ -81,7 +81,7 @@ Meteor.startup(function () {
     }
    });
 
-  window.doneAddCollaborators = function() {
+  window.doneEditOrAddCollaborators = function() {
       $('#addCollaboratorsPoppup').remove();
       setTimeout(function() { $('.cover').remove();}, 100);
   }
@@ -97,7 +97,7 @@ Meteor.startup(function () {
             console.log("click addCol data", data, _id, $sc);
             $sc.select2({tags: collabNames(), width:"600px"});
             $sc.select2( "data", data); // unclear why this needs to be done this way
-            $('body').append('<div onclick="doneAddCollaborators()" class="cover"></div>');
+            $('body').append('<div onclick="doneEditOrAddCollaborators()" class="cover"></div>');
         });
     },
 
@@ -114,7 +114,7 @@ Meteor.startup(function () {
         var _id = $(event.target).data("_id");
         console.log("YYY", newCollabs, _id);
         Posts.update({_id:_id}, { $set: {collaboration: newCollabs}});
-        doneAddCollaborators();
+        doneEditOrAddCollaborators();
      }
   });
 });

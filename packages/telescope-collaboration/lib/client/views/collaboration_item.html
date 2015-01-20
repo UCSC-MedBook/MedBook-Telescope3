@@ -1,10 +1,10 @@
-<template name="AddCollaboration">
+<template name="EditOrAddCollaboration">
 
     <div onclick='$(".collapsed").show()' class="collaboration-item" style="cursor:pointer;">
 
 
 
-        <h3 class="short" style="color:white;text-align:center; margin:10px; padding:0; font-size:26px;" >Add Collaboration</h3>
+        <h3 class="short" style="color:white;text-align:center; margin:10px; padding:0; font-size:26px;" >{{editOrAdd}} Collaboration</h3>
         <div class="collapsed" style="display:none;">
 
         <form>
@@ -19,9 +19,9 @@
                                 <label class="collaboration-label">Description</label>
                                     <input class="collaboration-description" id="description" type="text" value="{{description}}" placeholder="Fill in description"/>
                                 <label class="collaboration-label">Collaborators</label>
-                                    <input class="collaboration-collaborators" name="collaborators" id="collaborators" type="hidden" value=""/>
+                                    <input class="collaboration-collaborators" name="collaborators" value="{{collaborators}}" id="collaborators" type="hidden" placeHolder="Add collaborators"/>
                                 <label class="collaboration-label">Administrators</label>
-                                    <input class="collaboration-administrators" name="adminstrators" id="adminstrators" type="text" placeholder="Add adminstrators"/>
+                                    <input class="collaboration-administrators" name="administrators" value="{{administrators}}" id="adminstrators" type="text" placeholder="Add administrators"/>
                                 <label class="collaboration-label">Invite</label>
                                     <input class="collaboration-invitations" name="invitations" id="invitations" type="text" placeholder="invite collaborators"/>
                             </div>

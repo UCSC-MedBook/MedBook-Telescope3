@@ -1,18 +1,18 @@
 
-window.hideAddCollaboration = function() {
+window.hideEditOrAddCollaboration = function() {
     $(".collapsed").hide()
 }
 
 Meteor.startup(function () {
 
-  Template[getTemplate('AddCollaboration')].helpers({
+  Template[getTemplate('EditOrAddCollaboration')].helpers({
     potential : function() {
         return ["Aa", "Bb", "Cc"];
         }
     });
-  Template[getTemplate('AddCollaboration')].events({
+  Template[getTemplate('EditOrAddCollaboration')].events({
     'click .cancel': function (e, tmpl) {
-        window.hideAddCollaboration();
+        window.hideEditOrAddCollaboration();
     },
 
     'click .edit-link': function (e, tmpl) {
@@ -54,10 +54,15 @@ Meteor.startup(function () {
   window.getCollabTags = getCollabTags;
 
 
-  Template[getTemplate('AddCollaboration')].rendered = function() {
+  Template[getTemplate('EditOrAddCollaboration')].rendered = function() {
       var data = getCollabTags();
-      $("#collaborators").select2({ tags: data, width: "100%", multiple: true});
-      $("#adminstrators").select2({ tags: data, width: "100%", multiple: true});
+      $(document).ready( function() {
+          $("#collaborators").select2({ tags: data, width: "100%", multiple: true});
+          $("#adminstrators").select2({ tags: data, width: "100%", multiple: true});
+      });
   }
-
+  Template[getTemplate('EditOrAddCollaboration')].helpers({
+     administrators : function() { return "A" },
+     collaborators : function() { return "C" },
+  });
 });
