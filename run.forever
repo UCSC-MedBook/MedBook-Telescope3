@@ -1,5 +1,5 @@
 export MONGO_URL=mongodb://localhost:27017/MedBook
-export ROOT_URL=http://su2c-dev.ucsc.edu:10001/
+export ROOT_URL=http://su2c-dev.ucsc.edu:10000/
 export PORT=10001
 echo $ROOT_URL
 cd /fresh/build/bundle
