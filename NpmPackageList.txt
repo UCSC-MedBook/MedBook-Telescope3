@@ -14,8 +14,6 @@ css-stringify
 debug
 dicer
 express
-fibers
-fibers/future
 gm
 gridfs-locking-stream
 gridfs-locks
@@ -29,6 +27,7 @@ mailcomposer
 mime
 mkdirp
 mongodb
+mongodb-wrapper
 path
 querystring
 request
