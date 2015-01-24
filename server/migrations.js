@@ -6,6 +6,7 @@ Migrations = new Meteor.Collection('migrations');
 
 Meteor.startup(function () {
   allMigrations = Object.keys(migrationsList);
+  console.log("About to run migrations", allMigrations);
   _.each(allMigrations, function(migrationName){
     runMigration(migrationName);
   });

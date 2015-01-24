@@ -32,6 +32,7 @@ collaborationSchema = new SimpleSchema({
 
 });
 
+console.log("About to init Collaboration");
 Collaboration = new Meteor.Collection("collaboration", {
  // schema: collaborationSchema
 });
