@@ -21,6 +21,9 @@ Meteor.startup(function () {
     this.route('posts_collaboration', {
       path: '/collaboration/:name/:limit?',
       controller: PostsCollaborationController,
+      waitOn: function() {
+          return Meteor.subscribe('collaboration', this.params.name);
+      },
       onBeforeAction: function() {
         var cols = getCollaborations();
         if (cols.indexOf(this.params.name) < 0) {
