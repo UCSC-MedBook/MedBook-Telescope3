@@ -22,7 +22,7 @@ Meteor.methods({
     if (!isAdmin(Meteor.user()))
       throw new Meteor.Error(403, "Not an admin");
 
-    var category = Categories.findOne(categoryId);
+    var category = null; // Categories.findOne(categoryId);
     if (!category) {
       Posts.update(
         {}

@@ -64,6 +64,8 @@ var migrationsList = {
     return i;
   },
   updateCategories: function () {
+    return 0;
+
     var i = 0;
     Categories.find({slug: {$exists : false}}).forEach(function (category) {
         i++;
