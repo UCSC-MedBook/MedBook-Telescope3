@@ -19,29 +19,9 @@ body{
 .ui-tabs-anchor {
   font-size: 18px !important;
 }
-.secondary-nav {
-    width: 200px;
-    white-space: nowrap !important;
-}
-.nav > li  {
-  white-space: nowrap !important;
-}
-.nav > li > a:first-child {
-  top: 20px;
-}
 
 .nav > li > a {
-  top: 30px;
-  font-size: 16px !important;
-  white-space: nowrap !important;
-  border: 1px black solid;
-  border-radius: 5px;
-  vertical-align: top !important;
-  height: 36px;
-  margin: 0px;
-  background: white;
-  transform: translateY(-50%);
-  padding: 0 0;
+  font-size: 18px !important;
 }
 
 .nav > li > div > a {
