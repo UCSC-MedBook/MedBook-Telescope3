@@ -45,7 +45,7 @@ Meteor.startup(function () {
     collaborationLink: function(){
       var col = Collaboration.findOne({name: String(this)});
       if (col == null) return "";
-      return "/collaboration/"+col.slug;
+      return "/collaboration/"+col.name;
     },
     collaborationName: function(){
       return this;
