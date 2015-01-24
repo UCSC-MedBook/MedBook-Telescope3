@@ -5,13 +5,21 @@ body{
 }
 
 .grid-module {
-  padding: 60px !important;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
   width: 800px !important;
   max-width: 10240px !important;
 }
 .settings {
 }
 
+.posts-title {
+  font-size: 22px;
+  font-weight: bold;
+  text-align:center;
+}
 
 .ui-widget-content {
 }

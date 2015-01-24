@@ -1,4 +1,10 @@
 Template[getTemplate('posts_list')].helpers({
+  postsTitle : function () {
+      var cs = Session.get("collaborationName")
+      if (cs)
+          return cs
+      return null;
+  },
   post_item: function () {
     return getTemplate('post_item');
   },
