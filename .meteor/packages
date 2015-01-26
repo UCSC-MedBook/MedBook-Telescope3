@@ -72,6 +72,7 @@ telescope-notifications
 # Accounts Templates
 useraccounts:unstyled
 telescope-theme-medbook
+ucscmedbook:telescope-galaxyuser
 telescope-collaboration
 http
 aldeed:template-extension
