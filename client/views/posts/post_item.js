@@ -30,5 +30,11 @@ Template[getTemplate('post_item')].helpers({
   },
   moduleClass: function () {
     return camelToDash(this.template) + ' ' + this.position + ' cell';
+  },
+  postLink: function(){
+    return !!this.url ? getOutgoingUrl(this.url) : "/posts/"+this._id;
+  },
+  postTarget: function() {
+    return !!this.url ? '_blank' : '';
   }
 });

@@ -1,5 +1,6 @@
 <template name="post_item">
-  <div class="post {{rankClass}} {{#if sticky}}sticky{{/if}} {{inactiveClass}}" id="{{_id}}">
+  <a href="{{postLink}}" class="post-title" target="{{postTarget}}">
+  <div class="post vvv {{rankClass}} {{#if sticky}}sticky{{/if}} {{inactiveClass}}" id="{{_id}}">
     <div class="modules-group left-modules">
       <div class="inner">
       {{#each leftPostModules}}
@@ -28,4 +29,5 @@
       </div>
     </div>
   </div>
+  </a>
 </template>
