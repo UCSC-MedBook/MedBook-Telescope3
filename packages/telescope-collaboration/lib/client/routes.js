@@ -27,7 +27,15 @@ Meteor.startup(function () {
             var col = Collaboration.findOne({name: this.params.name });
             if (col) {
                 if (confirm("You are not a member of the " + this.params.name + " collaboration. Would you like to join?"))
-                    Router.go("collaborationListFocus", {name: this.params.name});
+                    Meteor.call('joinCollaborationMethod', col._id, function (err) {
+                        if (err) {
+                            console.log('joinCollaborationMethod error', err);
+                            alert("joinCollaborationMethod failed")
+                        } else {
+                            alert("You are now part of the collaboration")
+                            Router.go("collaborationListFocus", {name: this.params.name});
+                        }
+                    });
                 else
                     Router.go("collaborationList")
 
