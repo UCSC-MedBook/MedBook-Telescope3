@@ -2,6 +2,14 @@
   padding: 2px !important;
 }
 
+.collaboration > .controls > i{
+  opacity: 0
+}
+
+.collaboration:hover > .controls > i {
+  opacity: 1
+}
+
 .collaboration.posts-wrapper .grid .grid-module {
   background: transparent;
   box-shadow: none;

@@ -58,15 +58,6 @@
   cursor: pointer;
 
 }
-.collaboration:hover  {
-  cursor:pointer;
-}
-
-.collaboration:hover > h2 > a {
-  text-decoration: underline;
-  cursor:pointer;
-}
-
 .collaboration.post:first-child {
   border-radius:none;
 }
