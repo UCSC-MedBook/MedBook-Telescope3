@@ -58,7 +58,7 @@
     ],
     [
       "cfs:base-package",
-      "0.0.0"
+      "0.0.27"
     ],
     [
       "cfs:collection",
@@ -70,19 +70,19 @@
     ],
     [
       "cfs:data-man",
-      "0.0.0"
+      "0.0.5"
     ],
     [
       "cfs:file",
-      "0.0.0"
+      "0.1.14"
     ],
     [
       "cfs:filesystem",
-      "0.0.0"
+      "0.1.1"
     ],
     [
       "cfs:graphicsmagick",
-      "0.0.0"
+      "0.0.17"
     ],
     [
       "cfs:gridfs",
@@ -98,15 +98,15 @@
     ],
     [
       "cfs:power-queue",
-      "0.0.1"
+      "0.9.11"
     ],
     [
       "cfs:reactive-list",
-      "0.0.0"
+      "0.0.9"
     ],
     [
       "cfs:reactive-property",
-      "0.0.0"
+      "0.0.4"
     ],
     [
       "cfs:s3",
@@ -118,7 +118,7 @@
     ],
     [
       "cfs:storage-adapter",
-      "0.0.0"
+      "0.1.1"
     ],
     [
       "cfs:tempstore",
@@ -190,7 +190,7 @@
     ],
     [
       "iron:core",
-      "1.0.3"
+      "1.0.7"
     ],
     [
       "iron:dynamic-template",
@@ -202,7 +202,7 @@
     ],
     [
       "iron:location",
-      "1.0.3"
+      "1.0.7"
     ],
     [
       "iron:middleware-stack",
@@ -214,7 +214,7 @@
     ],
     [
       "iron:url",
-      "1.0.3"
+      "1.0.7"
     ],
     [
       "jquery",
@@ -298,7 +298,7 @@
     ],
     [
       "raix:eventemitter",
-      "0.0.1"
+      "0.1.1"
     ],
     [
       "raix:ui-dropped-event",

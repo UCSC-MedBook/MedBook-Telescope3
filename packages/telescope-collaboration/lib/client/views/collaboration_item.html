@@ -1,55 +1,15 @@
-<template name="EditOrAddCollaboration">
-
+<template name="collaborationAdd">
     <div onclick='$(".collapsed").show()' class="collaboration-item" style="cursor:pointer;">
-
-
-
-        <h3 class="short" style="color:white;text-align:center; margin:10px; padding:0; font-size:26px;" >{{editOrAdd}} Collaboration</h3>
+        <h3 class="short" style="color:white;text-align:center; margin:10px; padding:0; font-size:26px;" >Add Collaboration</h3>
         <div class="collapsed" style="display:none;">
-
-        <form>
-            <div style="width:auto;" class="control-group inline">
-                <table>
-                    <tbody>
-                    <tr>
-                        <td style="width:600px;padding-right:0px;">
-                            <div style="float:left; margin:0;" class="controls">
-                                <label class="collaboration-label">Collaboration Name</label>
-                                    <input class="collaboration-name" id="name" type="text" value="{{name}}" placeholder="A collaboration needs a simple name"/>
-                                <label class="collaboration-label">Description</label>
-                                    <input class="collaboration-description" id="description" type="text" value="{{description}}" placeholder="Fill in description"/>
-                                <label class="collaboration-label">Collaborators</label>
-                                    <input class="collaboration-collaborators" name="collaborators" value="{{collaborators}}" id="collaborators" type="hidden" placeHolder="Add collaborators"/>
-                                <label class="collaboration-label">Administrators</label>
-                                    <input class="collaboration-administrators" name="administrators" value="{{administrators}}" id="adminstrators" type="text" placeholder="Add administrators"/>
-                                <label class="collaboration-label">Invite</label>
-                                    <input class="collaboration-invitations" name="invitations" id="invitations" type="text" placeholder="invite collaborators"/>
-                            </div>
-                        </td>
-                        <td width="25px">
-                            <div style="float:right; align:center;">
-                                <a style=" width:100px;" class="button submit edit-link" href="#"><center>Save</center></a>
-
-                                <a style="margin-top:100px; width:100px;" class="button cancel" href="#" onclick="hideAddCollaboration()">Cancel</a>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </form>
-        <!--
-          {{#autoForm collection="Collaboration" schema="collaborationSchema" id="insertcollaborationForm" type="insert"}}
-          <fieldset>
-            {{> afQuickField name='name'}}
-            {{> afQuickField name='description' rows=6}}
-            {{> afQuickField name='collaborators'  type="select2" multiple=true select2Options=potential}}
-            {{> afQuickField name='administrators'}}
-            {{> afQuickField name='invitations'}}
-          </fieldset>
-          {{/autoForm}}
-          -->
+          {{> quickForm id="addCollaborationForm" collection="Collaboration" valudation="submit" type="insert" fields="name,description,collaborators,administrators,invitations" schema=Schemas.collaboration }}
        </div>
     </div>
+</template>
 
+<template name="collaborationEdit">
+   <h3 class="short" style="color:white;text-align:center; margin:10px; padding:0; font-size:26px;" >Edit Collaboration</h3>
+   <div class="basicPanel">
+       {{> quickForm id="editCollaborationForm" collection="Collaboration" valudation="submit" doc=this type="update" fields="name,description,collaborators,administrators,invitations" schema=Schemas.collaboration }}
+   </div>
 </template>

@@ -21,9 +21,6 @@ Meteor.startup(function () {
     this.route('posts_collaboration', {
       path: '/collaboration/:name/:limit?',
       controller: PostsCollaborationController,
-      waitOn: function() {
-          return Meteor.subscribe('collaboration', this.params.name);
-      },
       onBeforeAction: function() {
         var cols = getCollaborations();
         if (cols.indexOf(this.params.name) < 0) {
@@ -51,6 +48,7 @@ Meteor.startup(function () {
 
     this.route('collaboration', {
       path: '/collaboration/',
+      waitOn: function() { return Meteor.subscribe('collaboration'); },
       controller: PostsCollaborationController,
       onAfterAction: function() {
         Session.set('collaborationName', "");
@@ -60,7 +58,35 @@ Meteor.startup(function () {
     // Collaboration List
     this.route('collaborationList', {
         template: "collaborationGrid",
+        waitOn: function() { return Meteor.subscribe('collaboration'); },
         onAfterAction: function() { Session.set('collaborationName', ""); }
+    } );
+    // Collaboration Edit
+    this.route('collaborationEdit', {
+        path: '/collaboration-edit/:name/',
+        waitOn: function() { return Meteor.subscribe('collaboration'); },
+        data: function() {
+            // SECURITY Put in admin check here
+            var coll = Collaboration.findOne({name: this.params.name});
+            console.log("collaboration-edit route", coll);
+            return coll;
+        },
+        /*
+        template: "collaboration-edit",
+        onBeforeAction: function() { 
+            // SECURITY Put in admin check here
+            var coll = Collaboration.findOne({name: this.params.name});
+            if (coll)
+                Session.set("EditCollaboration", coll)
+            this.next();
+        },
+        onAfterAction: function() { 
+            Session.set('collaborationName', this.params.name);
+            $(document).ready(function() {
+                Meteor.setTimeout(function() { $(".collapsed").show() }, 250);
+            })
+        }
+        */
     } );
 
 

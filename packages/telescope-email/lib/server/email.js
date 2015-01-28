@@ -31,7 +31,7 @@ buildEmailTemplate = function (htmlContent) {
 
   var emailHTML = Handlebars.templates[getTemplate('emailWrapper')](emailProperties);
 
-  var inlinedHTML = Async.runSync(function(done) {
+  var inlinedHTML = Meteor.wrapAsync(function(done) {
     juice.juiceContent(emailHTML, {
       url: getSiteUrl(),
       removeStyleTags: false

@@ -1,34 +1,45 @@
+Collaboration = null;
+
+commonC = {
+    type:[String],
+    optional: true,
+    autoform: {
+        type: "select2",
+        afFieldInput: {
+            multiple: true
+        },
+
+        options: function () {
+            return Collaboration.find().map(function (obj) {
+                return {label: obj.name, value: obj._id};
+            });
+        }
+
+    },
+};
+SimpleSchema.debug = true
 
 collaborationSchema = new SimpleSchema({
    _id: {
       type: String,
-      optional: true
+      optional: true,
     },
     slug: {
       type: String,
+      optional: true,
     },
     name: {
       type: String,
+      optional: true,
     },
 
     description: {
         type: String,
+      optional: true,
     },
-    collaborators: {
-        type:[String],
-        autoform: {
-            type: "select2",
-            afFieldInput: {
-                multiple: true
-            }
-        }
-    },
-        /*
-    administrators: {
-        type:[String],
-        optional: true
-    }
-        */
+    collaborators: _.clone(commonC),
+    administrators:  _.clone(commonC),
+    invitations:  _.clone(commonC),
 
 });
 
@@ -40,6 +51,8 @@ Collaboration = new Meteor.Collection("collaboration", {
 Collaboration.attachSchema(collaborationSchema);
 
 Schemas = { collaboration: collaborationSchema };
+if (Meteor.isClient)
+    Template.registerHelper("Schemas", function() { return Schemas});
 
 
 // collaboration post list parameters
@@ -107,11 +120,16 @@ var getCheckedCollaboration = function (properties) {
 postSubmitClientCallbacks.push(getCheckedCollaboration);
 postEditClientCallbacks.push(getCheckedCollaboration);
 
+function collaborationControl(id, doc) {
+    console.log("collaborationControl", id, doc);
+    return true;
+}
+
 Meteor.startup(function () {
   Collaboration.allow({
-    insert: isAdminById
-  , update: isAdminById
-  , remove: isAdminById
+    insert: collaborationControl,
+    update: collaborationControl,
+    remove: collaborationControl,
   });
 
 });
