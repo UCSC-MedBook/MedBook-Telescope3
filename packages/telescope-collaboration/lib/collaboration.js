@@ -31,6 +31,7 @@ collaborationSchema = new SimpleSchema({
     name: {
       type: String,
       optional: true,
+      unique: true,
     },
 
     description: {

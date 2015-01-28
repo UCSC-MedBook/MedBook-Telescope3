@@ -3,7 +3,11 @@ window.hideEditOrAddCollaboration = function() {
     $(".collapsed").hide()
 }
 
-function goGollaborationlist(operation, result, template) { Router.go("collaborationList"); }
+function goGollaborationlist(event) { 
+    hideEditOrAddCollaboration();
+    Router.go("collaborationList"); 
+    $(event.target).parent().find("form").get(0).reset();
+}
 
 AutoForm.hooks({
   addCollaborationForm: { onSuccess: goGollaborationlist },
@@ -11,3 +15,5 @@ AutoForm.hooks({
 });
 
 
+Template["collaborationAdd"].events(  { 'click .cancelAndGoCollaborationList': goGollaborationlist });
+Template["collaborationEdit"].events( { 'click .cancelAndGoCollaborationList': goGollaborationlist });

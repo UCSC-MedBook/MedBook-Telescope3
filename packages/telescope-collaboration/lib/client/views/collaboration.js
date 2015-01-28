@@ -149,9 +149,13 @@ Meteor.startup(
         });
 
         Template[getTemplate('collaborationGridElement')].events({
-            'keyup input[id="addCollaborators"]': addCollaborator
-        });
+            'keyup input[id="addCollaborators"]': addCollaborator,
 
+            'click .collaborationRemove': function(tmpl, vent) {
+                if (confirm("Are you sure you want to remove " + this.name + "?"))
+                  Collaboration.remove({_id: this._id})
+             }
+        });
     }
 
 );
