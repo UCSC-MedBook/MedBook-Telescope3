@@ -9,10 +9,8 @@ standard-app-packages
 backbone
 accounts-base
 accounts-password
-accounts-twitter
 spiderable
 email
-accounts-facebook
 service-configuration
 accounts-ui
 
@@ -85,4 +83,3 @@ patte:mime-npm
 iron:controller
 fourseven:scss
 accounts-google
-
