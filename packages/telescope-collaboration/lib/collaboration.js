@@ -1,22 +1,27 @@
+CollaborationsAndUsers = null;
 Collaboration = null;
+
+
+
+function getCollaborationsAndUsers() { 
+    // return Collaboration.find().map(function (obj) { return {label: obj.name, value: obj._id}; }); 
+    return {
+        typeahead: {
+            source: Collaboration.find().map(function (obj) { return obj.name }),
+        }
+    };
+}
+
+if (Meteor.isClient)
+    window.getCollaborationsAndUsers = getCollaborationsAndUsers;
 
 commonC = {
     type:[String],
     optional: true,
-    autoform: {
-        type: "select2",
-        afFieldInput: {
-            multiple: true
-        },
-
-        options: function () {
-            return Collaboration.find().map(function (obj) {
-                return {label: obj.name, value: obj._id};
-            });
-        }
-
-    },
 };
+
+
+
 SimpleSchema.debug = true
 
 collaborationSchema = new SimpleSchema({
@@ -44,10 +49,26 @@ collaborationSchema = new SimpleSchema({
 
 });
 
+collaborationAndUsersSchema = new SimpleSchema({
+   _id: {
+      type: String,
+      optional: true,
+    },
+    name: {
+      type: String,
+      unique: true,
+    },
+    isCollaboration: {
+      type: Boolean,
+    },
+});
+
+
 console.log("About to init Collaboration");
 Collaboration = new Meteor.Collection("collaboration", {
  // schema: collaborationSchema
 });
+CollaborationsAndUsers = new Meteor.Collection("collaborationAndUsers");
 
 Collaboration.attachSchema(collaborationSchema);
 

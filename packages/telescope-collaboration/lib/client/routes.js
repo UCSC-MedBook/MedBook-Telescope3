@@ -22,6 +22,16 @@ Meteor.startup(function () {
       path: '/collaboration/:name/:limit?',
       controller: PostsCollaborationController,
       onBeforeAction: function() {
+
+        if (!Meteor.user()) {
+            // render the login template but keep the url in the browser the same
+            alert("please sign in (or sign up)  first by clicking the button on the top right");
+            this.cancel();
+            return;
+        }
+
+
+
         var cols = getCollaborations();
         if (cols.indexOf(this.params.name) < 0) {
             var col = Collaboration.findOne({name: this.params.name });

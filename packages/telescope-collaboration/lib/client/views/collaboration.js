@@ -14,6 +14,9 @@ function isAdministrator(id) {
     if (col == null) return false;
     var ad = col.administrators;
     if (ad == null) return true;
+    if (ad.indexOf(Meteor.user().username) >= 0)
+        return true;
+
     var em = Meteor.user().emails;
     for (var i = 0; i < em.length; i++)
         if (/* em[i].verified && */ ad.indexOf(em[i].address) >= 0)
@@ -110,26 +113,35 @@ Meteor.startup(
                 }
             });
 
+        function prettyList(cols) {
+           var answerSet = {};
+           cols.map(function(col,i) {
+               if (col.indexOf("@") < 0) {
+                   var c = Collaboration.findOne({"_id":col});
+                   if (c)
+                       answerSet[c.name] = 1;
+                   else
+                       answerSet[col] = 1;
+               } else {
+                   var u = Meteor.users.findOne({"emails.address": col})
+                   if (u && u.username)
+                       answerSet[u.username] = 1;
+                   else
+                       answerSet[col] = 1;
+               }
+           });
+           var a = Object.keys(answerSet).sort();
+           console.log("cols", cols, a);
+           return a.length > 0 ? a.join(" ") : " noone ";
+        }
+
         Template[getTemplate('collaborationGridElement')].helpers({
+            administrators: function() {
+               var vv = prettyList(this.administrators);
+               return vv;
+            },
             collaborators: function() {
-               var answerSet = {};
-               var cols = this.collaborators;
-               cols.map(function(col,i) {
-                   if (col.indexOf("@") < 0) {
-                       var c = Collaboration.findOne({"_id":col});
-                       if (c)
-                           answerSet[c.name] = 1;
-                   } else {
-                       var u = Meteor.users.findOne({"emails.address": col})
-                       if (u && u.username)
-                           answerSet[u.username] = 1;
-                       else
-                           answerSet[col] = 1;
-                   }
-               });
-               var a = Object.keys(answerSet).sort();
-               console.log("cols", cols, a);
-               return a.length > 0 ? a.join(" ") : " no collaborators ";
+               return prettyList(this.collaborators);
             },
             isAdministrator: function () {
                 return isAdministrator(this._id);

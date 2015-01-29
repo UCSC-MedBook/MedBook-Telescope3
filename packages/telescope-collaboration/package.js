@@ -15,10 +15,11 @@ Package.onUse(function (api) {
     'underscore',
     'iron:router',
     'templating',
-    'aldeed:autoform-select2@1.0.4',
     'vsivsi:file-collection',
     'telescope-i18n',
     'pfafman:font-awesome-4',
+    // 'aldeed:autoform-select2@1.0.4',
+    // 'yogiben:autoform-tags',
   ], 'client');
 
   /*
