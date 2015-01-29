@@ -1,5 +1,6 @@
 accounts-base@1.1.2
 accounts-facebook@1.0.2
+accounts-google@1.0.2
 accounts-oauth@1.1.2
 accounts-password@1.0.4
 accounts-twitter@1.0.2
@@ -62,6 +63,7 @@ fastclick@1.0.1
 follower-livedata@1.0.2
 fourseven:scss@1.0.0
 geojson-utils@1.0.1
+google@1.1.2
 handlebars@1.0.1
 html-tools@1.0.2
 htmljs@1.0.2
