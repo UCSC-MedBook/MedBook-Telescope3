@@ -1,4 +1,4 @@
 export MONGO_URL=mongodb://localhost:27017/MedBook
-export ROOT_URL=http://su2c-dev.ucsc.edu:10000/
+export ROOT_URL=http://localhost:8081/
 export NODE_OPTIONS='--debug'
 meteor  --port 10001

@@ -206,6 +206,35 @@ Meteor.startup(function () {
 
 var querystring =  Npm.require("querystring")
   HTTP.methods({
+     medbookUser: function(data){
+        data = String(data)
+        console.log("medbookUser", data);
+        var qs = querystring.parse(data);
+        console.log("medbookUser", qs);
+        console.log("Accounts", Accounts._hashLoginToken(qs.token));
+
+        var user = Meteor.users.findOne({
+            $or: [
+                {'services.resume.loginTokens.hashedToken': Accounts._hashLoginToken(qs.token)},
+                {'services.resume.loginTokens.token': qs.token}
+            ]
+        });
+        if (user == null)
+            return;
+
+        var email = null;
+        if (user && user.emails && user.emails.length > 0)
+            email = user.emails[0].address
+        console.log("user.services", user.services);
+        if (user.services && user.services.google && user.services.google.email)
+            email = user.services.google.email;
+        if (email == null)
+            email = "none";
+
+        var response = email +";" + user.username;
+        console.log("medbookUser response=", response);
+        return response;
+    },
     medbookPost: function(data){
         var qs = querystring.parse(String(data));
 
