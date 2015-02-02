@@ -174,8 +174,12 @@ var moi = function() {
 
 
 function refreshUserProfileCollaborations(user) {
-    console.log(" user: , user)
-    console.log(" user.emails: , user.emails)
+    console.log(" user: ", user)
+    console.log(" user.emails: ", user.emails)
+    if (user == null)
+        return;
+    if (user.emails == null)
+        return;
     var emails = user.emails.map(function(em) { return em.address});
     console.log( "refreshUserProfileCollaborations emails", emails);
     var collaborationLookupQueue = Collaboration.find({collaborators: {$in: emails}}, {fields:{name:1}}).fetch();
