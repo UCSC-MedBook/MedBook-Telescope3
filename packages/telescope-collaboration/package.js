@@ -57,5 +57,5 @@ Package.onUse(function (api) {
 
   api.add_files(['lib/server/publications.js', 'lib/server/methods.js'], ['server']);
  
-  api.export(['addCollaborator', 'getCollaborations', 'Collaboration', 'show', 'hide', 'createCollaboration', 'collaborationSchema', 'Schemas']);
+  api.export(['refreshUserProfileCollaborations', 'addCollaborator', 'getCollaborations', 'Collaboration', 'show', 'hide', 'createCollaboration', 'collaborationSchema', 'Schemas']);
 });

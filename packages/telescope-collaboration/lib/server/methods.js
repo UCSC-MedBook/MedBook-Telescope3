@@ -172,37 +172,38 @@ var moi = function() {
 }
 
 
-Meteor.startup(function () {
 
-  function refreshUserProfileCollaborations(user) {
-        var emails = user.emails.map(function(em) { return em.address});
-        console.log( "refreshUserProfileCollaborations emails", emails);
-        var collaborationLookupQueue = Collaboration.find({collaborators: {$in: emails}}, {fields:{name:1}}).fetch();
-        collaborationLookupQueue = collaborationLookupQueue.map(function(f){ return f.name});
-        console.log( "refreshUserProfileCollaborations collaborationLookupQueue", collaborationLookupQueue);
-        var collaborationSet = {};
+function refreshUserProfileCollaborations(user) {
+    var emails = user.emails.map(function(em) { return em.address});
+    console.log( "refreshUserProfileCollaborations emails", emails);
+    var collaborationLookupQueue = Collaboration.find({collaborators: {$in: emails}}, {fields:{name:1}}).fetch();
+    collaborationLookupQueue = collaborationLookupQueue.map(function(f){ return f.name});
+    console.log( "refreshUserProfileCollaborations collaborationLookupQueue", collaborationLookupQueue);
+    var collaborationSet = {};
 
-        // transitive closure queue method
-        for (var i = 0; i < collaborationLookupQueue.length; i++) {
-            var name = collaborationLookupQueue[i];
-            if (!(name in collaborationSet)) {
-                var col = Collaboration.findOne({collaborators: name}, {fields:{name:1}});
-                if (col) {
-                    collaborationSet[name] = col._id; // cheap implementation of a set.
-                    var refs = col.collaborators;
-                    console.log( "refreshUserProfileCollaborations refs", refs);
-                    if (refs)
-                        for (var j = 0; j < refs.length; j++)
-                            collaborationLookupQueue.push(refs[i]);
-                }
+    // transitive closure queue method
+    for (var i = 0; i < collaborationLookupQueue.length; i++) {
+        var name = collaborationLookupQueue[i];
+        if (!(name in collaborationSet)) {
+            var col = Collaboration.findOne({name: name}, {fields:{collaborators:1}});
+            if (col) {
+                collaborationSet[name] = col._id; // cheap implementation of a set.
+                var refs = col.collaborators;
+                console.log( "refreshUserProfileCollaborations refs", refs);
+                if (refs)
+                    for (var j = 0; j < refs.length; j++)
+                        collaborationLookupQueue.push(refs[i]);
             }
         }
-        var collaborations = Object.keys(collaborationSet).sort();
-        console.log( "refreshUserProfileCollaborations collaborations", user._id,  collaborations);
-        ret = Meteor.users.update( user._id, {$set: { "profile.collaborations": collaborations}});
-        console.log("update ret", ret);
-  }
+    }
+    var collaborations = Object.keys(collaborationSet).sort();
+    console.log( "refreshUserProfileCollaborations collaborations", user._id,  collaborations);
+    ret = Meteor.users.update( user._id, {$set: { "profile.collaborations": collaborations}});
+    console.log("update ret", ret);
+}
 
+
+Meteor.startup(function () {
 
 
   Meteor.methods({
@@ -237,19 +238,42 @@ Meteor.startup(function () {
 
   });
 
+function parseCookies (cookiesString) {
+    var cookies = {};
+
+    cookiesString.split(';').forEach(function( cookie ) {
+        var parts = cookie.split('=');
+        cookies[parts.shift().trim()] = decodeURI(parts.join('='));
+    });
+    return cookies;
+}
+
+
 var querystring =  Npm.require("querystring")
   HTTP.methods({
      medbookUser: function(data){
         data = String(data)
-        console.log("medbookUser", data);
-        var qs = querystring.parse(data);
-        console.log("medbookUser", qs);
-        console.log("Accounts", Accounts._hashLoginToken(qs.token));
+        var token = null;
+        if (data) {
+            console.log("medbookUser", data);
+            var qs = querystring.parse(data);
+            if (qs && qs.token)
+                token = qs.token;
+        }
+        if (token == null && this.requestHeaders.cookie && this.requestHeaders.cookie.length > 0) {
+            var c = parseCookies(this.requestHeaders.cookie);
+            if (c && 'meteor_login_token' in c && c['meteor_login_token'].length > 0)
+                token = c['meteor_login_token'];
+        }
+        if (token == null)
+            return"";
+
+
 
         var user = Meteor.users.findOne({
             $or: [
-                {'services.resume.loginTokens.hashedToken': Accounts._hashLoginToken(qs.token)},
-                {'services.resume.loginTokens.token': qs.token}
+                {'services.resume.loginTokens.hashedToken': Accounts._hashLoginToken(token)},
+                {'services.resume.loginTokens.token': token}
             ]
         });
         if (user == null)
@@ -264,8 +288,17 @@ var querystring =  Npm.require("querystring")
         if (email == null)
             email = "none";
 
-        var response = email +";" + user.username;
+        refreshUserProfileCollaborations(user); // might be too heaveyweight
+
+        var responseObj = {
+            email : email,
+            username: user.username,
+            collaborations: user.profile.collaborations,
+        };
+
+        var response = JSON.stringify(responseObj);
         console.log("medbookUser response=", response);
+        this.setStatusCode(200)
         return response;
     },
     medbookPost: function(data){
