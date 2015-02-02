@@ -63,9 +63,12 @@ Meteor.startup(function () {
   window.collabNames = collabNames;
 
   postSubmitRenderedCallbacks.push(function(postTemplate) {
+      var cs = Session.get("collaborationName");
       var $sc = $(postTemplate.find(".selectCollaborators"));
       console.log("postSubmitRenderedCallbacks", $sc);
       $sc.select2({tags: collabNames(), width:"600px"});
+      if (cs)
+          $sc.select2("data", {id: cs, text:cs}); // unclear why this needs to be done this way
   });
 
 
