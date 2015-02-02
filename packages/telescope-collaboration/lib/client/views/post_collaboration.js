@@ -75,6 +75,20 @@ Meteor.startup(function () {
   postSubmitClientCallbacks.push(function(properties) {
         var data =  $('.selectCollaborators').select2("data");
         var dataIds = data.map(function(d) { return d.id });
+        for (var i = 0; i < dataIds.length; i++) {
+            var d = dataIds[i];
+            if (d.indexOf("@"))
+                continue;
+            if (Collabortion.findOne({name: d}))
+                continue;
+            var user = Meteor.users.findOne({username: d});
+            if (user)
+                dataIds[i] = user.emails[0].address;
+        }
+        var me = Meteor.user().emails[0].address;
+        if (dataIds.indexOf(me) < 0)
+            dataIds.push(me);
+
         properties.collaboration = dataIds;
         return properties;
   });

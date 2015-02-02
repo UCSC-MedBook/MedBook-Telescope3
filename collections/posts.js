@@ -86,6 +86,10 @@ postSchemaObject = {
     type: Boolean,
     optional: true
   },
+  author: {
+    type: String,
+    optional: true,
+  },
   userId: {
     type: String, // XXX
     optional: true

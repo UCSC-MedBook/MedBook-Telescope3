@@ -13,11 +13,10 @@ Meteor.startup(function () {
         var map = {};
         for (var i = 0; i < files.length; i++)  {
             var rp = files[i].webkitRelativePath;
-            if (rp == null)
+            if (rp == null || rp.length == 0)
                 break
             map[files[i].name] = files[i].webkitRelativePath;
         }
-
 
         return FS.EventHandlers.insertFiles(Collections.Files, {
           metadata: function (fileObj) {
@@ -31,6 +30,8 @@ Meteor.startup(function () {
             var name = fileObj.name();
             if (name in map)
                 fileObj.name(map[name])
+            else
+                fileObj.name(name)
 
             if (!error) {
               console.log("Inserted", fileObj.name());

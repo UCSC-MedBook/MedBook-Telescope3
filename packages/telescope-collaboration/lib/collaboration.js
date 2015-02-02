@@ -122,23 +122,22 @@ getCollaborations = function() {
     var user = null;
     if (Meteor.isClient) {
         user = Meteor.user();
+        if (user == null)
+            return [];
     } else if (Meteor.isServer && this.userId) {
+        if (this.userId == null)
+            return [];
         user = Meteor.users.findOne({_id: this.userId});
     }
-    var who = [];
+    if (user == null)
+        return [];
+    var who = user.profile.collaborations
     console.log("getCollaborations user", user);
     if (user) {
         who.push(user.username);
         _.map(user.emails, function(em) { who.push( em.address)})
     }
-    console.log("getCollaborations who", who);
-    var cols = [];
-    if (who.length > 0) {
-        var query = {collaborators: {$in: who}}
-        Collaboration.find(query).forEach(function(col) { if (col.name.length > 0) cols.push( col.name) });
-        console.log("getCollaborations cols", query, cols);
-    }
-    return cols
+    return who
 }
 
 var getCheckedCollaboration = function (properties) {
