@@ -30,10 +30,13 @@ viewNav = [
     route: 'posts_best',
     label: 'best'
   },
+  /*
+     Digests doesn't work. Remove it for now.
   {
     route: 'posts_digest_default',
     label: 'digest'
   } 
+  */
 ];
 
 // ------------------------------------- Views -------------------------------- //

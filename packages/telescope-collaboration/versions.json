@@ -194,7 +194,7 @@
     ],
     [
       "iron:controller",
-      "1.0.0"
+      "1.0.7"
     ],
     [
       "iron:core",
@@ -202,11 +202,11 @@
     ],
     [
       "iron:dynamic-template",
-      "1.0.3"
+      "1.0.7"
     ],
     [
       "iron:layout",
-      "1.0.3"
+      "1.0.7"
     ],
     [
       "iron:location",
