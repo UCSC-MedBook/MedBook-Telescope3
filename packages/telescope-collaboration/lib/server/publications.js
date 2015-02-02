@@ -1,10 +1,5 @@
 Meteor.publish('collaboration', function() {
-  if(canViewById(this.userId)){
-      var f = Collaboration.find();
-      console.log("collaboration found ", f.count())
-      return f;
-  }
-  return [];
+      return Collaboration.find();
 });
 
 

@@ -3,15 +3,14 @@ window.hideEditOrAddCollaboration = function() {
     $(".collapsed").hide()
 }
 
-function goGollaborationlist(event) { 
+function goCollaborationlist() { 
     hideEditOrAddCollaboration();
     Router.go("collaborationList"); 
-    // $(event.target).parent().find("form").get(0).reset();
 }
 
 AutoForm.hooks({
-  editCollaboration: { onSuccess: goGollaborationlist },
-  addCollaboration: { onSuccess: goGollaborationlist },
+  editCollaboration: { onSuccess: goCollaborationlist },
+  addCollaboration: { onSuccess: goCollaborationlist },
 });
 
 
@@ -33,10 +32,20 @@ Template.collaborationAdd.hooks({ rendered: Sel })
 Template.collaborationEdit.hooks({ rendered: Sel })
 
 
-
-Template["collaborationAdd"].events(  { 'click .cancelAndGoCollaborationList': goGollaborationlist });
+Template["collaborationForm"].events(  { 
+        'click .cancelAndGoCollaborationList': goCollaborationlist ,
+    'click .removeCollaboration': function(event, tmpl) {
+        var _id  =  $(event.target).data("_id");
+        var name  =  $(event.target).data("name");
+        
+        if (confirm("Are you sure you want to remove " + name + "?")) {
+          Collaboration.remove({_id: _id})
+          goCollaborationlist();
+        }
+     }
+});
 Template["collaborationEdit"].events( { 
-    'click .cancelAndGoCollaborationList': goGollaborationlist,
+    'click .cancelAndGoCollaborationList': goCollaborationlist,
     'click .autoform-add-item': function() {
         Meteor.setTimeout(Sel, 200);
     },

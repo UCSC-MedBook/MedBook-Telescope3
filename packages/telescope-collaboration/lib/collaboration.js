@@ -41,11 +41,22 @@ collaborationSchema = new SimpleSchema({
 
     description: {
         type: String,
-      optional: true,
+        optional: true,
     },
     collaborators: _.clone(commonC),
-    administrators:  _.clone(commonC),
-    invitations:  _.clone(commonC),
+    administrators:_.clone(commonC),
+    invitations:   _.clone(commonC),
+    requests:      _.clone(commonC),
+
+    requiresAdministratorApprovalToJoin: {
+        type: Boolean,
+        autoform: { label: "" },
+    },
+
+    isPublic: {
+        type: Boolean,
+        autoform: { label: "" },
+    },
 
 });
 

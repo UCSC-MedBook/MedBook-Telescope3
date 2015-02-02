@@ -12,9 +12,21 @@
 <template name="collaborationGridElement">
   <a name="{{name}}" class="collaboration" href="/collaboration/{{name}}">
     <div class="collaborationMarquee collaboration post">
-        <a href="#" class="collaborationRemove controls" data-_id="{{_id}}" data-name="{{name}}"> <i class="fa fa-remove fa-1g" style="float:left"  title="Delete Collaboration"></i></a>
         <a class="controls" href="/collaboration-edit/{{name}}"> <i class="fa fa-edit fa-1g" style="float:right"  title="Edit Collaboration"></i></a>
         <H2><a  href="/collaboration/{{name}}">{{name}}</a></H2>
+
+            {{#if isPublic}}
+            <h6>Posts are public to all </h6>
+            {{else}}
+            <h6>Posts are private to collaborators</h6>
+            {{/if}}
+
+            {{#if requiresAdministratorApprovalToJoin}}
+            <h6>Users may add themselves</h6>
+            {{else}}
+            <h6>Users require administrator approval</h6>
+            {{/if}}
+
         <p>
         {{description}}
         </p>

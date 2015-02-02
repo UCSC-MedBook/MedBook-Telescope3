@@ -3,7 +3,7 @@ function TelescopePost(post, userId, isSimulation){
     var title = cleanUp(post.title),
         body = post.body,
         userId = userId,
-        user = Meteor.users.findOne(userId),
+        user = Meteor.users.findOne({_id: userId}),
         timeSinceLastPost=timeSinceLast(user, Posts),
         numberOfPostsInPast24Hours=numberOfItemsInPast24Hours(user, Posts),
         postInterval = Math.abs(parseInt(getSetting('postInterval', 30))),
@@ -115,7 +115,7 @@ function TelescopePost(post, userId, isSimulation){
     // increment posts count
     Meteor.users.update({_id: userId}, {$inc: {postCount: 1}});
 
-    var postAuthor =  Meteor.users.findOne(post.userId);
+    var postAuthor =  Meteor.users.findOne({_id: post.userId});
 
     Meteor.call('upvotePost', post, postAuthor);
 
@@ -150,7 +150,7 @@ function MedBookPost(post,userId) {
 
     // increment posts count
     Meteor.users.update({_id: userId}, {$inc: {postCount: 1}});
-    var postAuthor =  Meteor.users.findOne(post.userId);
+    var postAuthor =  Meteor.users.findOne({_id:post.userId});
     Meteor.call('upvotePost', post, postAuthor);
     return post._id;
 }
@@ -160,7 +160,7 @@ var moi = function() {
     if (Meteor.isClient)
         user = Meteor.user();
     else
-        user = Meteor.users.findOne(this.userId);
+        user = Meteor.users.findOne({_id: this.userId});
     var cols = [];
     if (user) {
         cols.push(user.username);
@@ -173,6 +173,37 @@ var moi = function() {
 
 
 Meteor.startup(function () {
+
+  function refreshUserProfileCollaborations(user) {
+        var emails = user.emails.map(function(em) { return em.address});
+        console.log( "refreshUserProfileCollaborations emails", emails);
+        var collaborationLookupQueue = Collaboration.find({collaborators: {$in: emails}}, {fields:{name:1}}).fetch();
+        collaborationLookupQueue = collaborationLookupQueue.map(function(f){ return f.name});
+        console.log( "refreshUserProfileCollaborations collaborationLookupQueue", collaborationLookupQueue);
+        var collaborationSet = {};
+
+        // transitive closure queue method
+        for (var i = 0; i < collaborationLookupQueue.length; i++) {
+            var name = collaborationLookupQueue[i];
+            if (!(name in collaborationSet)) {
+                var col = Collaboration.findOne({collaborators: name}, {fields:{name:1}});
+                if (col) {
+                    collaborationSet[name] = col._id; // cheap implementation of a set.
+                    var refs = col.collaborators;
+                    console.log( "refreshUserProfileCollaborations refs", refs);
+                    if (refs)
+                        for (var j = 0; j < refs.length; j++)
+                            collaborationLookupQueue.push(refs[i]);
+                }
+            }
+        }
+        var collaborations = Object.keys(collaborationSet).sort();
+        console.log( "refreshUserProfileCollaborations collaborations", user._id,  collaborations);
+        ret = Meteor.users.update( user._id, {$set: { "profile.collaborations": collaborations}});
+        console.log("update ret", ret);
+  }
+
+
 
   Meteor.methods({
     createCollaborationMethod: function(collaboration){
@@ -191,6 +222,7 @@ Meteor.startup(function () {
                   console.log("joinCollaborationMethod Collaboration.update", collaboration_id, cols, err, err2)
               }
           );
+          refreshUserProfileCollaborations(Meteor.users.findOne({_id: this.userId}));
 
       },
     leaveCollaborationMethod: function(collaboration_id) {
@@ -200,6 +232,7 @@ Meteor.startup(function () {
               console.log("joinCollaborationMethod Collaboration.update", collaboration_id, cols, err, err2)
             }
         );
+          refreshUserProfileCollaborations(Meteor.users.findOne({_id: this.userId}));
     },
 
   });
@@ -269,5 +302,12 @@ var querystring =  Npm.require("querystring")
         return { state: "success", _id: _id}
      }
   });
-});
 
+  Accounts.onLogin(
+      function(args) {
+        console.log("onLogin", args.user.username);
+          refreshUserProfileCollaborations(args.user);
+      }
+  );
+
+});
