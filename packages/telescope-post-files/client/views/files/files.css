@@ -5,4 +5,12 @@
     width: 40 !important;
     height: 20 !important;
 }   
+.nav.fileTabs > li > a {
+    color: gray !important;
+}
+.nav.fileTabs > li.active > a {
+    color: black !important;
+    font-weight: bold;
+    border-bottom-color: transparent !important;
+}
 

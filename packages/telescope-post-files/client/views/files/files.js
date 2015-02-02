@@ -3,6 +3,10 @@
 Meteor.startup(function () {
 
   Template.files.events({
+    'click .toggle' : function() {
+        $('#dirsButton').toggle();
+        $('#filesButton').toggle();
+    },
     'change input.any':  function(event, template) {
 
         var files = event.target.files;

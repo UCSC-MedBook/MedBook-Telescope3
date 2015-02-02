@@ -14,8 +14,25 @@
   <br>
   {{> upDown}}
 
-  <div class="well">
-    <input type="file" webkitdirectory  multiple class="any">
+  <div class="well" style="background-color:white;" >
+
+        <div class="about_us_links" style="background-color:white;" >
+          <ul class="nav nav-tabs fileTabs" >
+            <li class="active"><a href="#uploadFiles" data-toggle="tab">Upload files</a></li>
+            <li><a href="#uploadDirs" data-toggle="tab">Upload directories</a></li>
+          </ul>
+        </div>
+        <div class="tab-content">
+          <span id="uploadFiles" class="tab-pane fade in active" style="background-color:white;" >
+                Choose Files:
+                <input type="file" multiple class="any">
+          </span>   
+          <span id="uploadDirs" class="tab-pane" style="background-color:white;" >
+                Choose Directories:
+                <input type="file" webkitdirectory  multiple class="any">
+          </span>
+        </div>
+
   </div>
   <div class="fileArea">
   {{#each uploadedFiles}}

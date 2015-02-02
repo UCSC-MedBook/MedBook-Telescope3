@@ -27,9 +27,22 @@ body{
 .ui-tabs-anchor {
   font-size: 18px !important;
 }
+.secondary-nav  {
+   width: 400px !important;
+}
 
-.nav > li > a {
-  font-size: 18px !important;
+.secondary-nav > li > a {
+  font-size: 14px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  white-space:nowrap
+  float: right;
+}
+
+.secondary-nav > li > #submit {
+  height: 50px !important;
+  padding-top: 15px !important;
+  padding-bottom: 5px !important;
 }
 
 .nav > li > div > a {
