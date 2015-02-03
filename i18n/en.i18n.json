@@ -104,6 +104,7 @@
   "account": "Account",
   "username": "Username",
   "display_name": "Display Name",
+  "defaultCollaboration": "Default Collaboration",
   "email": "Email",
   "bio": "Bio",
   "password": "Password",

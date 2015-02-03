@@ -17,12 +17,6 @@
         {{/if}}
         <H2><a  href="/collaboration/{{name}}">{{name}}</a></H2>
 
-            {{#if isPublic}}
-            <h6>Posts are public to all </h6>
-            {{else}}
-            <h6>Posts are private to collaborators</h6>
-            {{/if}}
-
             {{#if requiresAdministratorApprovalToJoin}}
             <h6>Users may add themselves</h6>
             {{else}}

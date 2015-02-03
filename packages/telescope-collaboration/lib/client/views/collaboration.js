@@ -70,9 +70,19 @@ Meteor.startup(
                 Meteor.call('joinCollaborationMethod', this._id, function (err) {
                     if (err) {
                         console.log('joinCollaborationMethod error', err);
-                        alert("joinCollaborationMethod failed")
+                        alert("join failed")
                     } else
                         alert("You are now part of the collaboration")
+                });
+            },
+            'click button[name="apply"]': function(evt) {
+                evt.preventDefault();
+                Meteor.call('apply', this._id, function (err) {
+                    if (err) {
+                        console.log('apply error', err);
+                        alert("apply failed")
+                    } else
+                        alert("You have applied to this collaboration")
                 });
             },
             'click button[name="leave"]': function(evt) {

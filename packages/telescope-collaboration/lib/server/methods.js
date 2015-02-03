@@ -232,6 +232,14 @@ Meteor.startup(function () {
           refreshUserProfileCollaborations(Meteor.users.findOne({_id: this.userId}));
 
       },
+    applyCollaborationMethod: function(collaboration_id) {
+          console.log("applyCollaborationMethod")
+          var cols = moi.call(this);
+          Collaboration.update({_id: collaboration_id}, { $addToSet: { requests:{$each: cols} }}, function (err, err2){
+                  console.log("applyCollaborationMethod Collaboration.update", collaboration_id, cols, err, err2)
+              }
+          );
+      },
     leaveCollaborationMethod: function(collaboration_id) {
         console.log("leaveCollaborationMethod")
         var cols = moi.call(this);

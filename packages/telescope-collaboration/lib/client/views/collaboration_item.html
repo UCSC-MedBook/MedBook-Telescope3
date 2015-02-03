@@ -1,10 +1,6 @@
 <template name="collaborationForm">
-  {{#autoForm id="addCollaboration" doc=doc collection="Collaboration" validation="submit" type=type fields="isPublic,name,description,collaborators,requiresAdministratorApprovalToJoin,administrators,invitations" schema=Schemas.collaboration}}
+  {{#autoForm id="addCollaboration" doc=doc collection="Collaboration" validation="submit" type=type fields="name,description,collaborators,requiresAdministratorApprovalToJoin,administrators,invitations" schema=Schemas.collaboration}}
       <fieldset>
-      {{> afQuickField name="isPublic" label-style="display:none;" type="boolean-radios" trueLabel="Posts are public to all" 
-           value=isPublic
-           falseLabel="Posts are private to collaborators"}}
-
       {{> afQuickField name="name"}}
       {{> afQuickField name="description"}}
       {{> bump name="collaborators" }}
@@ -58,7 +54,7 @@
    <!--
        <a class='cancelAndGoCollaborationList' style="float:right"> <i class="fa fa-remove"  title="Cancel collaboration"></i> </a>
        {{> quickForm id="editCollaboration" collection="Collaboration" validation="submit" doc=this type="update" 
-            fields="isPublic, name,description,collaborators,administrators,requiresAdministratorApprovalToJoin,invitations" schema=Schemas.collaboration }}
+            fields="name,description,collaborators,administrators,requiresAdministratorApprovalToJoin,invitations" schema=Schemas.collaboration }}
        <button type="button" class="btn btn-primary cancelAndGoCollaborationList"> cancel </button>
        <button type="button" class="btn btn-primary removeCollaboration"> Remove </button>
    -->

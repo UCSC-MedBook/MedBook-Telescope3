@@ -50,6 +50,7 @@ Template[getTemplate('user_edit')].events({
       "profile.name": name,
       "profile.slug": slugify(name),
       "profile.bio": $target.find('[name=bio]').val(),
+      "profile.defaultCollaboration": $target.find('[name=defaultCollaboration]').val(),
       "profile.email": email,
       "profile.twitter": $target.find('[name=twitter]').val(),
       "profile.github": $target.find('[name=github]').val(),

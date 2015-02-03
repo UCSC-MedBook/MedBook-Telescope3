@@ -53,11 +53,6 @@ collaborationSchema = new SimpleSchema({
         autoform: { label: "" },
     },
 
-    isPublic: {
-        type: Boolean,
-        autoform: { label: "" },
-    },
-
 });
 
 collaborationAndUsersSchema = new SimpleSchema({
@@ -132,12 +127,14 @@ getCollaborations = function() {
     if (user == null)
         return [];
     var who = user.profile.collaborations
-    console.log("getCollaborations user", user);
-    if (user) {
+    if (who) {
         who.push(user.username);
         _.map(user.emails, function(em) { who.push( em.address)})
+        console.log("getCollaborations", user, who);
+    } else {
+        who = [];
     }
-    return who
+    return who;
 }
 
 var getCheckedCollaboration = function (properties) {
