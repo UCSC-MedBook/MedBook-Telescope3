@@ -33,6 +33,7 @@
 
   //Errors
   "you_are_already_logged_in": "You are already logged in",
+  "you_ve_been_signed_out": "You are signed out",
   "sorry_this_is_a_private_site_please_sign_up_first": "Sorry, this is a private site. Please sign up first.",
   "thanks_for_signing_up": "Thanks for signing up!",
   "the_site_is_currently_invite_only_but_we_will_let_you_know_as_soon_as_a_spot_opens_up": "The site is currently invite-only, but we will let you know as soon as a spot opens up.",
