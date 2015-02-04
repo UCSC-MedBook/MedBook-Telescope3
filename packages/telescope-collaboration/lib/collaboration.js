@@ -1,5 +1,7 @@
 CollaborationsAndUsers = null;
-Collaboration = null;
+Collaboration = new Meteor.Collection("collaboration", {
+ // schema: collaborationSchema
+});
 
 
 
@@ -80,9 +82,6 @@ collaborationAndUsersSchema = new SimpleSchema({
 
 
 console.log("About to init Collaboration");
-Collaboration = new Meteor.Collection("collaboration", {
- // schema: collaborationSchema
-});
 CollaborationsAndUsers = new Meteor.Collection("collaborationAndUsers");
 
 Collaboration.attachSchema(collaborationSchema);
