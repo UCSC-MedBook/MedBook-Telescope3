@@ -46,79 +46,77 @@ Meteor.startup(function() {
 
         name: {
           type: String,
-      optional: true,
-      unique: true,
-    },
+          optional: true,
+          unique: true,
+        },
 
-    description: {
-        type: String,
-        optional: true,
-    },
-    collaborators: _.clone(commonC),
-    administrators:_.clone(commonC),
-    invitations:   _.clone(commonCOptional),
-    requests:      _.clone(commonCOptional),
+        description: {
+            type: String,
+            optional: true,
+        },
+        collaborators: _.clone(commonC),
+        administrators:_.clone(commonC),
+        invitations:   _.clone(commonCOptional),
+        requests:      _.clone(commonCOptional),
 
-    requiresAdministratorApprovalToJoin: {
-        type: Boolean,
-        autoform: { label: "" },
-    },
+        requiresAdministratorApprovalToJoin: {
+            type: Boolean,
+            autoform: { label: "" },
+        },
+     });
 
-});
-
-collaborationAndUsersSchema = new SimpleSchema({
-   _id: {
-      type: String,
-      optional: true,
-    },
-    name: {
-      type: String,
-      unique: true,
-    },
-    isCollaboration: {
-      type: Boolean,
-    },
-});
-
-
-console.log("About to init Collaboration");
-CollaborationsAndUsers = new Meteor.Collection("collaborationAndUsers");
-
-Collaboration.attachSchema(collaborationSchema);
-
-Schemas = { collaboration: collaborationSchema };
-if (Meteor.isClient)
-    Template.registerHelper("Schemas", function() { return Schemas});
+    collaborationAndUsersSchema = new SimpleSchema({
+       _id: {
+          type: String,
+          optional: true,
+        },
+        name: {
+          type: String,
+          unique: true,
+        },
+        isCollaboration: {
+          type: Boolean,
+        },
+    });
 
 
-// collaboration post list parameters
-viewParameters.collaboration = function (terms) {
-  return {
-    find: {'collaboration': terms.collaboration},
-    options: {sort: {sticky: -1, score: -1}}
-  };
-}
+    console.log("About to init Collaboration");
+    CollaborationsAndUsers = new Meteor.Collection("collaborationAndUsers");
 
-// push "collaboration" modules to postHeading
-postHeading.push({
-  template: 'collaborationTagList',
-  order: 3
-});
-  
-// push "collaborationMenu" template to primaryNav
-primaryNav.push('collaborationMenu');
+    Collaboration.attachSchema(collaborationSchema);
 
-// push "collaboration" property to addToPostSchema, so that it's later added to postSchema
-addToPostSchema.push(
-  {
-    propertyName: 'collaboration',
-    propertySchema: {
-      optional: true,
-      type: [String]
+    Schemas = { collaboration: collaborationSchema };
+    if (Meteor.isClient)
+        Template.registerHelper("Schemas", function() { return Schemas});
+
+
+    // collaboration post list parameters
+    viewParameters.collaboration = function (terms) {
+      return {
+        find: {'collaboration': terms.collaboration},
+        options: {sort: {sticky: -1, score: -1}}
+      };
     }
-  }
-);
 
+    // push "collaboration" modules to postHeading
+    postHeading.push({
+      template: 'collaborationTagList',
+      order: 3
+    });
+  
+    // push "collaborationMenu" template to primaryNav
+    primaryNav.push('collaborationMenu');
+
+    // push "collaboration" property to addToPostSchema, so that it's later added to postSchema
+    addToPostSchema.push(
+      {
+        propertyName: 'collaboration',
+        propertySchema: {
+          optional: true,
+          type: [String]
+        }
+      }
+    );
 });
 
 

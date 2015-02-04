@@ -63,12 +63,25 @@ Meteor.startup(function () {
   window.collabNames = collabNames;
 
   postSubmitRenderedCallbacks.push(function(postTemplate) {
-      var cs = Session.get("collaborationName");
       var $sc = $(postTemplate.find(".selectCollaborators"));
-      console.log("postSubmitRenderedCallbacks", $sc);
       $sc.select2({tags: collabNames(), width:"600px"});
-      if (cs)
-          $sc.select2("data", {id: cs, text:cs}); // unclear why this needs to be done this way
+
+      var inits = [];
+
+      var cn = Session.get("collaborationName");
+      if (cn)
+          inits.push(cn);
+
+      var u = Meteor.user();
+      if (u && u.emails && u.emails.length > 0 && u.emails[0].address && u.emails[0].address.length > 0)
+          inits.push( u.emails[0].address)
+      if (u && u.profile && u.profile.defaultCollaboration && u.profile.defaultCollaboration.length > 0) 
+          inits.push( u.profile.defaultCollaboration);
+
+      console.log("postSubmitRenderedCallbacks",  inits);
+
+      if (inits.length > 0)
+          $sc.select2("data", inits.map(function(cs) { return {id: cs, text:cs}}));
   });
 
 
