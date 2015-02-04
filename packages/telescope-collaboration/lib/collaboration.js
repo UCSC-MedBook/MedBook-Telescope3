@@ -108,6 +108,9 @@ Meteor.startup(function() {
     primaryNav.push('collaborationMenu');
 
     // push "collaboration" property to addToPostSchema, so that it's later added to postSchema
+    /*
+       relocated to  toplevel/collections/posts.js because we its hard to debug Javascript scope issues.
+
     addToPostSchema.push(
       {
         propertyName: 'collaboration',
@@ -117,6 +120,7 @@ Meteor.startup(function() {
         }
       }
     );
+    */
 });
 
 

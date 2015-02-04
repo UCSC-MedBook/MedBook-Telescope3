@@ -57,6 +57,7 @@ Meteor.startup(function () {
     var cols = Collaboration.find({},{fields: {name:1}}).fetch();
     var names = users.map(function(f){return f.username}).concat(cols.map(function(f){return f.name}));
     names = names.filter(function(f){return f && f.length > 0});
+    names.push("public");
     var data = names.map(function(f) { return {id:f, text:f}});
     return data;
   }

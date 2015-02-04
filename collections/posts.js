@@ -93,7 +93,12 @@ postSchemaObject = {
   userId: {
     type: String, // XXX
     optional: true
-  }
+  },
+
+  collaboration: {
+      type: [String]
+  },
+
 };
 
 // add any extra properties to postSchemaObject (provided by packages for example)
