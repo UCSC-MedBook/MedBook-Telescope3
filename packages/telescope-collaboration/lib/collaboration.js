@@ -17,7 +17,10 @@ if (Meteor.isClient)
 
 commonC = {
     type:[String],
-    optional: true,
+};
+commonCOptional = {
+    type:[String],
+    optional:true,
 };
 
 
@@ -33,6 +36,11 @@ collaborationSchema = new SimpleSchema({
       type: String,
       optional: true,
     },
+
+    isUnlisted: {
+          type: Boolean,
+    },
+
     name: {
       type: String,
       optional: true,
@@ -45,8 +53,8 @@ collaborationSchema = new SimpleSchema({
     },
     collaborators: _.clone(commonC),
     administrators:_.clone(commonC),
-    invitations:   _.clone(commonC),
-    requests:      _.clone(commonC),
+    invitations:   _.clone(commonCOptional),
+    requests:      _.clone(commonCOptional),
 
     requiresAdministratorApprovalToJoin: {
         type: Boolean,

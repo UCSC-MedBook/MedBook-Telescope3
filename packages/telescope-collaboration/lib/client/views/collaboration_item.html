@@ -1,16 +1,29 @@
 <template name="collaborationForm">
-  {{#autoForm id="addCollaboration" doc=doc collection="Collaboration" validation="submit" type=type fields="name,description,collaborators,requiresAdministratorApprovalToJoin,administrators,invitations" schema=Schemas.collaboration}}
+  {{#autoForm id="addCollaboration" doc=doc collection="Collaboration" validation="submit" type=type fields="isUnlisted,name,description,collaborators,requiresAdministratorApprovalToJoin,administrators,invitations" schema=Schemas.collaboration}}
       <fieldset>
       {{> afQuickField name="name"}}
       {{> afQuickField name="description"}}
-      {{> bump name="collaborators" }}
-      {{> bump name="administrators"}}
+      <small>
+      {{> afQuickField name="isUnlisted"  label-style="display:none;" type="boolean-radios" 
+           value=isUnlisted
+           trueLabel="This is an unlisted collaboration and will not appear in the directory to non-collaborators." 
+           falseLabel="This is a listed collaboration, only collaborators can see its contents."}}
+      <br>
+      </small>
+
+      {{> bump name="collaborators"  class="collaboratorListClass collaboratorInitWithSelf"  }}
+      {{#if afFieldIsInvalid name='collaborators'}}
+          <span class="help-block">{{afFieldMessage name=''}}</span>
+      {{/if}}
+      {{> bump name="administrators" class="collaboratorListClass collaboratorInitWithSelf" }}
+
 
       {{> afQuickField name="requiresAdministratorApprovalToJoin" label-style="display:none;" type="boolean-radios" 
            value=requiresAdministratorApprovalToJoin
            trueLabel="Users may add themselves" 
            falseLabel="Users require administrator approval"}}
-      {{> bump name="invitations"   }}
+
+      {{> bump name="invitations"  class="collaboratorListClass"   }}
 
       <button type="submit" class="btn btn-primary"> Submit </button>
       <button type="button" class="cancelAndGoCollaborationList btn btn-primary"> Cancel </button>
@@ -41,7 +54,7 @@
       {{#if afFieldIsInvalid name=name}}
       <span class="help-block">{{{afFieldMessage name=name}}}</span>
       {{/if}}
-      {{> afFieldInput name=name class="collaboratorListClass"}}
+      {{> afFieldInput name=name class=class}}
     </div>
   </div>
 </template>

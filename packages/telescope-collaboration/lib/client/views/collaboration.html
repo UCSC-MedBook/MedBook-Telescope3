@@ -26,7 +26,14 @@
         <p>
         {{description}}
         </p>
+
+        {{#if isUnlisted}}
+        <h6>Collaboration is unlisted and only the collaborators and administrators can see it.</h6>
+        {{/if}}
+
         <b>Collaborators</b> <div class="collaboration-token">{{collaborators}}</div><br/>
+
+
 
         {{#if isAdministrator}}
             <b>Administrators</b> <div class="collaboration-token wordwrap">{{administrators}}</div><br/>
@@ -42,9 +49,9 @@
             <button data-collaborationName="{{name}}" id="leave" name="leave" type="button" class="btn btn-default btn-lg">Leave this collaboration</button>
         {{else}}
             {{#if requiresApproval}}
-            <button data-collaborationName="{{name}}" id="apply" name="apply" type="button" class="btn btn-default btn-lg">Apply for membership</button>
-        {{else}}
-            <button data-collaborationName="{{name}}" id="join" name="join" type="button" class="btn btn-default btn-lg">Join this collaboration</button>
+                <button data-collaborationName="{{name}}" id="apply" name="apply" type="button" class="btn btn-default btn-lg">Apply for membership</button>
+            {{else}}
+                <button data-collaborationName="{{name}}" id="join" name="join" type="button" class="btn btn-default btn-lg">Join this collaboration</button>
             {{/if}}
         {{/if}}
 

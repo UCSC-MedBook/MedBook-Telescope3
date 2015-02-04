@@ -1,7 +1,26 @@
 Meteor.publish('collaboration', function() {
-      return Collaboration.find();
-});
+      if (this.userId == null)
+          return Collaboration.find( {isUnlisted: false} );
 
+      var user = Meteor.users.findOne({_id: this.userId});
+      console.log("publish collabration", user);
+      var collaborations = user.profile.collaborations;
+      var emails = user.emails.map(function(em) { return em.address})
+
+      if (collaborations == null)
+          return Collaboration.find( {isUnlisted: false} );
+      else
+          return Collaboration.find(
+              {$or: [
+                  {isUnlisted: false}, // allows people to join
+                  {$and: [
+                      {isUnlisted: true}, // here to show the true branch
+                      {collaborators: {$in: user.profile.collaborations}}
+                      ]
+                  },
+                  {administrators: emails}
+              ]});
+});
 
 
 addToPostSchema.push(
