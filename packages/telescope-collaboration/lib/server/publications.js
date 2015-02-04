@@ -23,15 +23,17 @@ Meteor.publish('collaboration', function() {
 });
 
 
-addToPostSchema.push(
-    {
-        propertyName: 'collaboration',
-        propertySchema: {
-            type: [String],
-            optional: true
+Meteor.startup(function() {
+    addToPostSchema.push(
+        {
+            propertyName: 'collaboration',
+            propertySchema: {
+                type: [String],
+                optional: true
+            }
         }
-    }
-);
+    );
+});
 
 
 Meteor.methods({

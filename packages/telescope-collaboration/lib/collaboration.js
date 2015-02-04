@@ -24,25 +24,26 @@ commonCOptional = {
 };
 
 
+Meteor.startup(function() {
 
-SimpleSchema.debug = true
+    SimpleSchema.debug = true
 
-collaborationSchema = new SimpleSchema({
-   _id: {
-      type: String,
-      optional: true,
-    },
-    slug: {
-      type: String,
-      optional: true,
-    },
+    collaborationSchema = new SimpleSchema({
+       _id: {
+          type: String,
+          optional: true,
+        },
+        slug: {
+          type: String,
+          optional: true,
+        },
 
-    isUnlisted: {
-          type: Boolean,
-    },
+        isUnlisted: {
+              type: Boolean,
+        },
 
-    name: {
-      type: String,
+        name: {
+          type: String,
       optional: true,
       unique: true,
     },
@@ -118,6 +119,9 @@ addToPostSchema.push(
     }
   }
 );
+
+});
+
 
 getCollaborations = function() {
     console.log("getCollaborations this.userId", this.userId);
