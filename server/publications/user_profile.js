@@ -3,7 +3,7 @@
 Meteor.publish('userProfile', function(userIdOrSlug) {
   if(canViewById(this.userId)){
     var options = isAdminById(this.userId) ? {limit: 1} : {limit: 1, fields: privacyOptions};
-    var findById = Meteor.users.findOne(userIdOrSlug);
+    var findById = Meteor.users.findOne({_id: userIdOrSlug});
     var findBySlug = Meteor.users.findOne({slug: userIdOrSlug});
     var user = typeof findById !== 'undefined' ? findById : findBySlug;
 
