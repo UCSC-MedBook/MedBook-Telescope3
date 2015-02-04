@@ -5,7 +5,7 @@ Meteor.publish('collaboration', function() {
       var user = Meteor.users.findOne({_id: this.userId});
       console.log("publish collabration", user);
       var collaborations = user.profile.collaborations;
-      var emails = user.emails.map(function(em) { return em.address})
+      var emails = getEmailsForId(this.userId);
 
       if (collaborations == null)
           return Collaboration.find( {isUnlisted: false} );

@@ -3,7 +3,7 @@ function isMember(id) {
     if (col == null) return false;
     var ad = col.collaborators;
     if (ad == null) return false;
-    var em = Meteor.user().emails;
+    var em = getEmails();
     for (var i = 0; i < em.length; i++)
         if (/* em[i].verified && */ ad.indexOf(em[i].address) >= 0)
             return true;
@@ -17,9 +17,10 @@ function isAdministrator(id) {
     if (ad.indexOf(Meteor.user().username) >= 0)
         return true;
 
-    var em = Meteor.user().emails;
+
+    var em = getEmails();
     for (var i = 0; i < em.length; i++)
-        if (/* em[i].verified && */ ad.indexOf(em[i].address) >= 0)
+        if (ad.indexOf(em[i]) >= 0)
             return true;
     return false;
 }
@@ -28,9 +29,9 @@ function isCollaborator(id) {
     if (col == null) return false;
     var ad = col.administrators;
     if (ad == null) return true;
-    var em = Meteor.user().emails;
+    var em = getEmails();
     for (var i = 0; i < em.length; i++)
-        if (/* em[i].verified && */ ad.indexOf(em[i].collaborators) >= 0)
+        if (ad.indexOf(em[i]) >= 0)
             return true;
     return false;
 }
@@ -133,7 +134,8 @@ Meteor.startup(
                    else
                        answerSet[col] = 1;
                } else {
-                   var u = Meteor.users.findOne({"emails.address": col})
+                 
+                   var u = findUser(col);
                    if (u && u.username)
                        answerSet[u.username] = 1;
                    else

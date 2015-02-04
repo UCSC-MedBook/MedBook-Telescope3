@@ -21,16 +21,12 @@ function Sel()  {
     var moi = null;
     var defaultCollaboration = null;
     var u = Meteor.user();
-    if (u && u.emails && u.emails[0])
-        moi = u.emails[0].address;
+    var em = getEmails();
+    if (em)
+        moi = em[0];
     if (u && u.profile) 
         defaultCollaboration = u.profile.defaultCollaboration;
 
-    Meteor.users.find({"emails.address.0": {$exists:1}}, {fields: {"emails.address.0":1}}).forEach(function(c) { 
-        c = e.email.address
-        console.log("M u f", c);
-        names.push(c)
-    });
     names = names.sort();
     console.log(names);
     $(".collaboratorInitWithSelf").each(function() {

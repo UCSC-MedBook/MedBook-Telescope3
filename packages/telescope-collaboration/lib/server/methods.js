@@ -164,7 +164,7 @@ var moi = function() {
     var cols = [];
     if (user) {
         cols.push(user.username);
-        _.map( user.emails, function(ad) { cols.push(ad.address);});
+        _.map( getEmails(), function(em) { cols.push(em);});
     }
 
     console.log("moi", cols);
@@ -175,12 +175,11 @@ var moi = function() {
 
 function refreshUserProfileCollaborations(user) {
     console.log(" user: ", user)
-    console.log(" user.emails: ", user.emails)
     if (user == null)
         return;
     if (user.emails == null)
         return;
-    var emails = user.emails.map(function(em) { return em.address});
+    var emails = getEmailsFor(user);
     console.log( "refreshUserProfileCollaborations emails", emails);
     var collaborationLookupQueue = Collaboration.find({collaborators: {$in: emails}}, {fields:{name:1}}).fetch();
     collaborationLookupQueue = collaborationLookupQueue.map(function(f){ return f.name});

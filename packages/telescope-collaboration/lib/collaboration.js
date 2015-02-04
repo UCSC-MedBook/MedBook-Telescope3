@@ -142,7 +142,8 @@ getCollaborations = function() {
     var who = user.profile.collaborations
     if (who) {
         who.push(user.username);
-        _.map(user.emails, function(em) { who.push( em.address)})
+
+        _.map(getEmailsFor(user), function(em) { who.push(em)})
         console.log("getCollaborations", user, who);
     } else {
         who = [];

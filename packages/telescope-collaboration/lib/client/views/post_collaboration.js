@@ -10,7 +10,7 @@ createCollaboration = function (pack, success) {
         return s.trim()
       }).filter(function(n){ return n.length > 0});
   }
-  var ad = Meteor.user().emails[0].address;
+  var ad = getEmails()[0];
   if (pack && pack.administrators && pack.administrators.indexOf(ad) <= 0) pack.administrators.push(ad);
   if (pack && pack.collaborators  && pack.collaborators.indexOf(ad) <= 0) pack.collaborators.push(ad);
 
@@ -74,8 +74,10 @@ Meteor.startup(function () {
           inits.push(cn);
 
       var u = Meteor.user();
-      if (u && u.emails && u.emails.length > 0 && u.emails[0].address && u.emails[0].address.length > 0)
-          inits.push( u.emails[0].address)
+      var em = getEmails();
+
+      if (u && em)
+          inits.push(em[0]);
       if (u && u.profile && u.profile.defaultCollaboration && u.profile.defaultCollaboration.length > 0) 
           inits.push( u.profile.defaultCollaboration);
 
@@ -96,10 +98,14 @@ Meteor.startup(function () {
             if (Collabortion.findOne({name: d}))
                 continue;
             var user = Meteor.users.findOne({username: d});
-            if (user)
-                dataIds[i] = user.emails[0].address;
+            if (user) {
+                if (user.emails)
+                    dataIds[i] = user.emails && user.emails[0].address;
+                else if ( user.services && user.services.google && user.services.google.email)
+                    dataIds[i] = user.services.google.email;
+            }
         }
-        var me = Meteor.user().emails[0].address;
+        var me = getEmails()[0];
         if (dataIds.indexOf(me) < 0)
             dataIds.push(me);
 
