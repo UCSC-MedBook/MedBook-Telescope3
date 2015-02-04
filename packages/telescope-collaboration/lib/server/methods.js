@@ -177,8 +177,6 @@ function refreshUserProfileCollaborations(user) {
     console.log(" user: ", user)
     if (user == null)
         return;
-    if (user.emails == null)
-        return;
     var emails = getEmailsFor(user);
     console.log( "refreshUserProfileCollaborations emails", emails);
     var collaborationLookupQueue = Collaboration.find({collaborators: {$in: emails}}, {fields:{name:1}}).fetch();
