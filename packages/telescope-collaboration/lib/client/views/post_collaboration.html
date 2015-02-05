@@ -4,7 +4,9 @@
       {{#each collaboration}}
           <a href="{{collaborationLink}}" class="post-collaboration">{{collaborationName}}</a>
       {{/each}}
+    {{#if allowEdit}}
           <a class='addCollaborators'> <small><i class="fa fa-plus-square fa-1"  title="add collaboration"></i></small> </a>
+    {{/if}}
   </span>
 
 </template>

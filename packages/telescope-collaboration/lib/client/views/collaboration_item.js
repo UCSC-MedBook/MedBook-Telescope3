@@ -49,21 +49,23 @@ Template["collaborationReview"].events(  {
     'click .cancelAndGoCollaborationList': goCollaborationlist ,
 
     'click .reviewCollaboration': function(event, tmpl) {
+
         $('.approved:checked').each(function() {
               var col = tmpl.data;
               Collaboration.update({_id: col._id}, 
                   { 
-                    collaborators: {$addToSet: this.name},
-                    requests: {$pull: this.name }
+                    $addToSet: {collaborators: this.name},
+                    $pull: {requests: this.name }
                   }
               );
          });
 
         $('.notApproved:checked').each(function() {
               var col = tmpl.data;
-              Collaboration.update({_id: col._id}, 
-                  { requests: {$pull: this.name }});
+              Collaboration.update({_id: col._id}, { $pull: {requests: this.name }});
          });
+
+        goCollaborationlist();
 
     }
 });
