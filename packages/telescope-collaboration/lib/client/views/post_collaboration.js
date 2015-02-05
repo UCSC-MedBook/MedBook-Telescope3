@@ -133,7 +133,14 @@ Meteor.startup(function () {
             var $sc = $(event.target).find('.selectCollaborators');
             console.log("click addCol data", data, _id, $sc);
             $sc.select2({tags: collabNames(), width:"600px"});
-            $sc.select2( "data", data); // unclear why this needs to be done this way
+            /*
+
+            for some reason, this messages things up.
+            so hold off for now
+            */
+            setTimeout(function() { 
+                $sc.select2( "data", data); 
+            }, 200);
             $('body').append('<div onclick="doneEditOrAddCollaborators()" class="cover"></div>');
         });
     },
