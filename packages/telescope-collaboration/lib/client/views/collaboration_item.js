@@ -45,6 +45,28 @@ function Sel()  {
 Template.collaborationAdd.hooks({ rendered: Sel })
 Template.collaborationEdit.hooks({ rendered: Sel })
 
+Template["collaborationReview"].events(  { 
+    'click .cancelAndGoCollaborationList': goCollaborationlist ,
+
+    'click .reviewCollaboration': function(event, tmpl) {
+        $('.approved:checked').each(function() {
+              var col = tmpl.data;
+              Collaboration.update({_id: col._id}, 
+                  { 
+                    collaborators: {$addToSet: this.name},
+                    requests: {$pull: this.name }
+                  }
+              );
+         });
+
+        $('.notApproved:checked').each(function() {
+              var col = tmpl.data;
+              Collaboration.update({_id: col._id}, 
+                  { requests: {$pull: this.name }});
+         });
+
+    }
+});
 
 Template["collaborationForm"].events(  { 
     'click .cancelAndGoCollaborationList': goCollaborationlist ,

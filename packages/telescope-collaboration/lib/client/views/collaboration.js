@@ -1,27 +1,21 @@
 function isMember(id) {
     var col = Collaboration.findOne({_id: id});
     if (col == null) return false;
-    var ad = col.collaborators;
-    if (ad == null) return false;
-    var em = getEmails();
-    for (var i = 0; i < em.length; i++)
-        if (/* em[i].verified && */ ad.indexOf(em[i].address) >= 0)
-            return true;
-    return false;
+
+    var u = Meteor.user();
+    if (u == null) return false;
+
+    return u.profile.collaborations.indexOf(col.name) >= 0;
 }
+
 function isAdministrator(id) {
     var col = Collaboration.findOne({_id: id});
     if (col == null) return false;
     var ad = col.administrators;
     if (ad == null) return true;
-    if (ad.indexOf(Meteor.user().username) >= 0)
-        return true;
-
-
     var em = getEmails();
-    for (var i = 0; i < em.length; i++)
-        if (ad.indexOf(em[i]) >= 0)
-            return true;
+    if (em && ad)
+        return _.intersection(ad, em).length > 0;
     return false;
 }
 function isCollaborator(id) {
@@ -78,7 +72,7 @@ Meteor.startup(
             },
             'click button[name="apply"]': function(evt) {
                 evt.preventDefault();
-                Meteor.call('apply', this._id, function (err) {
+                Meteor.call('applyCollaborationMethod', this._id, function (err) {
                     if (err) {
                         console.log('apply error', err);
                         alert("apply failed")

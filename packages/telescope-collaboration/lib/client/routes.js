@@ -90,7 +90,6 @@ Meteor.startup(function () {
             return coll;
         },
         /*
-        template: "collaboration-edit",
         onBeforeAction: function() { 
             // SECURITY Put in admin check here
             var coll = Collaboration.findOne({name: this.params.name});
@@ -106,6 +105,29 @@ Meteor.startup(function () {
         }
         */
     } );
+
+    // Collaboration Review
+    this.route('collaborationReview', {
+        path: '/collaboration-review/:name/',
+        waitOn: function() { return Meteor.subscribe('collaboration'); },
+        data: function() {
+            // SECURITY Put in admin check here
+            var coll = Collaboration.findOne({name: this.params.name});
+            console.log("collaboration-edit route", coll);
+            return coll;
+        },
+        onBeforeAction: function() { 
+            // SECURITY Put in admin check here
+            var coll = Collaboration.findOne({name: this.params.name});
+            if (coll)
+                Session.set("EditCollaboration", coll)
+            this.next();
+        },
+        onAfterAction: function() { 
+            Session.set('collaborationName', this.params.name);
+        }
+    } );
+
 
 
     // Collaboration List
