@@ -2,7 +2,7 @@
 Meteor.startup(function() {
   //ImageUploads.remove({});
   console.log("Images Uploads:", Collections.Images.find().count());
-  console.log("Files:", Collections.Files.find().count());
+  console.log("Blobs:", Collections.Blobs.find().count());
 
   Collections.Images.on('removed', function (fileObj) {
     console.log("Removed " + fileObj._id + " from Images collection.");

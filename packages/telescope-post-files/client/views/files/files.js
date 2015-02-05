@@ -18,7 +18,7 @@ Meteor.startup(function () {
             map[files[i].name] = files[i].webkitRelativePath;
         }
 
-        return FS.EventHandlers.insertFiles(Collections.Files, {
+        return FS.EventHandlers.insertFiles(Collections.Blobs, {
           metadata: function (fileObj) {
             return {
               owner: Meteor.userId(),
@@ -59,13 +59,13 @@ Meteor.startup(function () {
 
   Template.files.helpers( { 
       uploadedFiles : function() {
-         return Collections.Files.find( {post: { $exists: false }, owner: Meteor.userId()} );
+         return Collections.Blobs.find( {post: { $exists: false }, owner: Meteor.userId()} );
       },
   });
 
   Template.postedFiles.helpers({
       medbookfiles : function() {
-         return Collections.Files.find({post: this._id});
+         return Collections.Blobs.find({post: this._id});
       }
   });
   Template.handsontablePreview.events({

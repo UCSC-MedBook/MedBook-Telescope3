@@ -2,7 +2,7 @@ Stores = {};
 
 if (Meteor.isServer) {
     var mime = Npm.require("mime");
-    Stores.any = new FS.Store.GridFS("any",
+    Stores.blobs = new FS.Store.GridFS("blobs",
         {
             beforeWrite: function(fileObj) { 
 
@@ -23,5 +23,5 @@ if (Meteor.isServer) {
         }
     );
 } else
-    Stores.any = new FS.Store.GridFS("any");
+    Stores.blobs = new FS.Store.GridFS("blobs");
 

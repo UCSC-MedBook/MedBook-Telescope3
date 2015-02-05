@@ -3,14 +3,14 @@ function falseFunc() {return false;}
 
 Meteor.startup(function() {
 
-    Collections.Files.allow({
+    Collections.Blobs.allow({
       insert: trueFunc,
       update: trueFunc,
       remove: trueFunc,
       download: trueFunc
     });
 
-    Collections.Files.deny({
+    Collections.Blobs.deny({
       insert: falseFunc,
       update: falseFunc,
       remove: falseFunc,
