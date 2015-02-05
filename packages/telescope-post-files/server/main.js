@@ -1,3 +1,4 @@
+/*
 Meteor.startup(function() {
   //ImageUploads.remove({});
   console.log("Images Uploads:", Collections.Images.find().count());
@@ -23,3 +24,4 @@ Meteor.methods({
     });
   }
 });
+*/
