@@ -124,6 +124,15 @@ Meteor.startup(
                 }
             });
 
+        function findUser(c) {
+            var u = Meteor.users.findOne({"services.google.email": c});
+            if (u)
+                return u;
+            u = Meteor.users.findOne({emails: { $elemMatch: { address: c}}});
+            return u;
+
+        }
+
         function prettyList(cols) {
            var answerSet = {};
            cols.map(function(col,i) {
