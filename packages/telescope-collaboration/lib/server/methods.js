@@ -179,26 +179,22 @@ function refreshUserProfileCollaborations(user) {
         return;
     var emails = getEmailsFor(user);
     console.log( "refreshUserProfileCollaborations emails", emails);
-    var collaborationLookupQueue = Collaboration.find({collaborators: {$in: emails}}, {fields:{name:1}}).fetch();
-    collaborationLookupQueue = collaborationLookupQueue.map(function(f){ return f.name});
-    console.log( "refreshUserProfileCollaborations collaborationLookupQueue", collaborationLookupQueue);
+
+    var collaborationLookupQueue = emails;
     var collaborationSet = {};
 
     // transitive closure queue method
     for (var i = 0; i < collaborationLookupQueue.length; i++) {
-        var name = collaborationLookupQueue[i];
-        if (!(name in collaborationSet)) {
-            var col = Collaboration.findOne({name: name}, {fields:{collaborators:1}});
-            if (col) {
-                collaborationSet[name] = col._id; // cheap implementation of a set.
-                var refs = col.collaborators;
-                console.log( "refreshUserProfileCollaborations refs", refs);
-                if (refs)
-                    for (var j = 0; j < refs.length; j++)
-                        collaborationLookupQueue.push(refs[i]);
+        var parent = collaborationLookupQueue[i];
+        console.log("parent", parent);
+        Collaboration.find({collaborators: parent}, {fields: {name:1}}).forEach(function(col) {
+            if (!(col.name in collaborationSet)) {
+                collaborationSet[col.name] = col._id; 
+                collaborationLookupQueue.push(col.name);
             }
-        }
+        });
     }
+
     var collaborations = Object.keys(collaborationSet).sort();
     console.log( "refreshUserProfileCollaborations collaborations", user._id,  collaborations);
     ret = Meteor.users.update( user._id, {$set: { "profile.collaborations": collaborations}});
