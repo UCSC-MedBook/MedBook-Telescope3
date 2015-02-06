@@ -45,3 +45,8 @@
     display: block;
     z-index: 999;
 }
+
+
+.list .collaborationTagListEditor {
+  opacity: 0;
+}

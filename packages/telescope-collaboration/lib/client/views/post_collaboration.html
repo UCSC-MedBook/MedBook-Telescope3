@@ -1,12 +1,12 @@
 <template name="collaborationTagList">
 
-  <span class="collborationTagList">
+  <span class="collaborationTagList">
       {{#each collaboration}}
           <a href="{{collaborationLink}}" class="post-collaboration">{{collaborationName}}</a>
       {{/each}}
-    {{#if allowEdit}}
-          <a class='addCollaborators'> <small><i class="fa fa-plus-square fa-1"  title="add collaboration"></i></small> </a>
-    {{/if}}
+      <span class="collaborationTagListEditor">
+          <a class='addCollaborators'> <small><i class="fa fa-pencil fa-1"  title="add collaboration"></i></small> </a>
+      </span>
   </span>
 
 </template>
