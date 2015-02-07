@@ -90,7 +90,7 @@
     ],
     [
       "cfs:http-methods",
-      "0.0.24"
+      "0.0.27"
     ],
     [
       "cfs:http-publish",
@@ -118,7 +118,7 @@
     ],
     [
       "cfs:storage-adapter",
-      "0.1.1"
+      "0.2.0"
     ],
     [
       "cfs:tempstore",
