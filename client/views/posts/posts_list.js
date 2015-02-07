@@ -3,7 +3,7 @@ Template[getTemplate('posts_list')].helpers({
       var cs = Session.get("collaborationName")
       if (cs)
           return cs
-      return null;
+      return "Posts for All of Your Collaborations";
   },
   post_item: function () {
     return getTemplate('post_item');
