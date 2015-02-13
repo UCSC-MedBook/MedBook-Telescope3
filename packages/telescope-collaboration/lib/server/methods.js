@@ -126,7 +126,10 @@ function MedBookPost(post,userId) {
 
     // Basic Properties
 
-    console.log("MedBookPost");
+    console.log("MedBookPost", userId, post);
+    if (userId == null)
+        return null;
+
 
     // ------------------------------ Insert Post ----------------------- //
     post._id = Posts.insert(post);
@@ -245,19 +248,38 @@ Meteor.startup(function () {
 
   });
 
-function parseCookies (cookiesString) {
-    var cookies = {};
+    parseCookies = function(cookiesString) {
+        var cookies = {};
 
-    cookiesString.split(';').forEach(function( cookie ) {
-        var parts = cookie.split('=');
-        cookies[parts.shift().trim()] = decodeURI(parts.join('='));
-    });
-    return cookies;
-}
+        cookiesString.split(';').forEach(function( cookie ) {
+            var parts = cookie.split('=');
+            cookies[parts.shift().trim()] = decodeURI(parts.join('='));
+        });
+        return cookies;
+    }
 
+    lookupToken = function(token) {
+        var user = Meteor.users.findOne({
+                $or: [
+                    {'services.resume.loginTokens.hashedToken': Accounts._hashLoginToken(token)},
+                    {'services.resume.loginTokens.token': token}
+                ]
+            });
+        return user;
+    }
 
-var querystring =  Npm.require("querystring")
-  HTTP.methods({
+    fetchToken = function(requestHeaders) {
+        var token = null;
+        if (requestHeaders && requestHeaders.cookie && requestHeaders.cookie.length > 0) {
+            var c = parseCookies(requestHeaders.cookie);
+            if (c && 'meteor_login_token' in c && c['meteor_login_token'].length > 0)
+                token = c['meteor_login_token'];
+        }
+        return token;
+    }
+
+    var querystring =  Npm.require("querystring");
+    HTTP.methods({
      medbookUser: function(data){
         data = String(data)
         var token = null;
@@ -267,28 +289,18 @@ var querystring =  Npm.require("querystring")
             if (qs && qs.token)
                 token = qs.token;
         }
-        if (token == null && this.requestHeaders.cookie && this.requestHeaders.cookie.length > 0) {
-            var c = parseCookies(this.requestHeaders.cookie);
-            if (c && 'meteor_login_token' in c && c['meteor_login_token'].length > 0)
-                token = c['meteor_login_token'];
-        }
+        token = qs.token ? qs.token : fetchToken(this.requestHeaders);
         if (token == null)
-            return"";
+            return "none";
 
-
-
-        var user = Meteor.users.findOne({
-            $or: [
-                {'services.resume.loginTokens.hashedToken': Accounts._hashLoginToken(token)},
-                {'services.resume.loginTokens.token': token}
-            ]
-        });
+        var user = lookupToken(token);
         if (user == null)
-            return;
+            return "none";
 
         var email = null;
         if (user && user.emails && user.emails.length > 0)
             email = user.emails[0].address
+
         console.log("user.services", user.services);
         if (user.services && user.services.google && user.services.google.email)
             email = user.services.google.email;
@@ -309,23 +321,43 @@ var querystring =  Npm.require("querystring")
         return response;
     },
     medbookPost: function(data){
-        var qs = querystring.parse(String(data));
+        console.log("HTTP medbookPost");
+        var post = {};
+        var token = fetchToken(this.requestHeaders);
+        if (token)
+            console.log("found token in headers");
 
-        var user = Meteor.users.findOne({
-            $or: [
-                {'services.resume.loginTokens.hashedToken': Accounts._hashLoginToken(qs.token)},
-                {'services.resume.loginTokens.token': qs.token}
-            ]
-        });
-
-        if (user == null) {
-            this.setStatusCode(401); // Unauthorized
-            return { state: "failed", reason: "token not found" }
+        if (this.query && 'title' in this.query) {
+            post = this.query;
+        } else {
+            var qs = querystring.parse(String(data));
+            if ('post' in qs)
+                post = JSON.parse(qs.post);
+            if ('token' in qs)  
+                token = qs.token
         }
-        this.setUserId(user._id)
+        if ('token' in post) {
+            if (token)
+                console.log("found token in post");
+            token = post.token
+            delete post['token'];
+        }
+        if (token != null) {
+            var user = lookupToken(token);
+            if (user != null)
+                this.setUserId(user._id);
+        }
 
-        var post = JSON.parse(qs.json);
-        post.userId   = user._id;
+        if (post.title == null)
+            post.title = "No title";
+        if (post.body == null)
+            post.body = "";
+        if (post.medbookfiles == null)
+            post.medbookfiles = [ ];
+        if (post.collaboration == null)
+            post.collaboration = [ "tedgoldstein@gmail.com", "WCDT" ];
+
+
         post.sticky   = false;
         post.status   = STATUS_APPROVED;
         post.postedAt = new Date();
@@ -333,13 +365,25 @@ var querystring =  Npm.require("querystring")
         post.commentsCount = 0;
         post.downvotes = 0;
         post.inactive = false;
+        post.viewCount = 0;
+        post.commentCount = 0;
+        post.clickCount = 0;
         post.score = 0;
         post.upvotes = 0;
-        console.log("post", post)
 
-        // TelescopePost(post, post.userId, false);
-        var _id = MedBookPost(post, post.userId);
-        return { state: "success", _id: _id}
+        if (this.userId == null) {
+            console.log("could not match token in database");
+            this.setStatusCode(401); // Unauthorized
+            return;
+        }
+
+        var _id = MedBookPost(post, this.userId);
+        if (_id == null) {
+            return;
+        } else {
+            this.setStatusCode(200);
+            return { state: "success", _id: _id}
+        }
      }
   });
 
