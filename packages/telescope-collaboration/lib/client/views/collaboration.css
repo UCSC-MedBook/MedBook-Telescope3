@@ -65,8 +65,11 @@ padding: 2px !important;
 }
 
 .collaboration:hover > h2 > a {
-  text-decoration: underline;
+  text-decoration: none !important;
   cursor:pointer;
+}
+.post-heading:hover > a {
+  text-decoration: none !important;
 }
 
 .collaboration.post:first-child {
