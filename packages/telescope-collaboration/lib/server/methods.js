@@ -261,8 +261,8 @@ Meteor.startup(function () {
     lookupToken = function(token) {
         var user = Meteor.users.findOne({
                 $or: [
-                    {'services.resume.loginTokens.hashedToken': Accounts._hashLoginToken(token)},
-                    {'services.resume.loginTokens.token': token}
+				    {'services.resume.loginTokens.hashedToken': token},
+                    {'services.resume.loginTokens.hashedToken': Accounts._hashLoginToken(token)}
                 ]
             });
         return user;
@@ -321,7 +321,7 @@ Meteor.startup(function () {
         return response;
     },
     medbookPost: function(data){
-        console.log("HTTP medbookPost");
+        console.log("HTTP medbookPost data:",data);
         var post = {};
         var token = fetchToken(this.requestHeaders);
         if (token)
@@ -336,11 +336,13 @@ Meteor.startup(function () {
             if ('token' in qs)  
                 token = qs.token
         }
-        if ('token' in post) {
-            if (token)
-                console.log("found token in post");
-            token = post.token
-            delete post['token'];
+        if ('token' in data) {
+            console.log("found token in data",data.token);
+            token = data.token
+        }
+        if ('post' in data) {
+			console.log('post')
+			post = data.post
         }
         if (token != null) {
             var user = lookupToken(token);
@@ -364,8 +366,10 @@ Meteor.startup(function () {
         post.createdAt = post.postedAt;
         post.commentsCount = 0;
         post.downvotes = 0;
+		post.categories = [];
+		post.author = user.username;
         post.inactive = false;
-        post.viewCount = 0;
+        post.viewCount = 1;
         post.commentCount = 0;
         post.clickCount = 0;
         post.score = 0;
