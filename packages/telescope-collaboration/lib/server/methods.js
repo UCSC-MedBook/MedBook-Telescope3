@@ -99,7 +99,9 @@ function TelescopePost(post, userId, isSimulation){
     if (post.blobs && post.blobs.length >0)
        for (var i = 0; i < post.blobs.length; i++)  {
           var fid = post.blobs[i];
-          FileUploadCollection.update({"_id": new Meteor.Collection.ObjectID(fid)}, { "$set" : { "postId" : post._id } })
+          FileUploadCollection.update({"_id": new Meteor.Collection.ObjectID(fid)}, { "$set" : { "postId" : post._id } }, function (err, response) {
+          	console.log('update returns err', err, 'response', response)
+          })
        }
 
 
