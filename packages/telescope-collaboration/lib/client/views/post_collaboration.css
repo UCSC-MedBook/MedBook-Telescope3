@@ -9,8 +9,12 @@
     margin-top: 8px;
     margin-bottom: 8px;
 }
+.postTitle {
+    display: inline-block;
+    padding: 10px;
+}
 
-.post:hover {
+.post:hover .postTitle {
     border-radius: 10px;
     border: 1px solid rgba(180,180,180,0.5);;
     box-shadow:rgba(0,0,0,0.5) 0px 0px 6px; border-radius:12px;
