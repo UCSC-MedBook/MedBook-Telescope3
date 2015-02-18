@@ -141,7 +141,8 @@ getPostProperties = function(post) {
     profileUrl: getProfileUrlById(post.userId),
     postUrl: getPostPageUrl(post),
     thumbnailUrl: post.thumbnailUrl,
-    linkUrl: !!post.url ? getOutgoingUrl(post.url) : getPostPageUrl(post._id)
+    // linkUrl: !!post.url ? getOutgoingUrl(post.url) : getPostPageUrl(post._id)
+    linkUrl: getPostPageUrl(post._id)
   };
   
   if(post.url)
@@ -163,7 +164,8 @@ getPostEditUrl = function(id){
 
 // for a given post, return its link if it has one, or else its post page URL
 getPostLink = function (post) {
-  return !!post.url ? getOutgoingUrl(post.url) : getPostPageUrl(post);
+  // return !!post.url ? getOutgoingUrl(post.url) : getPostPageUrl(post);
+  return getPostPageUrl(post._id)
 };
 
 Posts.before.insert(function (userId, doc) {

@@ -16,6 +16,10 @@
     box-shadow:rgba(0,0,0,0.5) 0px 0px 6px; border-radius:12px;
 }
 
+.post-title {
+    font-color: black !important;
+}
+
 .post-collaboration {
     display: inline-block;
     font-size: 11px;
