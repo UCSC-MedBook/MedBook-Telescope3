@@ -1,128 +1,4 @@
 
-function TelescopePost(post, userId, isSimulation){
-    var title = cleanUp(post.title),
-        body = post.body,
-        userId = userId,
-        user = Meteor.users.findOne({_id: userId}),
-        timeSinceLastPost=timeSinceLast(user, Posts),
-        numberOfPostsInPast24Hours=numberOfItemsInPast24Hours(user, Posts),
-        postInterval = Math.abs(parseInt(getSetting('postInterval', 30))),
-        maxPostsPer24Hours = Math.abs(parseInt(getSetting('maxPostsPerDay', 30))),
-        postId = '';
-
-    console.log("TelescopePost 13");
-
-    // ------------------------------ Checks ------------------------------ //
-
-    // check that user can post
-    if (!user || !canPost(user))
-      throw new Meteor.Error(601, i18n.t('You need to login or be invited to post new stories.'));
-
-    // check that user provided a title
-    if(!post.title)
-      throw new Meteor.Error(602, i18n.t('Please fill in a title'));
-
-
-    if(!!post.url){
-      // check that there are no previous posts with the same link in the past 6 months
-      var sixMonthsAgo = moment().subtract(6, 'months').toDate();
-      var postWithSameLink = Posts.findOne({url: post.url, postedAt: {$gte: sixMonthsAgo}});
-
-      if(typeof postWithSameLink !== 'undefined'){
-        Meteor.call('upvotePost', postWithSameLink);
-        throw new Meteor.Error(603, i18n.t('This link has already been posted'), postWithSameLink._id);
-      }
-    }
-
-    console.log("TelescopePost 37");
-    /*
-    if(!isAdmin(Meteor.user())){
-      // check that user waits more than X seconds between posts
-      if(!isSimulation && timeSinceLastPost < postInterval)
-        throw new Meteor.Error(604, i18n.t('Please wait ')+(postInterval-timeSinceLastPost)+i18n.t(' seconds before posting again'));
-
-      // check that the user doesn't post more than Y posts per day
-      if(!isSimulation && numberOfPostsInPast24Hours > maxPostsPer24Hours)
-        throw new Meteor.Error(605, i18n.t('Sorry, you cannot submit more than ')+maxPostsPer24Hours+i18n.t(' posts per day'));
-    }
-    */
-
-    // ------------------------------ Properties ------------------------------ //
-
-    console.log("TelescopePost 52");
-    // Basic Properties
-    properties = {
-      title: title,
-      body: body,
-      userId: userId,
-      author: getDisplayNameById(userId),
-      upvotes: 0,
-      downvotes: 0,
-      commentsCount: 0,
-      baseScore: 0,
-      score: 0,
-      inactive: false
-    };
-
-    console.log("TelescopePost 67");
-    properties.userId = post.userId;
-    console.log("TelescopePost 69");
-
-    properties.status = 2;
-
-    // CreatedAt
-    properties.createdAt = new Date();
-    console.log("TelescopePost 73");
-
-    // PostedAt
-    properties.postedAt = new Date();
-
-    post = _.extend(post, properties);
-
-    // ------------------------------ Callbacks ------------------------------ //
-
-    console.log("TelescopePost 82");
-    // run all post submit server callbacks on post object successively
-    post = postSubmitMethodCallbacks.reduce(function(result, currentFunction) {
-        return currentFunction(result);
-    }, post);
-    console.log("TelescopePost 87");
-
-    // ------------------------------ Insert ------------------------------ //
-
-    // console.log(post)
-    console.log("TelescopePost 94");
-    post._id = Posts.insert(post);
-    console.log("TelescopePost 96");
-
-    // ------------------------------ MedBook Post Files ----------------------- //
-    if (post.blobs && post.blobs.length >0)
-       for (var i = 0; i < post.blobs.length; i++)  {
-          var fid = post.blobs[i];
-          FileUploadCollection.update({"_id": new Meteor.Collection.ObjectID(fid)}, { "$set" : { "postId" : post._id } }, function (err, response) {
-          	console.log('update returns err', err, 'response', response)
-          })
-       }
-
-
-    // ------------------------------ Callbacks ------------------------------ //
-
-    // run all post submit server callbacks on post object successively
-    post = postAfterSubmitMethodCallbacks.reduce(function(result, currentFunction) {
-        return currentFunction(result);
-    }, post);
-
-    // ------------------------------ Post-Insert ------------------------------ //
-
-    // increment posts count
-    Meteor.users.update({_id: userId}, {$inc: {postCount: 1}});
-
-    var postAuthor =  Meteor.users.findOne({_id: post.userId});
-
-    Meteor.call('upvotePost', post, postAuthor);
-
-    return post;
-  }
 function MedBookPost(post,userId) {
     // ------------------------------ Properties ------------------------------ //
 
@@ -140,7 +16,9 @@ function MedBookPost(post,userId) {
     if (post.blobs && post.blobs.length >0)
         for (var i = 0; i < post.blobs.length; i++)  {
             var fid = post.blobs[i];
-            FileUploadCollection.update({"_id": new Meteor.Collection.ObjectID(fid)}, { "$set" : { "postId" : post._id } })
+            FileUploadCollection.update({"_id": new Meteor.Collection.ObjectID(fid)}, { "$set" : { "postId" : post._id } }, function (err, response) {
+          	console.log('update returns err', err, 'response', response)
+          })
         }
 
 
