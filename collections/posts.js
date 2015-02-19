@@ -117,10 +117,16 @@ STATUS_REJECTED=3;
 
 Posts.deny({
   update: function(userId, post, fieldNames) {
+    if (isAdminById(userId))
+       return false;
+    return post.userId != userId;
+
+  /*
     if(isAdminById(userId))
       return false;
     // deny the update if it contains something other than the following fields
     return (_.without(fieldNames, 'title', 'url', 'body', 'shortUrl', 'shortTitle', 'categories').length > 0);
+    */
   }
 });
 

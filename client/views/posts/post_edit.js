@@ -10,7 +10,7 @@ Template[getTemplate('post_edit')].helpers({
     });
   },
   categoriesEnabled: function(){
-    return Categories.find().count();
+    return Categories && Categories.find().count() > 0;
   },
   showPostedAt: function () {
     if((Session.get('currentPostStatus') || this.status) == STATUS_APPROVED){
@@ -79,6 +79,8 @@ Template[getTemplate('post_edit')].events({
     Session.set('currentPostStatus', e.currentTarget.value);
   },
   'click input[type=submit]': function(e, instance){
+      console.log("click post_edit");
+
     var post = this;
     var updateObject = {};
 
@@ -183,7 +185,9 @@ Template[getTemplate('post_edit')].events({
 
       updateObject.$set = properties;
 
+      console.log("before update");
       Posts.update(post._id, updateObject, function(error){
+        console.log("inside of update");
         if(error){
           console.log(error);
           throwError(error.message);
