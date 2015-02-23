@@ -37,7 +37,7 @@ Meteor.startup(function () {
             var col = Collaboration.findOne({name: this.params.name });
             if (col) {
                 if (confirm("You are not a member of the " + this.params.name + " collaboration. Would you like to join?"))
-                    Meteor.call('joinCollaborationMethod', col._id, function (err) {
+                    Meteor.user().profile.collaboration = Meteor.call('joinCollaborationMethod', col._id, function (err) {
                         if (err) {
                             console.log('joinCollaborationMethod error', err);
                             alert("joinCollaborationMethod failed")

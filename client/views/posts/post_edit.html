@@ -37,6 +37,7 @@
         </div>
         {{/if}}
         {{#if isAdmin}}
+          <!--
           <div class="control-group post-form-sticky">
             <label class="control-label">{{_ "inactive_"}}</label>
             <div class="controls">
@@ -83,11 +84,15 @@
               <div class="controls"><input id="postedAtTime" type="text" value="{{postedAtTime}}" /></div>
             </div>
           </div>
+          -->
         {{/if}}
         <div class="form-actions">
           <a class="delete-link" href="/posts/deleted">{{_ "delete_post"}}</a>
           <input type="submit" class="button" value="{{_ "submit"}}" />
         </div>
+
+        {{>files}}
+
       </form>
     {{/with}}
   </div>

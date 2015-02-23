@@ -82,6 +82,7 @@ function refreshUserProfileCollaborations(user) {
     console.log( "refreshUserProfileCollaborations collaborations", user._id,  collaborations);
     ret = Meteor.users.update( user._id, {$set: { "profile.collaborations": collaborations}});
     console.log("update ret", ret);
+    return collaborations;
 }
 
 
@@ -105,8 +106,7 @@ Meteor.startup(function () {
                   console.log("joinCollaborationMethod Collaboration.update", collaboration_id, cols, err, err2)
               }
           );
-          refreshUserProfileCollaborations(Meteor.users.findOne({_id: this.userId}));
-
+          return refreshUserProfileCollaborations(Meteor.users.findOne({_id: this.userId}));
       },
     applyCollaborationMethod: function(collaboration_id) {
           console.log("applyCollaborationMethod")
