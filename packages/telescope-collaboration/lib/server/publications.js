@@ -29,7 +29,7 @@ Meteor.startup(function() {
             propertyName: 'collaboration',
             propertySchema: {
                 type: [String],
-                optional: true
+                minCount: 1,
             }
         }
     );

@@ -96,7 +96,9 @@ postSchemaObject = {
   },
 
   collaboration: {
-      type: [String]
+      type: [String],
+      minCount: 1,
+
   },
 
 };

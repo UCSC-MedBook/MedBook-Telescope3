@@ -12,7 +12,7 @@
 </template>
 
 <template name="addCollaboratorsPoppup">
-      <div class="popupControl" style="background:white;position:absolute;display:block;z-index:1001" id="addCollaboratorsPoppup" ><h4>Type in names of users or other collaborations:</h4>
+      <div class="popupControl" style="background:white;position:absolute;display:block;z-index:1001" id="addCollaboratorsPoppup" ><h4>Type in names of users or other collaborations:<small><br>Use the tag <span style="font-style:italic;font-weight:bold;color:red;">public</span> to allow everyone see this post</small> </h4>
          {{>selectCollaborators}}
           <button id="addCollaboratorsDone" data-_id="{{_id}}" >Done</button>
       </div>

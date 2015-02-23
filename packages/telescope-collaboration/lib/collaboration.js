@@ -154,6 +154,8 @@ var getCheckedCollaboration = function (properties) {
     var collaborationId = $(this).val();
     properties.collaboration.push(Collaboration.findOne(collaborationId));
   });
+  if (properties.collaboration == []);
+      properties.collaboration = ["public"];
   return properties;
 }
 
