@@ -48,8 +48,8 @@ Meteor.startup(function () {
 
         // the collaboration exists
         if (isAdmin() || !col.requiresAdministratorApprovalToJoin) {
-            if ( confirm("You are not a member of the " + this.params.name + " collaboration. Would you like to join?"))
-                Meteor.user().profile.collaborations = Meteor.call('joinCollaborationMethod', col._id, 
+            if ( confirm("You are not a member of the " + this.params.name + " collaboration. Would you like to join?")) {
+                var cols = Meteor.call('joinCollaborationMethod', col._id, 
                         function (err) { 
                             if (err) { alert("joinCollaborationMethod failed: " + err)
                             Router.go("collaborationList")
@@ -57,7 +57,9 @@ Meteor.startup(function () {
                             this.next();
                         }
                     });
-            else
+                console.log("cols", cols);
+                Meteor.user().profile.collaborations = cols;
+            } else
                 Router.go("collaborationList")
             return;
         }
