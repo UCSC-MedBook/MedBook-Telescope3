@@ -1,3 +1,15 @@
+
+function memberBecause(id) {
+    var col = Collaboration.findOne({_id: id});
+    if (col == null) return false;
+    var direct = _.intersection(getEmails(), col.collaborators);
+    var indirect =_.intersection(Meteor.user().profile.collaborations, col.collaborators); 
+    console.log(col.name, "direct", direct, "indirect",  indirect);
+    if (direct.length == 0  && indirect.length > 0)
+        return indirect;
+    return null;
+}
+
 function isMember(id) {
     var col = Collaboration.findOne({_id: id});
     if (col == null) return false;
@@ -172,6 +184,9 @@ Meteor.startup(
             },
             isMember: function () {
                 return isMember(this._id);
+            },
+            memberBecause: function () {
+                return memberBecause(this._id);
             }
         });
 
