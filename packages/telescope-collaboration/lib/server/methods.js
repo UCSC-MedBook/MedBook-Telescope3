@@ -101,12 +101,18 @@ Meteor.startup(function () {
           },
     joinCollaborationMethod: function(collaboration_id) {
           console.log("joinCollaborationMethod")
-          var cols = moi.call(this);
-          Collaboration.update({_id: collaboration_id}, { $addToSet: { collaborators:{$each: cols}, administrators:{$each: cols} }}, function (err, err2){
-                  console.log("joinCollaborationMethod Collaboration.update", collaboration_id, cols, err, err2)
-              }
-          );
-          return refreshUserProfileCollaborations(Meteor.users.findOne({_id: this.userId}));
+          var me = moi.call(this);
+
+          var col = Collaboration.find({_id: collaboration_id});
+          if (col.requiresAdministratorApprovalToJoin) {
+              Collaboration.update({_id: collaboration_id}, { $addToSet: { collaborators:{$each: me} }}, function (err, err2){
+                      console.log("joinCollaborationMethod Collaboration.update", collaboration_id, me, err, err2)
+                  }
+              );
+              return refreshUserProfileCollaborations(Meteor.users.findOne({_id: this.userId}));
+          } else {
+              throw new Meteor.Error("requires administrator approval", "You must have administrator approval to join this collaboration.");
+          }
       },
     applyCollaborationMethod: function(collaboration_id) {
           console.log("applyCollaborationMethod")

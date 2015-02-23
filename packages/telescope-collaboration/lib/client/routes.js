@@ -36,11 +36,22 @@ Meteor.startup(function () {
         if (cols.indexOf(this.params.name) < 0) {
             var col = Collaboration.findOne({name: this.params.name });
             if (col) {
-                if (confirm("You are not a member of the " + this.params.name + " collaboration. Would you like to join?"))
+                if (col.requiresAdministratorApprovalToJoin) {
+                    if (confirm("Would you like to apply for membership in  " + this.params.name + "?"))
+                        Meteor.user().profile.collaboration = Meteor.call('applyCollaborationMethod', col._id, function (err) {
+                            if (err) {
+                                console.log('applyCollaborationMethod error', err);
+                                alert("applyCollaborationMethod failed: " + err)
+                            } else {
+                                alert("You are now part of the collaboration")
+                                Router.go("collaborationListFocus", {name: this.params.name});
+                            }
+                        });
+                } else if (confirm("You are not a member of the " + this.params.name + " collaboration. Would you like to join?"))
                     Meteor.user().profile.collaboration = Meteor.call('joinCollaborationMethod', col._id, function (err) {
                         if (err) {
                             console.log('joinCollaborationMethod error', err);
-                            alert("joinCollaborationMethod failed")
+                            alert("joinCollaborationMethod failed: " + err)
                         } else {
                             alert("You are now part of the collaboration")
                             Router.go("collaborationListFocus", {name: this.params.name});

@@ -125,8 +125,6 @@ Meteor.startup(function() {
 
 
 getCollaborations = function() {
-    console.log("getCollaborations this.userId", this.userId);
-
     var user = null;
     if (Meteor.isClient) {
         user = Meteor.user();
@@ -142,12 +140,11 @@ getCollaborations = function() {
     var who = user.profile.collaborations
     if (who) {
         who.push(user.username);
-
         _.map(getEmailsFor(user), function(em) { who.push(em)})
-        console.log("getCollaborations", user, who);
     } else {
         who = [];
     }
+    console.log("getCollaborations", user._id, who);
     return who;
 }
 
