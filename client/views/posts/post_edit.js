@@ -135,7 +135,7 @@ Template[getTemplate('post_edit')].events({
 
       // Status
 
-      adminProperties.status = parseInt($('input[name=status]:checked').val());
+      adminProperties.status = STATUS_APPROVED ; // parseInt($('input[name=status]:checked').val());
 
       properties = _.extend(properties, adminProperties);
 

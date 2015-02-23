@@ -59,12 +59,17 @@ Meteor.startup(function () {
 
   Template.files.helpers( { 
       uploadedFiles : function() {
-         return Collections.Blobs.find( {post: { $exists: false }, owner: Meteor.userId()} );
+        var files1  = Collections.Blobs.find( {post: { $exists: false }, owner: Meteor.userId()} ).fetch();
+        if (this.medbookfiles) 
+            return files1.concat(Collections.Blobs.find( {_id: {$in: this.medbookfiles }}).fetch());
+        return files1;
       },
   });
 
   Template.postedFiles.helpers({
       medbookfiles : function() {
+         if (this.medbookfiles) 
+            return Collections.Blobs.find( {_id: {$in: this.medbookfiles }}).fetch();
          return Collections.Blobs.find({post: this._id});
       }
   });
