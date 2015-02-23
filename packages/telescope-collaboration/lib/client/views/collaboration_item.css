@@ -109,12 +109,18 @@
 }
 
 .collaboration-item {
-    left: 2px;
     background-color: lightsteelblue;
     border: 2px solid black;
     cursor: pointer;
-    margin: 10px!important;
-    padding: 10px!important;
+    margin: 4px!important;
+    padding: 8px!important;
+    width: 968px !important;
+
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  -ms-border-radius:5px;
+  -o-border-radius:5px;
+  border-radius:5px;
 }
 
 

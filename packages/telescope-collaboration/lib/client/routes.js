@@ -41,7 +41,7 @@ Meteor.startup(function () {
 
         // the collaboration does not exist
         if (col == null) {
-            alert( " + this.params.name + " collaboration does not exist.))
+            alert( this.params.name + " collaboration does not exist.");
             Router.go("collaborationList")
             return;
         }
@@ -154,14 +154,6 @@ Meteor.startup(function () {
         onAfterAction: function() { 
             Session.set("FocusName", this.params.name);
             console.log("FocusName", this.params.name);
-        }
-    } );
-
-    // Collaboration List
-    this.route('collaborationListCreate', {
-        path: '/collaboration/create/:name',
-        template: "collaborationGrid",
-        onAfterAction: function() {
         }
     } );
 
