@@ -94,7 +94,7 @@ Meteor.startup(function() {
     viewParameters.collaboration = function (terms) {
       return {
         find: {'collaboration': terms.collaboration},
-        options: {sort: {sticky: -1, score: -1}}
+        options: {sort: {sticky: -1, postedAt: -1}}
       };
     }
 

@@ -23,7 +23,7 @@ Categories = new Meteor.Collection("categories", {
 viewParameters.category = function (terms) { 
   return {
     find: {'categories.slug': terms.category},
-    options: {sort: {sticky: -1, score: -1}}
+    options: {sort: { postedAt: -1}}
   };
 }
 

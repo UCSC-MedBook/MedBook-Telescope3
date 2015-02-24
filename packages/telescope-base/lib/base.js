@@ -47,7 +47,7 @@ viewParameters = {}
 
 viewParameters.top = function (terms) {
   return {
-    options: {sort: {sticky: -1, score: -1}}
+    options: {sort: { postedAt: -1}}
   };
 }
 

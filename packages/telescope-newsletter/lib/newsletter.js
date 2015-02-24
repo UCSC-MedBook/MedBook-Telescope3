@@ -138,7 +138,7 @@ viewParameters.campaign = function (terms) {
         $gte: terms.after 
       }
     }, 
-    options: {sort: {sticky: -1, score: -1}}
+    options: {sort: { postedAt: -1}}
   };
 }
 
