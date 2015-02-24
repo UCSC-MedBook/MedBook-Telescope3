@@ -1,4 +1,6 @@
 .postTitle {
     font-size: 16px;
-    font-color: black;
+}
+.TwoHours {
+    color: #EC0000 !important;
 }

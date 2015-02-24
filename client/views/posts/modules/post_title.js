@@ -6,5 +6,12 @@ Template[getTemplate('postTitle')].helpers({
   postTarget: function() {
     // return !!this.url ? '_blank' : '';
     return '';
+  },
+  TwoHours: function() {
+     seconds = (Date.now() - this.createdAt)/1000;
+     if (seconds < 7200) {
+         return "TwoHours";
+     }
+     return "";
   }
 });
