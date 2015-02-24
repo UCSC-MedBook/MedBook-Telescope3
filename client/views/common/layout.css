@@ -1,0 +1,32 @@
+
+.PreviousNext { 
+  height: 120px; 
+  width: 20px; 
+  position: fixed; 
+  top: 200px;
+  z-index: 999;
+  display: none;
+}
+.template-post_page > .PreviousNext {
+  display: inline;
+}
+.Previous{ 
+  left: 150px;
+}
+.Next{ 
+  left: 1220px;
+}
+
+.PreviousNext a { 
+  display: block; 
+  padding: 5px 5px;
+  color: #fff; 
+  font-family: Arial, sans-serif; 
+  font-size: 120px; 
+  font-weight: bold; 
+  text-decoration: none; 
+}
+
+.PreviousNext a:hover { 
+  color: rgb(206,77,47); 
+}

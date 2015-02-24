@@ -4,6 +4,12 @@
   <div class="outer-wrapper {{currentPage}}">
     {{> UI.dynamic template=mobile_nav}}
     <div class="inner-wrapper template-{{pageName}}">
+      <div class="PreviousNext Previous">
+        <a class="GotoPrevious" href="#">&lang;</a>
+      </div>
+      <div class="PreviousNext Next">
+        <a class="GotoNext" href="#">&rang;</a>
+      </div>
       {{> UI.dynamic template=nav}}
       <div class="content-wrapper">
         {{> UI.dynamic template=error}}
