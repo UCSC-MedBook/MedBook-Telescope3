@@ -104,7 +104,7 @@ Meteor.startup(function () {
           var me = moi.call(this);
 
           var col = Collaboration.find({_id: collaboration_id});
-          if ( isAdminById(this.userId) || col.requiresAdministratorApprovalToJoin) {
+          if ( isAdminById(this.userId) || ! col.requiresAdministratorApprovalToJoin) {
               Collaboration.update({_id: collaboration_id}, { $addToSet: { collaborators:{$each: me} }}, function (err, err2){
                       console.log("joinCollaborationMethod Collaboration.update", collaboration_id, me, err, err2)
                   }
