@@ -1,5 +1,8 @@
 <template name="postContent">
   <div class="post-info">
+    <a href="{{profileUrl}}">
+        <span class="authorName">{{authorName}}</span>
+    </a>
     <h3 class="post-heading">
       {{#each postHeading}}
         {{> UI.dynamic template=getTemplate data=..}}

@@ -67,6 +67,9 @@ padding: 2px !important;
 .collaboration:hover > h2 > a {
   cursor:pointer;
 }
+.post-heading {
+    margin-top: 0px;
+}
 .post-heading:hover > a {
 }
 

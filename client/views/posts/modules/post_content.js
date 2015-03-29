@@ -18,6 +18,15 @@ Template[getTemplate('postContent')].helpers({
     time = this.status == STATUS_APPROVED ? this.postedAt : this.createdAt;
     return moment(time).format("MMMM Do, h:mm:ss a");
   },
+  authorName: function() {
+    return getAuthorName(this);
+  },
+  profileUrl: function(){
+    // note: we don't want the post to be re-rendered every time user properties change
+    var user = Meteor.users.findOne(this.userId, {reactive: false});
+    if(user)
+      return getProfileUrl(user);
+  },
   userAvatar: function(){
     // THIS FUNCTION IS DEPRECATED -- package bengott:avatar is used instead.
     var author = Meteor.users.findOne(this.userId, {reactive: false});
