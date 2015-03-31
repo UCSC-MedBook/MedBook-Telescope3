@@ -188,7 +188,7 @@ Template[getTemplate('post_submit')].hooks( {
           $('#title').val(parent.medbookpost.title);
           $('#body').val(parent.medbookpost.body);
       }
-      var $svg = parent != window && parent.svg ? parent.getSvg() : null;
+      var $svg = (parent != window) && parent.getSvg ? parent.getSvg() : null;
       if ($svg) {
           var width = $svg.width();
           var height = $svg.height();
