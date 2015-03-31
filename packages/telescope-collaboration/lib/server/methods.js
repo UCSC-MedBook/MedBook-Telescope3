@@ -4,7 +4,7 @@ function MedBookPost(post,userId) {
 
     // Basic Properties
 
-    console.log("MedBookPost", userId, post);
+    console.log("MedBookPost()", userId, post);
     if (userId == null)
         return null;
 
@@ -50,18 +50,15 @@ var moi = function() {
         _.map( getEmails(), function(em) { cols.push(em);});
     }
 
-    console.log("moi", cols);
     return cols;
 }
 
 
 
 function refreshUserProfileCollaborations(user) {
-    console.log(" user: ", user)
     if (user == null)
         return;
     var emails = getEmailsFor(user);
-    console.log( "refreshUserProfileCollaborations emails", emails);
 
     var collaborationLookupQueue = emails;
     var collaborationSet = {};
@@ -69,7 +66,6 @@ function refreshUserProfileCollaborations(user) {
     // transitive closure queue method
     for (var i = 0; i < collaborationLookupQueue.length; i++) {
         var parent = collaborationLookupQueue[i];
-        console.log("parent", parent);
         Collaboration.find({collaborators: parent}, {fields: {name:1}}).forEach(function(col) {
             if (!(col.name in collaborationSet)) {
                 collaborationSet[col.name] = col._id; 
@@ -79,9 +75,7 @@ function refreshUserProfileCollaborations(user) {
     }
 
     var collaborations = Object.keys(collaborationSet).sort();
-    console.log( "refreshUserProfileCollaborations collaborations", user._id,  collaborations);
     ret = Meteor.users.update( user._id, {$set: { "profile.collaborations": collaborations}});
-    console.log("update ret", ret);
     return collaborations;
 }
 
@@ -91,7 +85,6 @@ Meteor.startup(function () {
 
   Meteor.methods({
     createCollaborationMethod: function(collaboration){
-              console.log(collaboration)
               if (!Meteor.user())
                   throw new Meteor.Error(i18n.t('You need to login to add a new collaboration.'));
               collaboration.slug = slugify(collaboration.name);
@@ -100,13 +93,11 @@ Meteor.startup(function () {
               return collaboration.name;
           },
     joinCollaborationMethod: function(collaboration_id) {
-          console.log("joinCollaborationMethod")
           var me = moi.call(this);
 
           var col = Collaboration.find({_id: collaboration_id});
           if ( isAdminById(this.userId) || ! col.requiresAdministratorApprovalToJoin) {
               Collaboration.update({_id: collaboration_id}, { $addToSet: { collaborators:{$each: me} }}, function (err, err2){
-                      console.log("joinCollaborationMethod Collaboration.update", collaboration_id, me, err, err2)
                   }
               );
               return refreshUserProfileCollaborations(Meteor.users.findOne({_id: this.userId}));
@@ -115,18 +106,14 @@ Meteor.startup(function () {
           }
       },
     applyCollaborationMethod: function(collaboration_id) {
-          console.log("applyCollaborationMethod")
           var cols = moi.call(this);
           Collaboration.update({_id: collaboration_id}, { $addToSet: { requests:{$each: cols} }}, function (err, err2){
-                  console.log("applyCollaborationMethod Collaboration.update", collaboration_id, cols, err, err2)
               }
           );
       },
     leaveCollaborationMethod: function(collaboration_id) {
-        console.log("leaveCollaborationMethod")
         var cols = moi.call(this);
         Collaboration.update({_id: collaboration_id}, { $pull: { collaborators: {$in: cols}, administrators: {$in: cols }}}, function (err, err2){
-              console.log("joinCollaborationMethod Collaboration.update", collaboration_id, cols, err, err2)
             }
         );
           refreshUserProfileCollaborations(Meteor.users.findOne({_id: this.userId}));
@@ -170,7 +157,6 @@ Meteor.startup(function () {
         data = String(data)
         var token = null;
         if (data) {
-            console.log("medbookUser", data);
             var qs = querystring.parse(data);
             if (qs && qs.token)
                 token = qs.token;
@@ -187,7 +173,6 @@ Meteor.startup(function () {
         if (user && user.emails && user.emails.length > 0)
             email = user.emails[0].address
 
-        console.log("user.services", user.services);
         if (user.services && user.services.google && user.services.google.email)
             email = user.services.google.email;
         if (email == null)
@@ -202,7 +187,6 @@ Meteor.startup(function () {
         };
 
         var response = JSON.stringify(responseObj);
-        console.log("medbookUser response=", response);
         this.setStatusCode(200)
         return response;
     },
@@ -210,8 +194,6 @@ Meteor.startup(function () {
         console.log("HTTP medbookPost data:",data);
         var post = {};
         var token = fetchToken(this.requestHeaders);
-        if (token)
-            console.log("found token in headers");
 
         if (this.query && 'title' in this.query) {
             post = this.query;
@@ -223,11 +205,9 @@ Meteor.startup(function () {
                 token = qs.token
         }
         if ('token' in data) {
-            console.log("found token in data",data.token);
             token = data.token
         }
         if ('post' in data) {
-			console.log('post')
 			post = data.post
         }
         if (token != null) {
@@ -262,7 +242,6 @@ Meteor.startup(function () {
         post.upvotes = 0;
 
         if (this.userId == null) {
-            console.log("could not match token in database");
             this.setStatusCode(401); // Unauthorized
             return;
         }
@@ -279,8 +258,8 @@ Meteor.startup(function () {
 
   Accounts.onLogin(
       function(args) {
-        console.log("onLogin", args.user.username);
-          refreshUserProfileCollaborations(args.user);
+        console.log("onLogin", args.user.username, Date.now());
+        refreshUserProfileCollaborations(args.user);
       }
   );
 
