@@ -60,12 +60,17 @@ Meteor.startup(function () {
   Template.files.helpers( { 
       uploadedFiles : function() {
         var files1  = Collections.Blobs.find( {post: { $exists: false }, owner: Meteor.userId()} ).fetch();
+
+        if (parent != window && parent.medbookpost != null && 
+            parent.medbookpost.medbookfiles != null && parent.medbookpost.medbookfiles.length > 0) {
+                files1 = files1.concat(parent.medbookpost.medbookfiles);
+        }
+
         if (this.medbookfiles) 
             return files1.concat(Collections.Blobs.find( {_id: {$in: this.medbookfiles }}).fetch());
         return files1;
       },
      curl: function () {
-        debugger;
         var filename = $('.filename').val();
 
         if (filename == null || filename.length === 0) {

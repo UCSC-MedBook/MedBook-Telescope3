@@ -187,6 +187,7 @@ Template[getTemplate('post_submit')].hooks( {
       if (parent.medbookpost) {
           $('#title').val(parent.medbookpost.title);
           $('#body').val(parent.medbookpost.body);
+          $('#medbookfiles').val(parent.medbookpost.medbookfiles.join(","));
       }
       var $svg = (parent != window) && parent.getSvg ? parent.getSvg() : null;
       if ($svg) {
