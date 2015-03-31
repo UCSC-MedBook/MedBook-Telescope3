@@ -144,7 +144,6 @@ getCollaborations = function() {
     } else {
         who = [];
     }
-    console.log("getCollaborations", user._id, who);
     return who;
 }
 
