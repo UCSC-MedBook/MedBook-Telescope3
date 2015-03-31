@@ -50,9 +50,6 @@ Package.onUse(function (api) {
     'lib/client/views/select2.css',
     'lib/client/views/select2.png',
 
-    'client/views/posts/post_submit.js',
-    'client/views/posts/post_submit.html',
-
   ], ['client']);
 
   api.add_files(['lib/server/publications.js', 'lib/server/methods.js'], ['server']);
