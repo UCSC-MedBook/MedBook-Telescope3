@@ -1,3 +1,4 @@
+export MONGO_URL=mongodb://localhost:27017/MedBook
 export MAIL_URL="smtp://medbookmail@gmail.com:workaroundtheclock:medbookmail@smtp.gmail.com:465"
 export ROOT_URL=http://localhost:10001/
 export NODE_OPTIONS='--debug'
