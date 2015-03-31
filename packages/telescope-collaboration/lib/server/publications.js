@@ -3,7 +3,7 @@ Meteor.publish('collaboration', function() {
           return Collaboration.find( {isUnlisted: false} );
 
       var user = Meteor.users.findOne({_id: this.userId});
-      console.log("publish collabration", user);
+      // console.log("publish collabration", user);
       var collaborations = user.profile.collaborations;
       var emails = getEmailsForId(this.userId);
 
@@ -45,9 +45,9 @@ Meteor.startup(function() {
 
 Meteor.methods({
   addCollaboratorToCollaboration : function(params) {
-      console.log("addCollaboratorToCollaboration method")
+      // console.log("addCollaboratorToCollaboration method")
     var ret = Posts.update({_id: params.post_id}, {$addToSet: {collaboration: params.collaboration_name} }, function foo(err) {
-          console.log("addCollaboratorToCollaboration Posts update params,err=", params, err);
+          // console.log("addCollaboratorToCollaboration Posts update params,err=", params, err);
         }
     );
   },

@@ -1,4 +1,5 @@
 Meteor.startup(function() {
+
     Template[getTemplate('post_page2')].replaces(getTemplate('post_page'))
 
     Template[getTemplate('post_page2')].helpers({
@@ -13,12 +14,21 @@ Meteor.startup(function() {
       },
       comment_list: function () {
         return getTemplate('comment_list');
+      },
+      frog: function () {
+        debugger;
       }
     });
 
-    Template[getTemplate('post_page2')].rendered = function(){
-      $('body').scrollTop(0);
-      if(this.data) // XXX
-        document.title = $(".post-title").text();
-    };
+    Template[getTemplate('post_page2')].helpers({
+        rendered: function(){
+          $('body').scrollTop(0);
+          if(this.data) // XXX
+            document.title = $(".post-title").text();
+          debugger;
+          if (this.svg) {
+          }
+       }
+       }
+       );
 });

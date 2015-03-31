@@ -69,6 +69,10 @@ Template[getTemplate('post_submit')].events({
       userId: $('#postUser').val(),
       status: parseInt($('input[name=status]:checked').val())
     };
+    var $svg = $('svg');
+    if ($svg.length > 0) {
+        properties.svg =  $svg.parent().html(); //  depend on the SVG to be the only element in the div 
+    }
 
     // PostedAt
 

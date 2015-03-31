@@ -94,7 +94,10 @@ postSchemaObject = {
     type: String, // XXX
     optional: true
   },
-
+  svg: {
+    type: String, // XXX
+    optional: true
+  },
   collaboration: {
       type: [String],
       minCount: 1,
@@ -193,6 +196,7 @@ Meteor.methods({
   post: function(post){
     var title = cleanUp(post.title),
         body = post.body,
+        svg = post.svg,
         userId = this.userId,
         user = Meteor.users.findOne(userId),
         timeSinceLastPost=timeSinceLast(user, Posts),
