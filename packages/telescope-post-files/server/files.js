@@ -281,6 +281,10 @@ var requestRange = function(req, fileSize) {
  * HTTP GET request handler
  */
 httpGetHandler = function httpGetHandler(ref) {
+
+ console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
+
   var self = this;
   // Once we have the file, we can test allow/deny validators
   // XXX: pass on the "share" query eg. ?share=342hkjh23ggj for shared url access?

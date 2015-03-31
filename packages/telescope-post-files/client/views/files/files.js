@@ -54,7 +54,7 @@ Meteor.startup(function () {
             return Template["handsontablePreview"];
 
         return Template["noPreview"];
-     }
+     },
   });
 
   Template.files.helpers( { 
@@ -64,6 +64,16 @@ Meteor.startup(function () {
             return files1.concat(Collections.Blobs.find( {_id: {$in: this.medbookfiles }}).fetch());
         return files1;
       },
+     curl: function () {
+        debugger;
+        var filename = $('.filename').val();
+
+        if (filename == null || filename.length === 0) {
+          filename = 'example.txt';
+        }
+
+        return 'curl "' + Meteor.absoluteUrl('cfs/files/' + Collections.Blobs.name) + '?filename=' + filename + '" -H "Content-Type: text/plain" -T "' + filename + '"';
+      }
   });
 
   Template.postedFiles.helpers({

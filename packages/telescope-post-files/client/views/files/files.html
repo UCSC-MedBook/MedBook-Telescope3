@@ -22,6 +22,7 @@
           <ul class="nav nav-tabs fileTabs" >
             <li class="active"><a href="#uploadFiles" data-toggle="tab">Upload files</a></li>
             <li><a href="#uploadDirs" data-toggle="tab">Upload directories</a></li>
+            <li><a href="#uploadServer" data-toggle="tab">Upload from your server</a></li>
           </ul>
         </div>
         <div class="tab-content">
@@ -29,6 +30,12 @@
                 Choose Files:
                 <input type="file" multiple class="any">
           </span>   
+          <span id="uploadServer" class="tab-pane" style="background-color:white;" >
+                <h1> FEATURE NOT YET READY</h1>
+                <p>Or enter the file name here and then copy, paste, and execute the CURL command below in your terminal window, in the directory that contains the file.</p>
+                <input style="width:100px" type="text" class="filename">
+                <p style="margin-top: 20px"><code>{{curl}}</code></p>
+          </span>
           <span id="uploadDirs" class="tab-pane" style="background-color:white;" >
                 Choose Directories:
                 <input type="file" webkitdirectory  multiple class="any">
@@ -52,6 +59,7 @@
       <div data-_id="{{getid}}" class="MedBookFile"> 
           <a href="{{PostUrl}}" class="btn btn-danger btn-xs" role="button" target="_blank">Download</a>
           {{> FS.DeleteButton class="btn btn-danger btn-xs"}}
+          <a href="/wrangle/{{getid}}" class="btn btn-danger btn-xs" role="button" target="_blank">Wrangle</a>
           {{> previewFile}}
       </div>
   {{else}}
