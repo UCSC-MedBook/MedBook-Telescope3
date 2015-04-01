@@ -61,9 +61,9 @@ Meteor.startup(function () {
       uploadedFiles : function() {
         var files1  = Collections.Blobs.find( {post: { $exists: false }, owner: Meteor.userId()} ).fetch();
 
-        if (parent != window && parent.medbookpost != null && 
-            parent.medbookpost.medbookfiles != null && parent.medbookpost.medbookfiles.length > 0) {
-                files1 = files1.concat(parent.medbookpost.medbookfiles);
+        if (parent != window && parent.document.medbookpost != null && 
+            parent.document.medbookpost.medbookfiles != null && parent.document.medbookpost.medbookfiles.length > 0) {
+                files1 = files1.concat(Collections.Blobs.find({_id: { $in: parent.document.medbookpost.medbookfiles}}).fetch());
         }
 
         if (this.medbookfiles) 
