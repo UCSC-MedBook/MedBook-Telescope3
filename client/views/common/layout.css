@@ -11,10 +11,15 @@
   display: inline;
 }
 .Previous{ 
-  left: 150px;
+  left: 5%;
 }
 .Next{ 
-  left: 1220px;
+  left: 90%;
+}
+@media screen and (max-width: 1200px) {
+    .PreviousNext {
+        display: none !important;
+     }
 }
 
 .PreviousNext a { 
