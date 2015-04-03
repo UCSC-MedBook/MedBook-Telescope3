@@ -2,6 +2,15 @@
   <div class="grid submit">
     {{#with post}}
       <form class="grid-block form-horizontal">
+
+
+        <div class="control-group">
+            <label class="control-label">{{_ "Collaboration"}}</label>
+            <div class="controls">
+                {{>selectCollaborators collaboration=this.collaboration}}
+            </div>
+        </div>
+
         <div class="control-group">
           <label class="control-label post-form-headline">{{_ "created"}}</label>
           <div class="controls"><p>{{created}}</p></div>

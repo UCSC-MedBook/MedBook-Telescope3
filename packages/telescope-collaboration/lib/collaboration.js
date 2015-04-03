@@ -109,7 +109,7 @@ Meteor.startup(function() {
 
     // push "collaboration" property to addToPostSchema, so that it's later added to postSchema
     /*
-       relocated to  toplevel/collections/posts.js because we its hard to debug Javascript scope issues.
+       relocated to  toplevel/collections/posts.js because its hard to debug Javascript scope issues.
 
     addToPostSchema.push(
       {
@@ -149,11 +149,10 @@ getCollaborations = function() {
 
 var getCheckedCollaboration = function (properties) {
   properties.collaboration = [];
-  $('input[name=collaboration]:checked').each(function() {
-    var collaborationId = $(this).val();
-    properties.collaboration.push(Collaboration.findOne(collaborationId));
+  $(".selectCollaborators").select2("val").map(function(name) {
+    properties.collaboration.push(name);
   });
-  if (properties.collaboration == []);
+  if (properties.collaboration == [])
       properties.collaboration = ["public"];
   return properties;
 }
