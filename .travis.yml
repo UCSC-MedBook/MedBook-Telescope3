@@ -47,7 +47,7 @@ before_install:
   - "meteor --port 3000 &"
 
   # give Meteor some time to download packages, init data, and to start
-  - "sleep 90"
+  - "sleep 120"
 
 # we're not installing starrynight globally, so we run the script from the local node_modules folder
 script: "starrynight -survey acceptance"
