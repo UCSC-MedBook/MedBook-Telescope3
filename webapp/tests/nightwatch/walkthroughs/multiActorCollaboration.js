@@ -2,7 +2,7 @@
 // http://nightwatchjs.org/api
 
 module.exports = {
-  "Layout & Static Pages" : function (client) {
+  "MultiActor Collaboration" : function (client) {
     client
       .url("http://localhost:3000")
       .resizeWindow(1024, 768)

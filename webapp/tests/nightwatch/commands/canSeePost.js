@@ -1,4 +1,4 @@
-exports.command = function() {
+exports.command = function(username, postTitle) {
   this
     .verify.elementPresent("#foo")
 

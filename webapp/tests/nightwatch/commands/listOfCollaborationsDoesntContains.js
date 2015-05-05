@@ -1,4 +1,4 @@
-exports.command = function() {
+exports.command = function(collaborationName) {
   this
     .verify.elementPresent("#foo")
 
