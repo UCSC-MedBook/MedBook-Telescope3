@@ -1,23 +1,17 @@
-exports.command = function(email, password) {
+exports.command = function(username, email, password) {
 
   this
-    .waitForElementVisible('#entrySignUp', 1000)
-      .verify.elementPresent("#signUpPageEmailInput")
-      .verify.elementPresent("#signUpPagePasswordInput")
-      .verify.elementPresent("#signUpPagePasswordConfirmInput")
+    .waitForElementVisible('#at-pwd-form', 1000)
+    .verify.elementPresent("#at-field-username")
+      .verify.elementPresent("#at-field-email")
+      .verify.elementPresent("#at-field-password")
+      .verify.elementPresent("#at-btn")
 
-      .clearValue("#signUpPageEmailInput")
-      .clearValue("#signUpPagePasswordInput")
-      .clearValue("#signUpPagePasswordConfirmInput")
+      .setValue("#at-field-username", username)
+      .setValue("#at-field-email", email)
+      .setValue("#at-field-password", password)
 
-      // .setValue("#signUpPageUsernameInput", "Jane Doe")
-      .setValue("#signUpPageEmailInput", email)
-      .setValue("#signUpPagePasswordInput", password)
-      .setValue("#signUpPagePasswordConfirmInput", password)
-
-      .click("#signUpPageJoinNowButton").pause(200)
-
-
+    .click("#at-btn").pause(1000)
 
   return this; // allows the command to be chained.
 };

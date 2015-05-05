@@ -23,8 +23,8 @@
 /*================ MIXINS =================*/
 @mixin vcenter {
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  //top: 50%;
+  //transform: translateY(-50%);
 }
 @mixin animate($property: all){
   transition: $property, 300ms, 0ms, ease-out;

@@ -1,8 +1,12 @@
-exports.command = function(email, password) {
+exports.command = function() {
 
   this
-    .verify.elementPresent("#logoutButton")
-    .click("#logoutButton").pause(500)
+      .click("#currentUsername").pause(300)
+
+      .verify.elementPresent("#myAccountLink")
+      .verify.elementPresent("#signOutButton")
+
+      .click("#signOutButton").pause(500)
 
   return this; // allows the command to be chained.
 };
