@@ -1,4 +1,4 @@
-exports.command = function(email, password) {
+exports.command = function() {
   this
     .verify.elementPresent("#foo")
 
