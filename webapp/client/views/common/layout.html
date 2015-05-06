@@ -11,7 +11,7 @@
         <a class="GotoNext" href="#">&rang;</a>
       </div>
       {{> UI.dynamic template=nav}}
-      <div class="content-wrapper">
+      <div id="mainContent" class="content-wrapper">
         {{> UI.dynamic template=error}}
         {{#each heroModules}}
           {{> UI.dynamic template=getTemplate}}

@@ -1,5 +1,5 @@
 <template name="post_submit">
-  <div class="grid submit post_submit">
+  <div id="postSubmitPage" class="grid submit post_submit">
     <form class="grid-block form-horizontal">
     <h3 style="text-align:center; margin:15px!important;" >Post a Finding</h3>
 
@@ -16,15 +16,15 @@
         <div class="controls"><input id="title" type="text" value="" /><a href="#" class="get-title-link inline-link">{{_ "Suggest title"}}</a></div>
       </div>
       <div class="control-group">
-        <label class="control-label">{{_ "Body"}}</label>
-        <div class="controls" id="editor"><textarea id="body" value="" class="input-xlarge"></textarea></div>
-        <input id="medbookfiles" value="" hidden>
+          <label class="control-label">{{_ "URL"}}</label>
+          <div class="controls"><input id="url" type="text" value="" /></div>
+      </div>
+      <div class="control-group">
+          <label class="control-label">{{_ "Body"}}</label>
+          <textarea id="postBody" class="form-control"></textarea>
+          <input id="medbookfiles" value="" hidden>
       </div>
 
-        <div class="control-group">
-            <label class="control-label">{{_ "URL"}}</label>
-            <div class="controls"><input id="url" type="text" value="" /></div>
-        </div>
 
 
 <!--
@@ -69,7 +69,7 @@
             <label class="radio inline">
               <input id="status_approved" type="radio" value="2" name="status" checked /> {{_ "Approved"}}
             </label>
-            <label class="radio inline">  
+            <label class="radio inline">
               <input id="status_rejected" type="radio" value="3" name="status"/> {{_ "Rejected"}}
             </label>
           </div>
@@ -90,7 +90,7 @@
       <div id="postedContent"></div>
       {{>files}}
       <div class="form-actions">
-        <input type="submit" class="button" value="{{_ "Submit"}}" />
+        <input id="submitNewPostButton" type="submit" class="button" value="{{_ "Submit"}}" />
       </div>
       <!-- {{> folder}} MedBook -->
     </form>

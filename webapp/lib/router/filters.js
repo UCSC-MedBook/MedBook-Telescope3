@@ -38,7 +38,7 @@ Router._filters = {
       this.next();
     }
   },
-  isLoggedIn: AccountsTemplates.ensureSignedIn,
+  //isLoggedIn: AccountsTemplates.ensureSignedIn,
 
   isLoggedOut: function() {
     if(Meteor.user()){

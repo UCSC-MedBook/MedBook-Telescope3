@@ -1,5 +1,5 @@
 <template name="post_item">
-  <div class="post vvv {{rankClass}} {{#if sticky}}sticky{{/if}} {{inactiveClass}}" id="{{_id}}">
+  <article id="{{_id}}" class="post vvv {{rankClass}} {{#if sticky}}sticky{{/if}} {{inactiveClass}}">
     <div class="modules-group left-modules">
       <div class="inner">
       <ul style="list-style-type: none;right: 50%;">
@@ -32,5 +32,5 @@
       {{/each}}
       </div>
     </div>
-  </div>
+  </article>
 </template>

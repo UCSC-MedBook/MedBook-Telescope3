@@ -1,4 +1,18 @@
 Template[getTemplate('nav')].helpers({
+  isLoggedIn: function(){
+    if(Meteor.user()){
+      return true;
+    }else{
+      return false;
+    }
+  },
+  getUsername: function(){
+    if(Meteor.user()){
+      return Meteor.user().username;
+    }else{
+      return "";
+    }
+  },
   primaryNav: function () {
     return primaryNav;
   },
@@ -28,7 +42,7 @@ Template[getTemplate('nav')].helpers({
   },
   logo_top: function(){
     return Math.floor((70-getSetting('logoHeight'))/2);
-  },  
+  },
   logo_offset: function(){
     return -Math.floor(getSetting('logoWidth')/2);
   },
@@ -58,12 +72,24 @@ Template[getTemplate('nav')].rendered = function(){
 };
 
 Template[getTemplate('nav')].events({
+  'click #newPostLink': function(){
+    Router.go('/submit');
+  },
+  'click #myAccountLink':function(){
+    Router.go('/account', function(error, result){
+      console.log("[click #myAccountLink] error", error);
+    });
+  },
+  'click #signOutButton': function(){
+    Meteor.logout();
+    Router.go("/");
+  },
   'mouseenter #MedBookImage': function(e) {
     // $('#MedBookMenuPoint').load("/menu")
 
     $.ajax({
       url: "/menu",
-      success: function (data) { $(data).appendTo('body'); }, 
+      success: function (data) { $(data).appendTo('body'); },
       dataType: 'html'
     });
 

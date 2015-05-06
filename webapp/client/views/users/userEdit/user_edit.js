@@ -30,7 +30,11 @@ Template[getTemplate('user_edit')].helpers({
     return getUserSetting('notifications.replies', '', this) ? 'checked' : '';
   },
   hasPassword: function () {
-    return hasPassword(Meteor.user());
+    if(Meteor.user()){
+      return hasPassword(Meteor.user());
+    }else{
+      return false;
+    }
   }
 });
 

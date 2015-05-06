@@ -60,10 +60,10 @@ PostsListController = RouteController.extend({
           addCollaborationQuery(parameters.find);
       }
     }
-    window.pf = parameters.find; 
+    window.pf = parameters.find;
     console.log("posts find", parameters.find, parameters.options);
     var posts = Posts.find(parameters.find, parameters.options);
-    
+
     // Incoming posts
     /*
     parameters.find.createdAt = { $gt: Session.get('listPopulatedAt') };
@@ -176,7 +176,7 @@ PostsDigestController = RouteController.extend({
 
 PostPageController = RouteController.extend({
   fastRender:true,
-  
+
   template: getTemplate('post_page'),
 
   waitOn: function() {
@@ -284,7 +284,7 @@ Meteor.startup(function () {
       this.next();
     },
     waitOn: function () {
-      return coreSubscriptions.subscribe('postedFiles', this.params._id)
+      //return coreSubscriptions.subscribe('postedFiles', this.params._id)
     }
   });
 
@@ -303,7 +303,7 @@ Meteor.startup(function () {
     template: getTemplate('post_edit'),
     waitOn: function () {
       return [
-        coreSubscriptions.subscribe('postedFiles', this.params._id),
+        //coreSubscriptions.subscribe('postedFiles', this.params._id),
         coreSubscriptions.subscribe('singlePost', this.params._id),
         coreSubscriptions.subscribe('allUsersAdmin')
       ];
@@ -318,24 +318,31 @@ Meteor.startup(function () {
   });
 
   // Post Submit
-  Router.route('/submit', {
+  /*Router.route('/submit', {
     name: 'post_submit',
+    template: 'post_submit',
     template: getTemplate('post_submit'),
     waitOn: function () {
       return [
           coreSubscriptions.subscribe('uploadedFiles'),
-          coreSubscriptions.subscribe('allUsersAdmin') 
+          coreSubscriptions.subscribe('allUsersAdmin')
       ];
     }
+  });*/
+
+  Router.route('/submit', {
+    name: 'post_submit',
+    template: 'post_submit'
   });
+
   Router.route('/post', {
     name: 'post_external',
     template: getTemplate('post_submit'),
     layoutTemplate: 'post_external',
     waitOn: function () {
       return [
-          coreSubscriptions.subscribe('uploadedFiles'),
-          coreSubscriptions.subscribe('allUsersAdmin') 
+          //coreSubscriptions.subscribe('uploadedFiles'),
+          coreSubscriptions.subscribe('allUsersAdmin')
       ];
     }
   });
