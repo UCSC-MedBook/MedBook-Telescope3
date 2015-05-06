@@ -1,5 +1,6 @@
 <template name="nav">
   <header class="header">
+
     <nav class="navbar navbar-default navbar-fixed-top">
       <ul class="nav navbar-nav">
         <li>
@@ -13,13 +14,28 @@
           <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">View <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li id="filterTopPosts"><a href="#">Top</a></li>
-                <li id="filterNewPosts"><a href="#">New</a></li>
-                <li id="filterBestPosts"><a href="#">Best</a></li>
+                <li id="filterTopPosts"><a href="/top">Top</a></li>
+                <li id="filterNewPosts"><a href="/new">New</a></li>
+                <li id="filterBestPosts"><a href="/best">Best</a></li>
+                <li class="divider"></li>
+                <li id="filterDailyPosts"><a href="/daily">Daily Posts</a></li>
+              </ul>
+          </li>
+          <li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li id="logsButton"><a href="/logs">Logs</a></li>
+                <li id="collaborationButton"><a href="/collaboration">Collaborations</a></li>
+                <li id="categoriesButton"><a href="/categories">Categories</a></li>
+                <li id="pendingButton"><a href="/pending">Pending</a></li>
+                <li id="allUsersButton"><a href="/all-users">All Users</a></li>
+                <li id="settingsButton"><a href="/settings">Settings</a></li>
+                <li id="toolboxButton"><a href="/toolbox">Toolbox</a></li>
                 <li class="divider"></li>
                 <li id="filterDailyPosts"><a href="#">Daily Posts</a></li>
               </ul>
           </li>
+
         {{/if}}
       </ul>
       <form class="navbar-form navbar-left" role="search">
@@ -38,9 +54,7 @@
                 <li><a id="signOutButton" href="#">Sign Out</a></li>
               </ul>
           </li>
-          <li id="submitPostMenuItem">
-            {{> submitButton}}
-          </li>
+          <li id="newPostLink"><a href="/submit">Post</a></li>
         {{else}}
           <li id="signInLink"><a href="/sign-in">Sign In</a></li>
           <li id="signUpLink"><a href="/sign-up">Sign Up</a></li>
@@ -48,11 +62,12 @@
       </ul>
     </nav>
 
+
     <a href="#menu" class="mobile-only mobile-menu-button button">
       <svg height="24px" id="Layer_1" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path class="hamburger" d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/></svg>
     </a>
+  <!--
 
-    <!--
     {{#if logo_url}}
       <h1 class="logo logo-image header-module">
         <a href="/">

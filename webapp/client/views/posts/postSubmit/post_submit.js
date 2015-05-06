@@ -64,14 +64,15 @@ Template[getTemplate('post_submit')].events({
 
     var properties = {
       title: $('#title').val(),
-      body: instance.editor.exportFile(),
+      body: $('#postBody').val(),
+      //body: instance.editor.exportFile(),
       sticky: $('#sticky').is(':checked'),
       userId: $('#postUser').val(),
       status: parseInt($('input[name=status]:checked').val())
     };
     var $svg = $('svg');
     if ($svg.length > 0) {
-        properties.svg =  $svg.parent().html(); //  depend on the SVG to be the only element in the div 
+        properties.svg =  $svg.parent().html(); //  depend on the SVG to be the only element in the div
     }
 
     // PostedAt
@@ -133,7 +134,7 @@ Template[getTemplate('post_submit')].events({
         }
       });
     } else {
-      $(e.target).removeClass('disabled');      
+      $(e.target).removeClass('disabled');
     }
 
   },
@@ -185,7 +186,7 @@ Template[getTemplate('post_submit')].events({
 Template[getTemplate('post_submit')].hooks( {
   rendered: function() {
       if (parent.document.medbookpost) {
-          var mp = parent.document.medbookpost; 
+          var mp = parent.document.medbookpost;
           $('#title').val(mp.title);
           $('#body').val(mp.body);
           $('#medbookfiles').val(mp.medbookfiles.join(","));
@@ -196,10 +197,9 @@ Template[getTemplate('post_submit')].hooks( {
           var height = $svg.height();
           var html = $svg.html();
 
-          $('#postedContent').html("<div style='border:1px solid black;width:800;height:400px'> " 
+          $('#postedContent').html("<div style='border:1px solid black;width:800;height:400px'> "
             + '<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="100%" height="100%" viewBox="0 0 ' + width + ' ' +  height + '" id="svg2" version="1.1" inkscape:version="0.48.0 r9654">'
             + html + "</svg> </div>");
       }
   }
 });
-

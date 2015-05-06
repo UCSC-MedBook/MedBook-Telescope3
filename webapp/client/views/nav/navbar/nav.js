@@ -72,6 +72,9 @@ Template[getTemplate('nav')].rendered = function(){
 };
 
 Template[getTemplate('nav')].events({
+  'click #newPostLink': function(){
+    Router.go('/submit');
+  },
   'click #myAccountLink':function(){
     Router.go('/account', function(error, result){
       console.log("[click #myAccountLink] error", error);
