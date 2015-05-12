@@ -1,4 +1,4 @@
-/*// add tests to this file using the Nightwatch.js API
+// add tests to this file using the Nightwatch.js API
 // http://nightwatchjs.org/api
 
 module.exports = {
@@ -7,9 +7,20 @@ module.exports = {
       .url("http://localhost:3000")
       .resizeWindow(1024, 768)
 
+      .verify.elementPresent("#signInLink")
+      .click("#signInLink").pause(300)
+
+      .signIn("janedoe123", "janedoe123")
+
+
       .signIn("housemd")
+      .reviewCollaborationListPage()
       .listOfCollaborationsDoesntContain("My Foo Collaboration")
-      .canMakeCollaboration("housemd", "My Foo Collaboration")
+
+
+
+
+      /*.canMakeCollaboration("housemd", "My Foo Collaboration")
       .makesCollaboration("housemd", "My Foo Collaboration")
       .listOfCollaborationsContains("My Foo Collaboration")
       .collaborationHasPost("My Foo Collaboration", "Post A")
@@ -34,8 +45,8 @@ module.exports = {
       .signOut("housemd")
       .signIn("thirteen")
       .canNotSeePost("thirteen", "Post A")
-      .signOut('thirteen')
+      .signOut('thirteen')*/
 
       .end();
   }
-};*/
+};
