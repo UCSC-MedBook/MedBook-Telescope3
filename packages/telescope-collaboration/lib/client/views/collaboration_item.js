@@ -38,6 +38,8 @@ function Sel()  {
 
     $(".collaboratorListClass").select2({tags: names});
     $(".form-control[name*='.']").select2({tags: names});
+    $(".collaboratorListClass").addClass("allowToGrow");
+    $(".form-control[name*='.']").addClass("allowToGrow");
 
 
 }

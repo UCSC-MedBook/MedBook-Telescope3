@@ -122,3 +122,6 @@ padding: 2px !important;
   color:#e71e2f;
   float:relative;
 }
+.allowToGrow {
+   height: auto! important;
+}
