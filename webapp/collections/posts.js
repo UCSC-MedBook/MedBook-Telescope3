@@ -301,7 +301,8 @@ Meteor.methods({
     post._id = Posts.insert(post);
     console.log("after insert post.medbookfiles", post.medbookfiles);
 
-    console.log("find after insert post.medbookfiles", Posts.find({_id: post._id}))
+    console.log("find after insert post.medbookfiles", Posts.find({_id: post._id}).fetch())
+
 
     // ------------------------------ Callbacks ------------------------------ //
 

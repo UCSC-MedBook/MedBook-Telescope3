@@ -19,14 +19,14 @@ module.exports = {
 
       .sectionBreak("B. Home Page")
       .verify.elementPresent("#collaborationListButton")
-      .click("#collaborationListButton").pause(300)
+      .click("#collaborationListButton").pause(1000)
 
 
       .sectionBreak("C. List of Collaborations")
       .reviewCollaborationListPage("My Foo Collaboration")
 
       .sectionBreak("D. Add a Collaboration")
-      .click("#addCollaborationButton").pause(300)
+      .click("#addCollaborationButton").pause(500)
       .reviewAddCollaborationPage(false, false, false, false, false, false, false)
       .addCollaboration(collaborationTitle, collaborationDescription, false, "janedoe123", "janedoe123", false, "")
       .pause(1000)

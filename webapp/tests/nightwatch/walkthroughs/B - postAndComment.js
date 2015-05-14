@@ -27,12 +27,13 @@ module.exports = {
       .verify.elementPresent("#newPostLink")
       .click("#newPostLink").pause(1000)
 
-      .sectionBreak("B.  Create Post")
+      .sectionBreak("C.  Create Post")
       .waitForElementVisible("#postSubmitPage", 3000)
       .reviewPostSubmitPage()
       .submitPost(newPostTitle, newPostDescription, newPostUrl)
+      .pause(3000)
 
-      .sectionBreak("B.  View Post")
+      .sectionBreak("D.  View Post")
       .reviewSinglePostPage(newPostTitle, newPostDescription)
       .addCommentToPost("These are some words...")
 
