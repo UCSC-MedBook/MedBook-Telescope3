@@ -3,30 +3,35 @@
 
 module.exports = {
   "MultiActor Collaboration" : function (client) {
+
+    var collaborationTitle = "This is a Test";
+    var collaborationDescription = "Lorem Ipsum...";
+
     client
       .url("http://localhost:3000")
       .resizeWindow(1024, 768)
 
+      .sectionBreak("A. Signing In Jane Doe")
       .verify.elementPresent("#signInLink")
       .click("#signInLink").pause(500)
-
       .signIn("janedoe123", "janedoe123")
 
 
-      /*.signIn("housemd")*/
-
+      .sectionBreak("B. Home Page")
       .verify.elementPresent("#collaborationListButton")
       .click("#collaborationListButton").pause(300)
 
+
+      .sectionBreak("C. List of Collaborations")
       .reviewCollaborationListPage("My Foo Collaboration")
-      /*.listOfCollaborationsDoesntContain("My Foo Collaboration")*/
 
+      .sectionBreak("D. Add a Collaboration")
       .click("#addCollaborationButton").pause(300)
-
       .reviewAddCollaborationPage(false, false, false, false, false, false, false)
-      .addCollaboration("This is a Test", "Lorem Ipsum...", false, "janedoe123", "janedoe123", false, "")
+      .addCollaboration(collaborationTitle, collaborationDescription, false, "janedoe123", "janedoe123", false, "")
       .pause(1000)
 
+      .sectionBreak("E. List of Collaborations")
       .verify.elementPresent("#collaborationListPage")
       .verify.hidden("form#addCollaboration")
 
@@ -35,8 +40,14 @@ module.exports = {
       .verify.elementPresent("#collaborationListPage #collaborationsList .collaboration:nth-child(1) h2")
       .verify.elementPresent("#collaborationListPage #collaborationsList .collaboration:nth-child(1) p")
 
-      .verify.containsText("#collaborationListPage #collaborationsList .collaboration:nth-child(1) h2", "This is a Test")
-      .verify.containsText("#collaborationListPage #collaborationsList .collaboration:nth-child(1) p", "Lorem Ipsum...")
+      .verify.containsText("#collaborationListPage #collaborationsList .collaboration:nth-child(1) h2", collaborationTitle)
+      .verify.containsText("#collaborationListPage #collaborationsList .collaboration:nth-child(1) p", collaborationDescription)
+
+      .sectionBreak("F. View Collaboration Posts")
+      .click("#collaborationListPage #collaborationsList .collaboration:nth-child(1)").pause(300)
+      .verify.elementPresent("#collaborationPostsPage")
+      .verify.elementPresent("#collaborationPostsPage .posts-title")
+      .verify.containsText("#collaborationsPostPage .posts-title", collaborationTitle)
 
 
 
