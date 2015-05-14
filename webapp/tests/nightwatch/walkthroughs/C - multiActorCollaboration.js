@@ -14,9 +14,28 @@ module.exports = {
 
 
       .signIn("housemd")
-      .reviewCollaborationListPage()
-      .listOfCollaborationsDoesntContain("My Foo Collaboration")
 
+      .verify.elementPresent("#collaborationListButton")
+      .click("#collaborationListButton").pause(300)
+
+      .reviewCollaborationListPage("My Foo Collaboration")
+      /*.listOfCollaborationsDoesntContain("My Foo Collaboration")*/
+
+      .click("#addCollaborationButton").pause(300)
+
+      .reviewAddCollaborationPage(false, false, false, false, false, false, false)
+      .addCollaboration("This is a Test", "Lorem Ipsum...", false, "janedoe123", "janedoe123", false, "")
+
+      .verify.elementPresent("#collaborationListPage")
+      .verify.elementNotPresent("form#addCollaboration")
+
+      .verify.elementPresent("#collaborationListPage #collaborationsList")
+      .verify.elementPresent("#collaborationListPage #collaborationsList .collaboration:nth-child(1)")
+      .verify.elementPresent("#collaborationListPage #collaborationsList .collaboration:nth-child(1) h2")
+      .verify.elementPresent("#collaborationListPage #collaborationsList .collaboration:nth-child(1) p")
+
+      .verify.containsText("#collaborationListPage #collaborationsList .collaboration:nth-child(1) h2", "This is a Test")
+      .verify.containsText("#collaborationListPage #collaborationsList .collaboration:nth-child(1) p", "Lorem Ipsum...t")
 
 
 
