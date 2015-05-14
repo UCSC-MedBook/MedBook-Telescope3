@@ -5,7 +5,9 @@ exports.command = function(title, text) {
     .verify.elementPresent("#mainContent .single-post")
     .verify.elementPresent("#mainContent .post-upvote")
     .verify.elementPresent("#mainContent .post-actions")
-    .verify.elementPresent("#mainContent .post-thumbnail")
+
+    // keep this in until we can add telescope-module-embedly back in
+    //.verify.elementPresent("#mainContent .post-thumbnail")
     .verify.elementPresent("#mainContent .post-content")
     .verify.elementPresent("#mainContent .post-info")
     .verify.elementPresent("#mainContent .post-info .post-heading")
@@ -21,7 +23,9 @@ exports.command = function(title, text) {
     .verify.elementPresent("#mainContent .post-meta .comments-link")
     .verify.elementPresent("#mainContent .post-body")
     .verify.elementPresent("#mainContent .post-body p")
-    .verify.elementPresent("#mainContent .files-module")
+
+    // keep this in until we can add cfs packages back in
+    //.verify.elementPresent("#mainContent .files-module")
     .verify.elementPresent("#mainContent .comment-new")
     .verify.elementPresent("#mainContent .comment-new #commentTextarea")
     .verify.elementPresent("#mainContent .comment-new .comment-submit .button")

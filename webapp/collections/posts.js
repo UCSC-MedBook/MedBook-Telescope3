@@ -101,8 +101,12 @@ postSchemaObject = {
   collaboration: {
       type: [String],
       minCount: 1,
-
   },
+  medbookfiles:{
+    type: [String],
+    trim: false,
+    optional: true
+  }
 
 };
 
@@ -155,7 +159,7 @@ getPostProperties = function(post) {
     // linkUrl: !!post.url ? getOutgoingUrl(post.url) : getPostPageUrl(post._id)
     linkUrl: getPostPageUrl(post._id)
   };
-  
+
   if(post.url)
     p.url = post.url;
 
@@ -204,7 +208,7 @@ Meteor.methods({
         postInterval = Math.abs(parseInt(getSetting('postInterval', 30))),
         maxPostsPer24Hours = Math.abs(parseInt(getSetting('maxPostsPerDay', 30))),
         postId = '';
-    
+
 
     // ------------------------------ Checks ------------------------------ //
 
@@ -256,9 +260,9 @@ Meteor.methods({
       inactive: false
     };
 
-    // UserId    
+    // UserId
     if(isAdmin(Meteor.user()) && !!post.userId){ // only let admins post as other users
-      properties.userId = post.userId; 
+      properties.userId = post.userId;
     }
 
     // Status
@@ -266,7 +270,7 @@ Meteor.methods({
     if(isAdmin(Meteor.user()) && !!post.status){ // if user is admin and a custom status has been set
       properties.status = post.status;
     }else{ // else use default status
-      properties.status = defaultPostStatus; 
+      properties.status = defaultPostStatus;
     }
 
     // CreatedAt
@@ -292,35 +296,40 @@ Meteor.methods({
 
     // ------------------------------ Insert ------------------------------ //
 
-    // console.log(post)
-    console.log("before insert post.medbookfiles", post.medbookfiles);
-    post._id = Posts.insert(post);
-    console.log("after insert post.medbookfiles", post.medbookfiles);
+    console.log("post", post);
 
-    console.log("find after insert post.medbookfiles", Posts.find({_id: post._id}))
+    //console.log("before insert post.medbookfiles", post.medbookfiles);
+    var postId = Posts.insert(post, function(error, result){
+      console.log("after insert post.medbookfiles", post.medbookfiles);
+
+      //
+      console.log("find after insert post.medbookfiles", Posts.find({_id: post._id}).fetch());
+
+      // increment posts count
+      Meteor.users.update({_id: userId}, {$inc: {postCount: 1}});
+
+      Meteor.call('upvotePost', post, Meteor.users.findOne(post.userId));
+    });
+
+    console.log("postId", postId);
+
+    return postId;
+
 
     // ------------------------------ Callbacks ------------------------------ //
 
-    // run all post submit server callbacks on post object successively
+    /*// run all post submit server callbacks on post object successively
     post = postAfterSubmitMethodCallbacks.reduce(function(result, currentFunction) {
         return currentFunction(result);
     }, post);
+    */
 
-    // ------------------------------ Post-Insert ------------------------------ //
-
-    // increment posts count
-    Meteor.users.update({_id: userId}, {$inc: {postCount: 1}});
-
-    var postAuthor =  Meteor.users.findOne(post.userId);
-
-    Meteor.call('upvotePost', post, postAuthor);
-
-    return post;
+    //return post;
   },
   setPostedAt: function(post, customPostedAt){
 
     var postedAt = new Date(); // default to current date and time
-        
+
     if(isAdmin(Meteor.user()) && typeof customPostedAt !== 'undefined') // if user is admin and a custom datetime has been set
       postedAt = customPostedAt;
 
@@ -376,7 +385,7 @@ Meteor.methods({
     // decrement post count
     var post = Posts.findOne({_id: postId});
     if(!Meteor.userId() || !canEditById(Meteor.userId(), post)) throw new Meteor.Error(606, 'You need permission to edit or delete a post');
-    
+
     Meteor.users.update({_id: post.userId}, {$inc: {postCount: -1}});
     Posts.remove(postId);
   }

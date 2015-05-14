@@ -11,7 +11,7 @@ exports.command = function(title, description, url) {
     .setValue('#url', url)
 
     .verify.elementPresent("#submitNewPostButton")
-    .click("#submitNewPostButton").pause(1000)
+    .click("#submitNewPostButton")
 
   return this; // allows the command to be chained.
 };
