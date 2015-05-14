@@ -5,9 +5,9 @@
 
   <testsuite name="A - userSignInWorkflow"
     errors="0" failures="0" hostname="" id="" package="A - userSignInWorkflow" skipped="0"
-    tests="1" time="19.10" timestamp="Thu, 14 May 2015 20:13:26 GMT">
+    tests="1" time="19.08" timestamp="Thu, 14 May 2015 21:05:57 GMT">
   
-    <testcase name="Accounts SignIn/SignUp" time="19.10" assertions="26">
+    <testcase name="Accounts SignIn/SignUp" time="19.08" assertions="26">
 
     
 

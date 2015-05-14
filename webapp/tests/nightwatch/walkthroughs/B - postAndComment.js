@@ -31,7 +31,7 @@ module.exports = {
       .waitForElementVisible("#postSubmitPage", 3000)
       .reviewPostSubmitPage()
       .submitPost(newPostTitle, newPostDescription, newPostUrl)
-      .pause(3000)
+      .pause(5000)
 
       .sectionBreak("D.  View Post")
       .reviewSinglePostPage(newPostTitle, newPostDescription)

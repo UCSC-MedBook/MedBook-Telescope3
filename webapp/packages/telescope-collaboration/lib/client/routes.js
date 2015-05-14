@@ -97,6 +97,7 @@ Meteor.startup(function () {
     // Collaboration List
     this.route('collaborationList', {
         template: "collaborationGrid",
+        path: "/list/collaborations",
         /*waitOn: function() {
           return Meteor.subscribe('collaboration');
         },*/
@@ -157,7 +158,7 @@ Meteor.startup(function () {
 
     // Collaboration List
     this.route('collaborationListFocus', {
-        path: '/collaborationList/:name/',
+        path: '/list/collaborations/:name/',
         template: "collaborationGrid",
         onAfterAction: function() {
             Session.set("FocusName", this.params.name);
