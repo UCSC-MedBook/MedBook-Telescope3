@@ -124,8 +124,8 @@ Template[getTemplate('post_submit')].events({
           throwError(error.reason);
           clearSeenErrors();
           $(e.target).removeClass('disabled');
-          if(error.error == 603)
-            Router.go('/posts/' + error.details);
+          //if(error.error == 603)
+          //Router.go('/posts/' + postId);
         }else{
           //trackEvent("new post", {'postId': post._id});
           //if(post.status === STATUS_PENDING)

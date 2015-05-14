@@ -49,8 +49,8 @@ Meteor.startup(function () {
         // the collaboration exists
         if (isAdmin() || !col.requiresAdministratorApprovalToJoin) {
             if ( confirm("You are not a member of the " + this.params.name + " collaboration. Would you like to join?")) {
-                var cols = Meteor.call('joinCollaborationMethod', col._id, 
-                        function (err) { 
+                var cols = Meteor.call('joinCollaborationMethod', col._id,
+                        function (err) {
                             if (err) { alert("joinCollaborationMethod failed: " + err)
                             Router.go("collaborationList")
                         } else {
@@ -85,7 +85,9 @@ Meteor.startup(function () {
 
     this.route('collaboration', {
       path: '/collaboration/',
-      waitOn: function() { return Meteor.subscribe('collaboration'); },
+      waitOn: function() {
+        return Meteor.subscribe('collaboration');
+      },
       controller: PostsCollaborationController,
       onAfterAction: function() {
         Session.set('collaborationName', "");
@@ -95,8 +97,12 @@ Meteor.startup(function () {
     // Collaboration List
     this.route('collaborationList', {
         template: "collaborationGrid",
-        waitOn: function() { return Meteor.subscribe('collaboration'); },
-        onAfterAction: function() { Session.set('collaborationName', ""); }
+        /*waitOn: function() {
+          return Meteor.subscribe('collaboration');
+        },*/
+        onAfterAction: function() {
+          Session.set('collaborationName', "");
+        }
     } );
     // Collaboration Edit
     this.route('collaborationEdit', {
@@ -109,14 +115,14 @@ Meteor.startup(function () {
             return coll;
         },
         /*
-        onBeforeAction: function() { 
+        onBeforeAction: function() {
             // SECURITY Put in admin check here
             var coll = Collaboration.findOne({name: this.params.name});
             if (coll)
                 Session.set("EditCollaboration", coll)
             this.next();
         },
-        onAfterAction: function() { 
+        onAfterAction: function() {
             Session.set('collaborationName', this.params.name);
             $(document).ready(function() {
                 Meteor.setTimeout(function() { $(".collapsed").show() }, 250);
@@ -135,14 +141,14 @@ Meteor.startup(function () {
             console.log("collaboration-edit route", coll);
             return coll;
         },
-        onBeforeAction: function() { 
+        onBeforeAction: function() {
             // SECURITY Put in admin check here
             var coll = Collaboration.findOne({name: this.params.name});
             if (coll)
                 Session.set("EditCollaboration", coll)
             this.next();
         },
-        onAfterAction: function() { 
+        onAfterAction: function() {
             Session.set('collaborationName', this.params.name);
         }
     } );
@@ -153,7 +159,7 @@ Meteor.startup(function () {
     this.route('collaborationListFocus', {
         path: '/collaborationList/:name/',
         template: "collaborationGrid",
-        onAfterAction: function() { 
+        onAfterAction: function() {
             Session.set("FocusName", this.params.name);
             console.log("FocusName", this.params.name);
         }

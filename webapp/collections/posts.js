@@ -299,7 +299,7 @@ Meteor.methods({
     console.log("post", post);
 
     //console.log("before insert post.medbookfiles", post.medbookfiles);
-    return Posts.insert(post, function(error, result){
+    var postId = Posts.insert(post, function(error, result){
       console.log("after insert post.medbookfiles", post.medbookfiles);
 
       //
@@ -310,6 +310,11 @@ Meteor.methods({
 
       Meteor.call('upvotePost', post, Meteor.users.findOne(post.userId));
     });
+
+    console.log("postId", postId);
+
+    return postId;
+
 
     // ------------------------------ Callbacks ------------------------------ //
 
