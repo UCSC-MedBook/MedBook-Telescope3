@@ -1,12 +1,12 @@
 <template name="collaborationGrid" xmlns="http://www.w3.org/1999/html">
   <article id="collaborationListPage">
-    <h3 class="collaborationGridTitle">Browse Collaborations</h3>
+    <h3 id="collaborationGridTitle" class="collaborationGridTitle">Browse Collaborations</h3>
     {{> collaborationAdd }}
-    <div class="collaboration posts list">
+    <div id="collaborationsList" class="posts list">
       {{#each collaboration}}
         {{> collaborationGridElement}}
       {{/each}}
-    </div>    
+    </div>
   </article>
 </template>
 

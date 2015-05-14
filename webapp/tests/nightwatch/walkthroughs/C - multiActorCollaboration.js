@@ -8,12 +8,12 @@ module.exports = {
       .resizeWindow(1024, 768)
 
       .verify.elementPresent("#signInLink")
-      .click("#signInLink").pause(300)
+      .click("#signInLink").pause(500)
 
       .signIn("janedoe123", "janedoe123")
 
 
-      .signIn("housemd")
+      /*.signIn("housemd")*/
 
       .verify.elementPresent("#collaborationListButton")
       .click("#collaborationListButton").pause(300)
@@ -25,9 +25,10 @@ module.exports = {
 
       .reviewAddCollaborationPage(false, false, false, false, false, false, false)
       .addCollaboration("This is a Test", "Lorem Ipsum...", false, "janedoe123", "janedoe123", false, "")
+      .pause(1000)
 
       .verify.elementPresent("#collaborationListPage")
-      .verify.elementNotPresent("form#addCollaboration")
+      .verify.hidden("form#addCollaboration")
 
       .verify.elementPresent("#collaborationListPage #collaborationsList")
       .verify.elementPresent("#collaborationListPage #collaborationsList .collaboration:nth-child(1)")
@@ -35,7 +36,7 @@ module.exports = {
       .verify.elementPresent("#collaborationListPage #collaborationsList .collaboration:nth-child(1) p")
 
       .verify.containsText("#collaborationListPage #collaborationsList .collaboration:nth-child(1) h2", "This is a Test")
-      .verify.containsText("#collaborationListPage #collaborationsList .collaboration:nth-child(1) p", "Lorem Ipsum...t")
+      .verify.containsText("#collaborationListPage #collaborationsList .collaboration:nth-child(1) p", "Lorem Ipsum...")
 
 
 
