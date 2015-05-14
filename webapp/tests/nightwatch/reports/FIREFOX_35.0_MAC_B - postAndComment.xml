@@ -5,9 +5,25 @@
 
   <testsuite name="B - postAndComment"
     errors="0" failures="0" hostname="" id="" package="B - postAndComment" skipped="0"
-    tests="1" time="19.04" timestamp="Thu, 14 May 2015 16:24:08 GMT">
+    tests="1" time="20.91" timestamp="Thu, 14 May 2015 18:38:01 GMT">
   
-    <testcase name="Post and Comment" time="19.04" assertions="57">
+    <testcase name="Post and Comment" time="20.91" assertions="65">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     
 
