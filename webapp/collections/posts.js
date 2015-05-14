@@ -296,11 +296,13 @@ Meteor.methods({
 
     // ------------------------------ Insert ------------------------------ //
 
-    // console.log(post)
-    console.log("before insert post.medbookfiles", post.medbookfiles);
+    console.log("post", post);
+
+    //console.log("before insert post.medbookfiles", post.medbookfiles);
     return Posts.insert(post, function(error, result){
       console.log("after insert post.medbookfiles", post.medbookfiles);
 
+      //
       console.log("find after insert post.medbookfiles", Posts.find({_id: post._id}).fetch());
 
       // increment posts count
@@ -308,7 +310,8 @@ Meteor.methods({
 
       Meteor.call('upvotePost', post, Meteor.users.findOne(post.userId));
     });
-      // ------------------------------ Callbacks ------------------------------ //
+
+    // ------------------------------ Callbacks ------------------------------ //
 
     /*// run all post submit server callbacks on post object successively
     post = postAfterSubmitMethodCallbacks.reduce(function(result, currentFunction) {

@@ -19,7 +19,7 @@ module.exports = {
 
       .sectionBreak("B. Home Page")
       .verify.elementPresent("#collaborationListButton")
-      .click("#collaborationListButton").pause(1000)
+      .click("#collaborationListButton").pause(3000)
 
 
       .sectionBreak("C. List of Collaborations")

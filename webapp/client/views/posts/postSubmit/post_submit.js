@@ -119,18 +119,18 @@ Template[getTemplate('post_submit')].events({
 
     // ------------------------------ Insert ------------------------------ //
     if (properties) {
-      Meteor.call('post', properties, function(error, post) {
+      Meteor.call('post', properties, function(error, postId) {
         if(error){
           throwError(error.reason);
           clearSeenErrors();
           $(e.target).removeClass('disabled');
           if(error.error == 603)
-            Router.go('/posts/'+error.details);
+            Router.go('/posts/' + error.details);
         }else{
-          trackEvent("new post", {'postId': post._id});
-          if(post.status === STATUS_PENDING)
-            throwError('Thanks, your post is awaiting approval.');
-          Router.go('/posts/'+post._id);
+          //trackEvent("new post", {'postId': post._id});
+          //if(post.status === STATUS_PENDING)
+          //  throwError('Thanks, your post is awaiting approval.');
+          Router.go('/posts/' + postId);
         }
       });
     } else {
