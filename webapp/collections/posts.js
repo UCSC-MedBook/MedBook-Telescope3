@@ -298,29 +298,25 @@ Meteor.methods({
 
     // console.log(post)
     console.log("before insert post.medbookfiles", post.medbookfiles);
-    post._id = Posts.insert(post);
-    console.log("after insert post.medbookfiles", post.medbookfiles);
+    return Posts.insert(post, function(error, result){
+      console.log("after insert post.medbookfiles", post.medbookfiles);
 
-    console.log("find after insert post.medbookfiles", Posts.find({_id: post._id}).fetch())
+      console.log("find after insert post.medbookfiles", Posts.find({_id: post._id}).fetch());
 
+      // increment posts count
+      Meteor.users.update({_id: userId}, {$inc: {postCount: 1}});
 
-    // ------------------------------ Callbacks ------------------------------ //
+      Meteor.call('upvotePost', post, Meteor.users.findOne(post.userId));
+    });
+      // ------------------------------ Callbacks ------------------------------ //
 
-    // run all post submit server callbacks on post object successively
+    /*// run all post submit server callbacks on post object successively
     post = postAfterSubmitMethodCallbacks.reduce(function(result, currentFunction) {
         return currentFunction(result);
     }, post);
+    */
 
-    // ------------------------------ Post-Insert ------------------------------ //
-
-    // increment posts count
-    Meteor.users.update({_id: userId}, {$inc: {postCount: 1}});
-
-    var postAuthor =  Meteor.users.findOne(post.userId);
-
-    Meteor.call('upvotePost', post, postAuthor);
-
-    return post;
+    //return post;
   },
   setPostedAt: function(post, customPostedAt){
 

@@ -5,9 +5,9 @@
 
   <testsuite name="C - multiActorCollaboration"
     errors="0" failures="0" hostname="" id="" package="C - multiActorCollaboration" skipped="0"
-    tests="1" time="17.95" timestamp="Thu, 14 May 2015 19:10:43 GMT">
+    tests="1" time="19.03" timestamp="Thu, 14 May 2015 19:38:18 GMT">
   
-    <testcase name="MultiActor Collaboration" time="17.95" assertions="41">
+    <testcase name="MultiActor Collaboration" time="19.03" assertions="41">
 
     
 
