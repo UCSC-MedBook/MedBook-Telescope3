@@ -76,7 +76,8 @@ postSchemaObject = {
   },
   status: {
     type: Number,
-    optional: true
+    optional: true,
+    defaultValue: 2
   },
   sticky: {
     type: Boolean,
@@ -99,8 +100,8 @@ postSchemaObject = {
     optional: true
   },
   collaboration: {
-      type: [String],
-      minCount: 1,
+    type: [String],
+    minCount: 1,
   },
   medbookfiles:{
     type: [String],
@@ -140,6 +141,7 @@ Posts.deny({
 });
 
 Posts.allow({
+  insert: canEditById,
   update: canEditById,
   remove: canEditById
 });
@@ -197,6 +199,52 @@ Posts.before.update(function (userId, doc, fieldNames, modifier, options) {
 });
 
 Meteor.methods({
+  logPost: function(post){
+    console.log("post", post);
+
+  },
+  postInsertHook: function(post){
+
+    if(!!post.url){
+      // check that there are no previous posts with the same link in the past 6 months
+      var sixMonthsAgo = moment().subtract(6, 'months').toDate();
+      var postWithSameLink = Posts.findOne({url: post.url, postedAt: {$gte: sixMonthsAgo}});
+
+      if(typeof postWithSameLink !== 'undefined'){
+        Meteor.call('upvotePost', postWithSameLink);
+        throw new Meteor.Error(603, i18n.t('this_link_has_already_been_posted'), postWithSameLink._id);
+      }
+    }
+
+
+    // UserId
+    if(isAdmin(Meteor.user()) && !!post.userId){ // only let admins post as other users
+      properties.userId = post.userId;
+    }
+
+
+    // Status
+    var defaultPostStatus = getSetting('requirePostsApproval') ? STATUS_PENDING : STATUS_APPROVED;
+    if(isAdmin(Meteor.user()) && !!post.status){ // if user is admin and a custom status has been set
+      properties.status = post.status;
+    }else{ // else use default status
+      properties.status = defaultPostStatus;
+    }
+
+    // CreatedAt
+    properties.createdAt = new Date();
+
+    // PostedAt
+    if(properties.status == 2){ // only set postedAt if post is approved
+      if(isAdmin(Meteor.user()) && !!post.postedAt){ // if user is admin and a custom postDate has been set
+        properties.postedAt = post.postedAt;
+      }else{ // else use current time
+        properties.postedAt = new Date();
+      }
+    }
+
+
+  },
   post: function(post){
     var title = cleanUp(post.title),
         body = post.body,
@@ -266,12 +314,15 @@ Meteor.methods({
     }
 
     // Status
-    var defaultPostStatus = getSetting('requirePostsApproval') ? STATUS_PENDING : STATUS_APPROVED;
+    // added defaultValue to schema
+    // the rest of this should be moved into the allow/deny rules
+
+    /*var defaultPostStatus = getSetting('requirePostsApproval') ? STATUS_PENDING : STATUS_APPROVED;
     if(isAdmin(Meteor.user()) && !!post.status){ // if user is admin and a custom status has been set
       properties.status = post.status;
     }else{ // else use default status
       properties.status = defaultPostStatus;
-    }
+    }*/
 
     // CreatedAt
     properties.createdAt = new Date();

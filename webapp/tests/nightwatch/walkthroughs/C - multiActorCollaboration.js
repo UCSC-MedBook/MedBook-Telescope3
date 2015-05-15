@@ -1,4 +1,4 @@
-// add tests to this file using the Nightwatch.js API
+/*// add tests to this file using the Nightwatch.js API
 // http://nightwatchjs.org/api
 
 module.exports = {
@@ -43,6 +43,18 @@ module.exports = {
       .verify.containsText("#collaborationListPage #collaborationsList .collaboration:nth-child(1) h2", collaborationTitle)
       .verify.containsText("#collaborationListPage #collaborationsList .collaboration:nth-child(1) p", collaborationDescription)
 
+
+
+      .end();
+  }
+};*/
+
+
+
+
+
+
+
       /*.sectionBreak("F. View Collaboration Posts")
       .click("#collaborationListPage #collaborationsList .collaboration:nth-child(1)").pause(300)
       .verify.elementPresent("#collaborationPostsPage")
@@ -77,7 +89,3 @@ module.exports = {
       .signIn("thirteen")
       .canNotSeePost("thirteen", "Post A")
       .signOut('thirteen')*/
-
-      .end();
-  }
-};

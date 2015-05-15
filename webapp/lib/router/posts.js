@@ -285,6 +285,7 @@ Meteor.startup(function () {
     },
     waitOn: function () {
       //return coreSubscriptions.subscribe('postedFiles', this.params._id)
+      //coreSubscriptions.subscribe('singlePost', this.params._id);
     }
   });
 

@@ -62,18 +62,42 @@ Template[getTemplate('post_submit')].events({
 
     // Basic Properties
 
-    var properties = {
+    console.log("Meteor.userId()", Meteor.userId());
+    console.log("getDisplayNameById", getDisplayNameById(Meteor.userId()));
+
+
+
+    var post = {
       title: $('#title').val(),
       body: $('#postBody').val(),
       //body: instance.editor.exportFile(),
       sticky: $('#sticky').is(':checked'),
       userId: $('#postUser').val(),
-      status: parseInt($('input[name=status]:checked').val())
+      status: 2,
+
+      /*timeSinceLastPost=timeSinceLast(user, Posts),
+      numberOfPostsInPast24Hours=numberOfItemsInPast24Hours(user, Posts),
+      postInterval = Math.abs(parseInt(getSetting('postInterval', 30))),
+      maxPostsPer24Hours = Math.abs(parseInt(getSetting('maxPostsPerDay', 30))),*/
+
+      author: getDisplayNameById(Meteor.userId()),
+      userId: Meteor.userId(),
+      upvotes: 0,
+      downvotes: 0,
+      commentCount: 0,
+      clickCount: 0,
+      viewCount: 0,
+      baseScore: 0,
+      score: 0,
+      inactive: false,
+      collaboration: []
     };
-    var $svg = $('svg');
+
+
+    /*var $svg = $('svg');
     if ($svg.length > 0) {
-        properties.svg =  $svg.parent().html(); //  depend on the SVG to be the only element in the div
-    }
+        post.svg =  $svg.parent().html(); //  depend on the SVG to be the only element in the div
+    }*/
 
     // PostedAt
 
@@ -96,8 +120,8 @@ Template[getTemplate('post_submit')].events({
       setPostedAt = true;
     }
 
-    if(setPostedAt) // if either custom date or time has been set, pass result to properties
-      properties.postedAt = postedAt;
+    if(setPostedAt) // if either custom date or time has been set, pass result to post
+      post.postedAt = postedAt;
 
 
     // URL
@@ -105,21 +129,71 @@ Template[getTemplate('post_submit')].events({
     var url = $('#url').val();
     if(!!url){
       var cleanUrl = (url.substring(0, 7) == "http://" || url.substring(0, 8) == "https://") ? url : "http://"+url;
-      properties.url = cleanUrl;
+      post.url = cleanUrl;
     }
 
     // ------------------------------ Callbacks ------------------------------ //
 
-    // run all post submit client callbacks on properties object successively
-    properties = postSubmitClientCallbacks.reduce(function(result, currentFunction) {
+    // run all post submit client callbacks on post object successively
+    /*post = postSubmitClientCallbacks.reduce(function(result, currentFunction) {
         return currentFunction(result);
-    }, properties);
+    }, post);*/
 
-    // console.log(properties)
+
+    post.collaboration.push($('#postSubmitPage .selectCollaborators .select2-search-choice div').text());
+
+
+    Meteor.call("logPost", post);
+    console.log("post", post);
 
     // ------------------------------ Insert ------------------------------ //
-    if (properties) {
-      Meteor.call('post', properties, function(error, postId) {
+    if (post) {
+
+      /*var title = cleanUp(post.title),
+          body = post.body,
+          svg = post.svg,
+          userId = this.userId,
+          user = Meteor.users.findOne(userId),
+          timeSinceLastPost=timeSinceLast(user, Posts),
+          numberOfPostsInPast24Hours=numberOfItemsInPast24Hours(user, Posts),
+          postInterval = Math.abs(parseInt(getSetting('postInterval', 30))),
+          maxPostsPer24Hours = Math.abs(parseInt(getSetting('maxPostsPerDay', 30))),
+          postId = '';
+*/
+
+      // check that user can post
+      // ISSUE:  User shouldn't have post button if they going to be denied anyhow.
+      // ISSUE:  Add allow/deny rules for Posts collection.
+      // ISSUE:  Confirm isomorphic Posts.createdAt pattern works with latency compensatio.
+      // ISSUE:  Add cfs packages back in (with QA coverage this time!)
+      // ISSUE:
+
+
+      //console.log("before insert post.medbookfiles", post.medbookfiles);
+      var postId = Posts.insert(post, function(error, result){
+        if(error){
+          console.log("error", error);
+        }
+        console.log("after insert post.medbookfiles", post.medbookfiles);
+
+        //
+        console.log("find after insert post.medbookfiles", Posts.find({_id: post._id}).fetch());
+
+        // increment posts count
+        Meteor.users.update({_id: Meteor.userId()}, {$inc: {postCount: 1}});
+
+        Meteor.call('upvotePost', post, Meteor.users.findOne(post.userId));
+      });
+
+
+      console.log("postId", postId);
+      Router.go('/posts/' + postId);
+
+      /*
+      //======================================================================
+      // ORIGINAL FUNCTION
+
+      /*Meteor.call('post', post, function(error, postId) {
         if(error){
           throwError(error.reason);
           clearSeenErrors();
@@ -132,7 +206,7 @@ Template[getTemplate('post_submit')].events({
           //  throwError('Thanks, your post is awaiting approval.');
           Router.go('/posts/' + postId);
         }
-      });
+      });*/
     } else {
       $(e.target).removeClass('disabled');
     }

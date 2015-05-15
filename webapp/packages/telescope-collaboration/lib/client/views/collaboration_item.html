@@ -15,7 +15,7 @@
       {{#if afFieldIsInvalid name='collaborators'}}
           <span class="help-block">{{afFieldMessage name=''}}</span>
       {{/if}}
-      {{> bump id="administratorsInput" name="administrators" class="collaboratorListClass collaboratorInitWithSelf" }}
+      {{> bump id="administratorsInput" name="administrators" class="administratorListClass collaboratorInitWithSelf" }}
 
 
       {{> afQuickField name="requiresAdministratorApprovalToJoin" label-style="display:none;" type="boolean-radios"
@@ -23,7 +23,7 @@
            falseLabel="Users may add themselves"
            trueLabel="Users require administrator approval"}}
 
-      {{> bump id="invitationsInput" name="invitations"  class="collaboratorListClass"   }}
+      {{> bump id="invitationsInput" name="invitations"  class="invitationsListClass"   }}
 
       <button id="submitCollaborationButton" type="submit" class="btn btn-primary"> Submit </button>
       <button id="cancelAddCollaborationButton" type="button" onclick='$(".collapsed").hide()' class="cancelAndGoCollaborationList btn btn-primary"> Cancel </button>
