@@ -10,6 +10,6 @@ Meteor.publish('allComments', function(){
 });
 Meteor.publish("allUsers", function(argument){
   if(canViewById(this.userId)){
-    return Meteor.users.find({_id: {$in: users}}, {fields: privacyOptions});
+    return Meteor.users.find();
   }
 });

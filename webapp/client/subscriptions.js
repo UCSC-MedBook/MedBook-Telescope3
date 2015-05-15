@@ -1,5 +1,6 @@
 allCommentsSubscription = null;
 allPostsSubscription = null;
+allUsersSubscription = null;
 
 Meteor.autorun(function(){
   Meteor.subscribe('collaboration');
@@ -8,6 +9,7 @@ Meteor.autorun(function(){
 
   allCommentsSubscription = Meteor.subscribe('allComments');
   allPostsSubscription = Meteor.subscribe('allPosts');
+  allUsersSubscription = Meteor.subscribe('allUsers');
 
   //Meteor.subscribe('allComments');
   //Meteor.subscribe('allPosts');
