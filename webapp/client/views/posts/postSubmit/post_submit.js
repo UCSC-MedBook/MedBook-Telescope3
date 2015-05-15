@@ -167,18 +167,21 @@ Template[getTemplate('post_submit')].events({
 
 
       //console.log("before insert post.medbookfiles", post.medbookfiles);
-      var postId = Posts.insert(post, function(error, result){
+      Posts.insert(post, function(error, result){
+
+        Meteor.call("logMethodResults", error, result);
+
         if(error){
           console.log("error", error);
         }
         if(result){
           console.log("result", result);
-          Router.go('/posts/' + postId);
+          Router.go('/posts/' + result);
         }
         console.log("after insert post.medbookfiles", post.medbookfiles);
 
         //
-        console.log("find after insert post.medbookfiles", Posts.find({_id: post._id}).fetch());
+        console.log("find after insert post.medbookfiles", Posts.find({_id: result}).fetch());
 
         // increment posts count
         Meteor.users.update({_id: Meteor.userId()}, {$inc: {postCount: 1}});
@@ -187,7 +190,7 @@ Template[getTemplate('post_submit')].events({
       });
 
 
-      console.log("postId", postId);
+      //console.log("postId", postId);
 
       /*
       //======================================================================

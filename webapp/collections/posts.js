@@ -199,6 +199,12 @@ Posts.before.update(function (userId, doc, fieldNames, modifier, options) {
 });
 
 Meteor.methods({
+  logMethodResults: function(error, result){
+    console.log("==================================");
+    console.log("logMethodResults");    
+    console.log("error", error);
+    console.log("result", result);
+  },
   logPost: function(post){
     console.log("post", post);
 
