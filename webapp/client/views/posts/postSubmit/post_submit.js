@@ -169,14 +169,18 @@ Template[getTemplate('post_submit')].events({
       //console.log("before insert post.medbookfiles", post.medbookfiles);
       Posts.insert(post, function(error, result){
 
-        Meteor.call("logMethodResults", error, result);
+        Meteor.call("logMethodResults", "Posts.insert()", error, result);
 
         if(error){
           console.log("error", error);
         }
         if(result){
           console.log("result", result);
-          Router.go('/posts/' + result);
+          Router.go('/posts/' + result, function(error, result){
+            Meteor.call("logMethodResults", "Router.go()", error, result);
+            console.log("[Router.go] error", error);
+            console.log("[Router.go] result", result);
+          });
         }
         console.log("after insert post.medbookfiles", post.medbookfiles);
 

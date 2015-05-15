@@ -282,17 +282,18 @@ Meteor.startup(function () {
   Router.route('/posts/:_id', {
     name: 'post_page',
     controller: PostPageController,
-    onBeforeAction: function() {
-      console.log("Post_id", this.params._id);
-      Session.set("Post_id", this.params._id);
-      this.next();
-    },
-    waitOn: function () {
-      //return coreSubscriptions.subscribe('postedFiles', this.params._id)
+    //onBeforeAction: function() {
+    //  console.log("Post_id", this.params._id);
+    //  Session.set("Post_id", this.params._id);
+    //  this.next();
+    //},
+    //waitOn: function () {
+      //coreSubscriptions.subscribe('postedFiles', this.params._id)
       //coreSubscriptions.subscribe('singlePost', this.params._id);
-    }
+    //}
+  }, function(error, result){
+      Meteor.call("logMethodResults", "Router.route('/posts/:_id')", error, result);
   });
-
   Router.route('/posts/:_id/comment/:commentId', {
     name: 'post_page_comment',
     controller: PostPageController,
