@@ -1,36 +1,36 @@
-19:18:00.502 INFO - Launching a standalone server
+19:48:43.402 INFO - Launching a standalone server
 Setting system property webdriver.chrome.driver to selenium/chromedriver
-19:18:00.563 INFO - Java: Apple Inc. 20.65-b04-466.1
-19:18:00.563 INFO - OS: Mac OS X 10.10.2 x86_64
-19:18:00.583 INFO - v2.45.0, with Core v2.45.0. Built from revision 5017cb8
-19:18:00.680 INFO - Default driver org.openqa.selenium.ie.InternetExplorerDriver registration is skipped: registration capabilities Capabilities [{platform=WINDOWS, ensureCleanSession=true, browserName=internet explorer, version=}] does not match with current platform: MAC
-19:18:00.764 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
-19:18:00.764 INFO - Version Jetty/5.1.x
-19:18:00.765 INFO - Started HttpContext[/selenium-server/driver,/selenium-server/driver]
-19:18:00.766 INFO - Started HttpContext[/selenium-server,/selenium-server]
-19:18:00.766 INFO - Started HttpContext[/,/]
-19:18:00.835 INFO - Started org.openqa.jetty.jetty.servlet.ServletHandler@75e845c2
-19:18:00.836 INFO - Started HttpContext[/wd,/wd]
-19:18:00.842 INFO - Started SocketListener on 0.0.0.0:4444
-19:18:00.842 INFO - Started org.openqa.jetty.jetty.Server@35c0e45a
-19:18:01.148 INFO - Executing: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, name=A  User Sign In Workflow}]])
-19:18:01.165 INFO - Creating a new session for Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, name=A  User Sign In Workflow}]
-19:18:04.910 INFO - Done: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, name=A  User Sign In Workflow}]]
-19:18:04.922 INFO - Executing: [get: http://localhost:3000])
-19:18:06.796 INFO - Done: [get: http://localhost:3000]
-19:18:06.801 INFO - Executing: [set window size])
-19:18:06.934 INFO - Done: [set window size]
-19:18:06.940 INFO - Executing: [find element: By.cssSelector: body])
-19:18:07.048 INFO - Done: [find element: By.cssSelector: body]
-19:18:07.053 INFO - Executing: [find element: By.cssSelector: #userMenu])
-19:18:08.854 WARN - Exception thrown
+19:48:43.463 INFO - Java: Apple Inc. 20.65-b04-466.1
+19:48:43.463 INFO - OS: Mac OS X 10.10.2 x86_64
+19:48:43.484 INFO - v2.45.0, with Core v2.45.0. Built from revision 5017cb8
+19:48:43.593 INFO - Default driver org.openqa.selenium.ie.InternetExplorerDriver registration is skipped: registration capabilities Capabilities [{platform=WINDOWS, ensureCleanSession=true, browserName=internet explorer, version=}] does not match with current platform: MAC
+19:48:43.674 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
+19:48:43.675 INFO - Version Jetty/5.1.x
+19:48:43.676 INFO - Started HttpContext[/selenium-server/driver,/selenium-server/driver]
+19:48:43.677 INFO - Started HttpContext[/selenium-server,/selenium-server]
+19:48:43.677 INFO - Started HttpContext[/,/]
+19:48:43.756 INFO - Started org.openqa.jetty.jetty.servlet.ServletHandler@75e845c2
+19:48:43.756 INFO - Started HttpContext[/wd,/wd]
+19:48:43.763 INFO - Started SocketListener on 0.0.0.0:4444
+19:48:43.764 INFO - Started org.openqa.jetty.jetty.Server@35c0e45a
+19:48:44.083 INFO - Executing: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, name=A  User Sign In Workflow}]])
+19:48:44.101 INFO - Creating a new session for Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, name=A  User Sign In Workflow}]
+19:48:48.218 INFO - Done: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, name=A  User Sign In Workflow}]]
+19:48:48.229 INFO - Executing: [get: http://localhost:3000])
+19:48:50.523 INFO - Done: [get: http://localhost:3000]
+19:48:50.529 INFO - Executing: [set window size])
+19:48:50.663 INFO - Done: [set window size]
+19:48:50.668 INFO - Executing: [find element: By.cssSelector: body])
+19:48:50.784 INFO - Done: [find element: By.cssSelector: body]
+19:48:50.789 INFO - Executing: [find element: By.cssSelector: #userMenu])
+19:48:52.476 WARN - Exception thrown
 org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"css selector","selector":"#userMenu"}
-Command duration or timeout: 49 milliseconds
+Command duration or timeout: 47 milliseconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '2.45.0', revision: '5017cb8', time: '2015-02-26 23:59:50'
 System info: host: 'Abigails-Mini', ip: '192.168.1.105', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.2', java.version: '1.6.0_65'
 *** Element info: {Using=css selector, value=#userMenu}
-Session ID: 40b1625a-0aea-d048-8712-5403c8a9ab39
+Session ID: bb88a34c-5e22-2c45-b3af-1d701af8c8d0
 Driver info: org.openqa.selenium.firefox.FirefoxDriver
 Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, rotatable=false, locationContextEnabled=true, version=35.0, cssSelectorsEnabled=true, databaseEnabled=true, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, applicationCacheEnabled=true, takesScreenshot=true}]
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
@@ -64,79 +64,79 @@ For documentation on this error, please visit: http://seleniumhq.org/exceptions/
 Build info: version: '2.45.0', revision: '5017cb8', time: '2015-02-26 23:59:50'
 System info: host: 'Abigails-Mini', ip: '192.168.1.105', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.2', java.version: '1.6.0_65'
 Driver info: driver.version: unknown
-	at <anonymous class>.FirefoxDriver.prototype.findElementInternal_(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous1665128194495605056webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10271)
-	at <anonymous class>.FirefoxDriver.prototype.findElement(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous1665128194495605056webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10280)
-	at <anonymous class>.DelayedCommand.prototype.executeInternal_/h(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous1665128194495605056webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12274)
-	at <anonymous class>.DelayedCommand.prototype.executeInternal_(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous1665128194495605056webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12279)
-	at <anonymous class>.DelayedCommand.prototype.execute/<(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous1665128194495605056webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12221)
-19:18:08.859 WARN - Exception: Unable to locate element: {"method":"css selector","selector":"#userMenu"}
+	at <anonymous class>.FirefoxDriver.prototype.findElementInternal_(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous138086035180236539webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10271)
+	at <anonymous class>.FirefoxDriver.prototype.findElement(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous138086035180236539webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10280)
+	at <anonymous class>.DelayedCommand.prototype.executeInternal_/h(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous138086035180236539webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12274)
+	at <anonymous class>.DelayedCommand.prototype.executeInternal_(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous138086035180236539webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12279)
+	at <anonymous class>.DelayedCommand.prototype.execute/<(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous138086035180236539webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12221)
+19:48:52.481 WARN - Exception: Unable to locate element: {"method":"css selector","selector":"#userMenu"}
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '2.45.0', revision: '5017cb8', time: '2015-02-26 23:59:50'
 System info: host: 'Abigails-Mini', ip: '192.168.1.105', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.2', java.version: '1.6.0_65'
 Driver info: driver.version: unknown
-19:18:09.222 INFO - Executing: [find element: By.cssSelector: #signInLink])
-19:18:09.232 INFO - Done: [find element: By.cssSelector: #signInLink]
-19:18:09.237 INFO - Executing: [find element: By.cssSelector: #signUpLink])
-19:18:09.292 INFO - Done: [find element: By.cssSelector: #signUpLink]
-19:18:09.296 INFO - Executing: [find element: By.cssSelector: #signUpLink])
-19:18:09.380 INFO - Done: [find element: By.cssSelector: #signUpLink]
-19:18:09.385 INFO - Executing: [click: 2 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #signUpLink]])
-19:18:09.702 INFO - Done: [click: 2 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #signUpLink]]
-19:18:10.011 INFO - Executing: [find elements: By.cssSelector: #at-pwd-form])
-19:18:10.023 INFO - Done: [find elements: By.cssSelector: #at-pwd-form]
-19:18:10.029 INFO - Executing: [is displayed: 3 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #at-pwd-form]])
-19:18:10.090 INFO - Done: [is displayed: 3 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #at-pwd-form]]
-19:18:10.094 INFO - Executing: [find element: By.cssSelector: #at-field-username])
-19:18:10.156 INFO - Done: [find element: By.cssSelector: #at-field-username]
-19:18:10.160 INFO - Executing: [find element: By.cssSelector: #at-field-email])
-19:18:10.221 INFO - Done: [find element: By.cssSelector: #at-field-email]
-19:18:10.226 INFO - Executing: [find element: By.cssSelector: #at-field-password])
-19:18:10.286 INFO - Done: [find element: By.cssSelector: #at-field-password]
-19:18:10.290 INFO - Executing: [find element: By.cssSelector: #at-btn])
-19:18:10.364 INFO - Done: [find element: By.cssSelector: #at-btn]
-19:18:10.368 INFO - Executing: [find element: By.cssSelector: #at-field-username])
-19:18:10.433 INFO - Done: [find element: By.cssSelector: #at-field-username]
-19:18:10.439 INFO - Executing: [send keys: 4 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #at-field-username], [j, a, n, e, d, o, e, 1, 2, 3]])
-19:18:10.567 INFO - Done: [send keys: 4 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #at-field-username], [j, a, n, e, d, o, e, 1, 2, 3]]
-19:18:10.570 INFO - Executing: [find element: By.cssSelector: #at-field-email])
-19:18:10.633 INFO - Done: [find element: By.cssSelector: #at-field-email]
-19:18:10.636 INFO - Executing: [send keys: 5 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #at-field-email], [j, a, n, e, d, o, e, @, t, e, s, t, ., o, r, g]])
-19:18:10.775 INFO - Done: [send keys: 5 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #at-field-email], [j, a, n, e, d, o, e, @, t, e, s, t, ., o, r, g]]
-19:18:10.779 INFO - Executing: [find element: By.cssSelector: #at-field-password])
-19:18:10.843 INFO - Done: [find element: By.cssSelector: #at-field-password]
-19:18:10.847 INFO - Executing: [send keys: 6 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #at-field-password], [j, a, n, e, d, o, e, 1, 2, 3]])
-19:18:10.967 INFO - Done: [send keys: 6 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #at-field-password], [j, a, n, e, d, o, e, 1, 2, 3]]
-19:18:10.970 INFO - Executing: [find element: By.cssSelector: #at-btn])
-19:18:11.034 INFO - Done: [find element: By.cssSelector: #at-btn]
-19:18:11.037 INFO - Executing: [click: 7 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #at-btn]])
-19:18:11.201 INFO - Done: [click: 7 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #at-btn]]
-19:18:12.209 INFO - Executing: [find element: By.cssSelector: #mainContent])
-19:18:12.219 INFO - Done: [find element: By.cssSelector: #mainContent]
-19:18:12.223 INFO - Executing: [find element: By.cssSelector: #userMenu])
-19:18:12.300 INFO - Done: [find element: By.cssSelector: #userMenu]
-19:18:12.304 INFO - Executing: [find element: By.cssSelector: #currentUsername])
-19:18:12.391 INFO - Done: [find element: By.cssSelector: #currentUsername]
-19:18:12.395 INFO - Executing: [find element: By.cssSelector: #currentUsername])
-19:18:12.463 INFO - Done: [find element: By.cssSelector: #currentUsername]
-19:18:12.466 INFO - Executing: [click: 10 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #currentUsername]])
-19:18:12.586 INFO - Done: [click: 10 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #currentUsername]]
-19:18:12.894 INFO - Executing: [find element: By.cssSelector: #myAccountLink])
-19:18:12.902 INFO - Done: [find element: By.cssSelector: #myAccountLink]
-19:18:12.907 INFO - Executing: [find element: By.cssSelector: #signOutButton])
-19:18:12.960 INFO - Done: [find element: By.cssSelector: #signOutButton]
-19:18:12.964 INFO - Executing: [find element: By.cssSelector: #signOutButton])
-19:18:13.031 INFO - Done: [find element: By.cssSelector: #signOutButton]
-19:18:13.033 INFO - Executing: [click: 12 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #signOutButton]])
-19:18:13.162 INFO - Done: [click: 12 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #signOutButton]]
-19:18:13.668 INFO - Executing: [find element: By.cssSelector: #userMenu])
-19:18:14.509 WARN - Exception thrown
+19:48:52.936 INFO - Executing: [find element: By.cssSelector: #signInLink])
+19:48:52.946 INFO - Done: [find element: By.cssSelector: #signInLink]
+19:48:52.954 INFO - Executing: [find element: By.cssSelector: #signUpLink])
+19:48:53.010 INFO - Done: [find element: By.cssSelector: #signUpLink]
+19:48:53.014 INFO - Executing: [find element: By.cssSelector: #signUpLink])
+19:48:53.067 INFO - Done: [find element: By.cssSelector: #signUpLink]
+19:48:53.070 INFO - Executing: [click: 2 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #signUpLink]])
+19:48:53.355 INFO - Done: [click: 2 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #signUpLink]]
+19:48:53.667 INFO - Executing: [find elements: By.cssSelector: #at-pwd-form])
+19:48:53.677 INFO - Done: [find elements: By.cssSelector: #at-pwd-form]
+19:48:53.683 INFO - Executing: [is displayed: 3 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #at-pwd-form]])
+19:48:53.736 INFO - Done: [is displayed: 3 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #at-pwd-form]]
+19:48:53.741 INFO - Executing: [find element: By.cssSelector: #at-field-username])
+19:48:53.801 INFO - Done: [find element: By.cssSelector: #at-field-username]
+19:48:53.805 INFO - Executing: [find element: By.cssSelector: #at-field-email])
+19:48:53.866 INFO - Done: [find element: By.cssSelector: #at-field-email]
+19:48:53.870 INFO - Executing: [find element: By.cssSelector: #at-field-password])
+19:48:53.931 INFO - Done: [find element: By.cssSelector: #at-field-password]
+19:48:53.934 INFO - Executing: [find element: By.cssSelector: #at-btn])
+19:48:53.998 INFO - Done: [find element: By.cssSelector: #at-btn]
+19:48:54.001 INFO - Executing: [find element: By.cssSelector: #at-field-username])
+19:48:54.066 INFO - Done: [find element: By.cssSelector: #at-field-username]
+19:48:54.071 INFO - Executing: [send keys: 4 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #at-field-username], [j, a, n, e, d, o, e, 1, 2, 3]])
+19:48:54.198 INFO - Done: [send keys: 4 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #at-field-username], [j, a, n, e, d, o, e, 1, 2, 3]]
+19:48:54.202 INFO - Executing: [find element: By.cssSelector: #at-field-email])
+19:48:54.301 INFO - Done: [find element: By.cssSelector: #at-field-email]
+19:48:54.316 INFO - Executing: [send keys: 5 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #at-field-email], [j, a, n, e, d, o, e, @, t, e, s, t, ., o, r, g]])
+19:48:54.468 INFO - Done: [send keys: 5 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #at-field-email], [j, a, n, e, d, o, e, @, t, e, s, t, ., o, r, g]]
+19:48:54.472 INFO - Executing: [find element: By.cssSelector: #at-field-password])
+19:48:54.538 INFO - Done: [find element: By.cssSelector: #at-field-password]
+19:48:54.542 INFO - Executing: [send keys: 6 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #at-field-password], [j, a, n, e, d, o, e, 1, 2, 3]])
+19:48:54.672 INFO - Done: [send keys: 6 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #at-field-password], [j, a, n, e, d, o, e, 1, 2, 3]]
+19:48:54.676 INFO - Executing: [find element: By.cssSelector: #at-btn])
+19:48:54.739 INFO - Done: [find element: By.cssSelector: #at-btn]
+19:48:54.742 INFO - Executing: [click: 7 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #at-btn]])
+19:48:54.908 INFO - Done: [click: 7 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #at-btn]]
+19:48:55.916 INFO - Executing: [find element: By.cssSelector: #mainContent])
+19:48:55.925 INFO - Done: [find element: By.cssSelector: #mainContent]
+19:48:55.929 INFO - Executing: [find element: By.cssSelector: #userMenu])
+19:48:56.003 INFO - Done: [find element: By.cssSelector: #userMenu]
+19:48:56.008 INFO - Executing: [find element: By.cssSelector: #currentUsername])
+19:48:56.072 INFO - Done: [find element: By.cssSelector: #currentUsername]
+19:48:56.076 INFO - Executing: [find element: By.cssSelector: #currentUsername])
+19:48:56.135 INFO - Done: [find element: By.cssSelector: #currentUsername]
+19:48:56.138 INFO - Executing: [click: 10 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #currentUsername]])
+19:48:56.256 INFO - Done: [click: 10 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #currentUsername]]
+19:48:56.561 INFO - Executing: [find element: By.cssSelector: #myAccountLink])
+19:48:56.570 INFO - Done: [find element: By.cssSelector: #myAccountLink]
+19:48:56.575 INFO - Executing: [find element: By.cssSelector: #signOutButton])
+19:48:56.634 INFO - Done: [find element: By.cssSelector: #signOutButton]
+19:48:56.637 INFO - Executing: [find element: By.cssSelector: #signOutButton])
+19:48:56.701 INFO - Done: [find element: By.cssSelector: #signOutButton]
+19:48:56.704 INFO - Executing: [click: 12 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #signOutButton]])
+19:48:56.832 INFO - Done: [click: 12 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #signOutButton]]
+19:48:57.340 INFO - Executing: [find element: By.cssSelector: #userMenu])
+19:48:58.025 WARN - Exception thrown
 org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"css selector","selector":"#userMenu"}
-Command duration or timeout: 10 milliseconds
+Command duration or timeout: 11 milliseconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '2.45.0', revision: '5017cb8', time: '2015-02-26 23:59:50'
 System info: host: 'Abigails-Mini', ip: '192.168.1.105', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.2', java.version: '1.6.0_65'
 *** Element info: {Using=css selector, value=#userMenu}
-Session ID: 40b1625a-0aea-d048-8712-5403c8a9ab39
+Session ID: bb88a34c-5e22-2c45-b3af-1d701af8c8d0
 Driver info: org.openqa.selenium.firefox.FirefoxDriver
 Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, rotatable=false, locationContextEnabled=true, version=35.0, cssSelectorsEnabled=true, databaseEnabled=true, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, applicationCacheEnabled=true, takesScreenshot=true}]
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
@@ -169,25 +169,25 @@ For documentation on this error, please visit: http://seleniumhq.org/exceptions/
 Build info: version: '2.45.0', revision: '5017cb8', time: '2015-02-26 23:59:50'
 System info: host: 'Abigails-Mini', ip: '192.168.1.105', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.2', java.version: '1.6.0_65'
 Driver info: driver.version: unknown
-	at <anonymous class>.FirefoxDriver.prototype.findElementInternal_(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous1665128194495605056webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10271)
-	at <anonymous class>.FirefoxDriver.prototype.findElement(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous1665128194495605056webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10280)
-	at <anonymous class>.DelayedCommand.prototype.executeInternal_/h(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous1665128194495605056webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12274)
-	at <anonymous class>.DelayedCommand.prototype.executeInternal_(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous1665128194495605056webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12279)
-	at <anonymous class>.DelayedCommand.prototype.execute/<(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous1665128194495605056webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12221)
-19:18:14.511 WARN - Exception: Unable to locate element: {"method":"css selector","selector":"#userMenu"}
+	at <anonymous class>.FirefoxDriver.prototype.findElementInternal_(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous138086035180236539webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10271)
+	at <anonymous class>.FirefoxDriver.prototype.findElement(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous138086035180236539webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10280)
+	at <anonymous class>.DelayedCommand.prototype.executeInternal_/h(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous138086035180236539webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12274)
+	at <anonymous class>.DelayedCommand.prototype.executeInternal_(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous138086035180236539webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12279)
+	at <anonymous class>.DelayedCommand.prototype.execute/<(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous138086035180236539webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12221)
+19:48:58.026 WARN - Exception: Unable to locate element: {"method":"css selector","selector":"#userMenu"}
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '2.45.0', revision: '5017cb8', time: '2015-02-26 23:59:50'
 System info: host: 'Abigails-Mini', ip: '192.168.1.105', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.2', java.version: '1.6.0_65'
 Driver info: driver.version: unknown
-19:18:14.812 INFO - Executing: [find element: By.cssSelector: #currentUsername])
-19:18:15.630 WARN - Exception thrown
+19:48:58.358 INFO - Executing: [find element: By.cssSelector: #currentUsername])
+19:48:59.031 WARN - Exception thrown
 org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"css selector","selector":"#currentUsername"}
-Command duration or timeout: 10 milliseconds
+Command duration or timeout: 9 milliseconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '2.45.0', revision: '5017cb8', time: '2015-02-26 23:59:50'
 System info: host: 'Abigails-Mini', ip: '192.168.1.105', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.2', java.version: '1.6.0_65'
 *** Element info: {Using=css selector, value=#currentUsername}
-Session ID: 40b1625a-0aea-d048-8712-5403c8a9ab39
+Session ID: bb88a34c-5e22-2c45-b3af-1d701af8c8d0
 Driver info: org.openqa.selenium.firefox.FirefoxDriver
 Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, rotatable=false, locationContextEnabled=true, version=35.0, cssSelectorsEnabled=true, databaseEnabled=true, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, applicationCacheEnabled=true, takesScreenshot=true}]
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
@@ -220,90 +220,90 @@ For documentation on this error, please visit: http://seleniumhq.org/exceptions/
 Build info: version: '2.45.0', revision: '5017cb8', time: '2015-02-26 23:59:50'
 System info: host: 'Abigails-Mini', ip: '192.168.1.105', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.2', java.version: '1.6.0_65'
 Driver info: driver.version: unknown
-	at <anonymous class>.FirefoxDriver.prototype.findElementInternal_(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous1665128194495605056webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10271)
-	at <anonymous class>.FirefoxDriver.prototype.findElement(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous1665128194495605056webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10280)
-	at <anonymous class>.DelayedCommand.prototype.executeInternal_/h(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous1665128194495605056webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12274)
-	at <anonymous class>.DelayedCommand.prototype.executeInternal_(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous1665128194495605056webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12279)
-	at <anonymous class>.DelayedCommand.prototype.execute/<(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous1665128194495605056webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12221)
-19:18:15.631 WARN - Exception: Unable to locate element: {"method":"css selector","selector":"#currentUsername"}
+	at <anonymous class>.FirefoxDriver.prototype.findElementInternal_(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous138086035180236539webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10271)
+	at <anonymous class>.FirefoxDriver.prototype.findElement(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous138086035180236539webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10280)
+	at <anonymous class>.DelayedCommand.prototype.executeInternal_/h(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous138086035180236539webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12274)
+	at <anonymous class>.DelayedCommand.prototype.executeInternal_(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous138086035180236539webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12279)
+	at <anonymous class>.DelayedCommand.prototype.execute/<(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous138086035180236539webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12221)
+19:48:59.033 WARN - Exception: Unable to locate element: {"method":"css selector","selector":"#currentUsername"}
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '2.45.0', revision: '5017cb8', time: '2015-02-26 23:59:50'
 System info: host: 'Abigails-Mini', ip: '192.168.1.105', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.2', java.version: '1.6.0_65'
 Driver info: driver.version: unknown
-19:18:15.898 INFO - Executing: [find element: By.cssSelector: #signInLink])
-19:18:15.907 INFO - Done: [find element: By.cssSelector: #signInLink]
-19:18:15.911 INFO - Executing: [find element: By.cssSelector: #signUpLink])
-19:18:15.965 INFO - Done: [find element: By.cssSelector: #signUpLink]
-19:18:15.969 INFO - Executing: [find element: By.cssSelector: #signInLink])
-19:18:16.021 INFO - Done: [find element: By.cssSelector: #signInLink]
-19:18:16.023 INFO - Executing: [click: 13 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #signInLink]])
-19:18:16.241 INFO - Done: [click: 13 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #signInLink]]
-19:18:16.549 INFO - Executing: [find elements: By.cssSelector: #at-pwd-form])
-19:18:16.558 INFO - Done: [find elements: By.cssSelector: #at-pwd-form]
-19:18:16.561 INFO - Executing: [is displayed: 15 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #at-pwd-form]])
-19:18:16.618 INFO - Done: [is displayed: 15 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #at-pwd-form]]
-19:18:16.622 INFO - Executing: [find element: By.cssSelector: #at-field-username_and_email])
-19:18:16.683 INFO - Done: [find element: By.cssSelector: #at-field-username_and_email]
-19:18:16.686 INFO - Executing: [find element: By.cssSelector: #at-field-password])
-19:18:16.745 INFO - Done: [find element: By.cssSelector: #at-field-password]
-19:18:16.749 INFO - Executing: [find element: By.cssSelector: #at-btn])
-19:18:16.812 INFO - Done: [find element: By.cssSelector: #at-btn]
-19:18:16.815 INFO - Executing: [find element: By.cssSelector: #at-field-username_and_email])
-19:18:16.874 INFO - Done: [find element: By.cssSelector: #at-field-username_and_email]
-19:18:16.878 INFO - Executing: [send keys: 16 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #at-field-username_and_email], [j, a, n, e, d, o, e, 1, 2, 3]])
-19:18:17.000 INFO - Done: [send keys: 16 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #at-field-username_and_email], [j, a, n, e, d, o, e, 1, 2, 3]]
-19:18:17.003 INFO - Executing: [find element: By.cssSelector: #at-field-password])
-19:18:17.063 INFO - Done: [find element: By.cssSelector: #at-field-password]
-19:18:17.066 INFO - Executing: [send keys: 17 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #at-field-password], [j, a, n, e, d, o, e, 1, 2, 3]])
-19:18:17.181 INFO - Done: [send keys: 17 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #at-field-password], [j, a, n, e, d, o, e, 1, 2, 3]]
-19:18:17.184 INFO - Executing: [find element: By.cssSelector: #at-btn])
-19:18:17.248 INFO - Done: [find element: By.cssSelector: #at-btn]
-19:18:17.251 INFO - Executing: [click: 18 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #at-btn]])
-19:18:17.414 INFO - Done: [click: 18 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #at-btn]]
-19:18:18.421 INFO - Executing: [find element: By.cssSelector: #userMenu])
-19:18:18.430 INFO - Done: [find element: By.cssSelector: #userMenu]
-19:18:18.434 INFO - Executing: [find element: By.cssSelector: #currentUsername])
-19:18:18.504 INFO - Done: [find element: By.cssSelector: #currentUsername]
-19:18:18.507 INFO - Executing: [find element: By.cssSelector: #currentUsername])
-19:18:18.568 INFO - Done: [find element: By.cssSelector: #currentUsername]
-19:18:18.571 INFO - Executing: [click: 20 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #currentUsername]])
-19:18:18.690 INFO - Done: [click: 20 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #currentUsername]]
-19:18:18.997 INFO - Executing: [find element: By.cssSelector: #myAccountLink])
-19:18:19.006 INFO - Done: [find element: By.cssSelector: #myAccountLink]
-19:18:19.009 INFO - Executing: [find element: By.cssSelector: #signOutButton])
-19:18:19.066 INFO - Done: [find element: By.cssSelector: #signOutButton]
-19:18:19.070 INFO - Executing: [find element: By.cssSelector: #signOutButton])
-19:18:19.134 INFO - Done: [find element: By.cssSelector: #signOutButton]
-19:18:19.137 INFO - Executing: [click: 22 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #signOutButton]])
-19:18:19.263 INFO - Done: [click: 22 [[FirefoxDriver: firefox on MAC (40b1625a-0aea-d048-8712-5403c8a9ab39)] -> css selector: #signOutButton]]
-19:18:19.768 INFO - Executing: [delete session: 98936316-65ee-4974-a059-ba3b91421f03])
-19:18:19.870 INFO - Done: [delete session: 98936316-65ee-4974-a059-ba3b91421f03]
-19:18:19.996 INFO - Executing: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, name=B  Post And Comment}]])
-19:18:19.997 INFO - Creating a new session for Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, name=B  Post And Comment}]
-19:18:22.580 INFO - Done: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, name=B  Post And Comment}]]
-19:18:22.584 INFO - Executing: [get: http://localhost:3000])
-19:18:24.373 INFO - Done: [get: http://localhost:3000]
-19:18:24.379 INFO - Executing: [set window size])
-19:18:24.524 INFO - Done: [set window size]
-19:18:24.529 INFO - Executing: [switch to frame: null])
-19:18:24.585 INFO - Done: [switch to frame: null]
-19:18:24.589 INFO - Executing: [find elements: By.cssSelector: body])
-19:18:24.688 INFO - Done: [find elements: By.cssSelector: body]
-19:18:24.691 INFO - Executing: [is displayed: 0 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: body]])
-19:18:24.749 INFO - Done: [is displayed: 0 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: body]]
-19:18:24.752 INFO - Executing: [find element: By.cssSelector: body])
-19:18:24.812 INFO - Done: [find element: By.cssSelector: body]
-19:18:24.815 INFO - Executing: [find element: By.cssSelector: body])
-19:18:24.877 INFO - Done: [find element: By.cssSelector: body]
-19:18:24.881 INFO - Executing: [find element: By.cssSelector: #userMenu])
-19:18:25.754 WARN - Exception thrown
+19:48:59.389 INFO - Executing: [find element: By.cssSelector: #signInLink])
+19:48:59.398 INFO - Done: [find element: By.cssSelector: #signInLink]
+19:48:59.405 INFO - Executing: [find element: By.cssSelector: #signUpLink])
+19:48:59.454 INFO - Done: [find element: By.cssSelector: #signUpLink]
+19:48:59.458 INFO - Executing: [find element: By.cssSelector: #signInLink])
+19:48:59.511 INFO - Done: [find element: By.cssSelector: #signInLink]
+19:48:59.514 INFO - Executing: [click: 13 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #signInLink]])
+19:48:59.759 INFO - Done: [click: 13 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #signInLink]]
+19:49:00.070 INFO - Executing: [find elements: By.cssSelector: #at-pwd-form])
+19:49:00.079 INFO - Done: [find elements: By.cssSelector: #at-pwd-form]
+19:49:00.082 INFO - Executing: [is displayed: 15 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #at-pwd-form]])
+19:49:00.137 INFO - Done: [is displayed: 15 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #at-pwd-form]]
+19:49:00.142 INFO - Executing: [find element: By.cssSelector: #at-field-username_and_email])
+19:49:00.202 INFO - Done: [find element: By.cssSelector: #at-field-username_and_email]
+19:49:00.205 INFO - Executing: [find element: By.cssSelector: #at-field-password])
+19:49:00.266 INFO - Done: [find element: By.cssSelector: #at-field-password]
+19:49:00.269 INFO - Executing: [find element: By.cssSelector: #at-btn])
+19:49:00.350 INFO - Done: [find element: By.cssSelector: #at-btn]
+19:49:00.353 INFO - Executing: [find element: By.cssSelector: #at-field-username_and_email])
+19:49:00.414 INFO - Done: [find element: By.cssSelector: #at-field-username_and_email]
+19:49:00.418 INFO - Executing: [send keys: 16 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #at-field-username_and_email], [j, a, n, e, d, o, e, 1, 2, 3]])
+19:49:00.547 INFO - Done: [send keys: 16 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #at-field-username_and_email], [j, a, n, e, d, o, e, 1, 2, 3]]
+19:49:00.550 INFO - Executing: [find element: By.cssSelector: #at-field-password])
+19:49:00.615 INFO - Done: [find element: By.cssSelector: #at-field-password]
+19:49:00.618 INFO - Executing: [send keys: 17 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #at-field-password], [j, a, n, e, d, o, e, 1, 2, 3]])
+19:49:00.747 INFO - Done: [send keys: 17 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #at-field-password], [j, a, n, e, d, o, e, 1, 2, 3]]
+19:49:00.750 INFO - Executing: [find element: By.cssSelector: #at-btn])
+19:49:00.812 INFO - Done: [find element: By.cssSelector: #at-btn]
+19:49:00.815 INFO - Executing: [click: 18 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #at-btn]])
+19:49:00.961 INFO - Done: [click: 18 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #at-btn]]
+19:49:01.968 INFO - Executing: [find element: By.cssSelector: #userMenu])
+19:49:01.976 INFO - Done: [find element: By.cssSelector: #userMenu]
+19:49:01.980 INFO - Executing: [find element: By.cssSelector: #currentUsername])
+19:49:02.056 INFO - Done: [find element: By.cssSelector: #currentUsername]
+19:49:02.061 INFO - Executing: [find element: By.cssSelector: #currentUsername])
+19:49:02.126 INFO - Done: [find element: By.cssSelector: #currentUsername]
+19:49:02.130 INFO - Executing: [click: 20 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #currentUsername]])
+19:49:02.264 INFO - Done: [click: 20 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #currentUsername]]
+19:49:02.571 INFO - Executing: [find element: By.cssSelector: #myAccountLink])
+19:49:02.580 INFO - Done: [find element: By.cssSelector: #myAccountLink]
+19:49:02.583 INFO - Executing: [find element: By.cssSelector: #signOutButton])
+19:49:02.646 INFO - Done: [find element: By.cssSelector: #signOutButton]
+19:49:02.649 INFO - Executing: [find element: By.cssSelector: #signOutButton])
+19:49:02.711 INFO - Done: [find element: By.cssSelector: #signOutButton]
+19:49:02.716 INFO - Executing: [click: 22 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #signOutButton]])
+19:49:02.848 INFO - Done: [click: 22 [[FirefoxDriver: firefox on MAC (bb88a34c-5e22-2c45-b3af-1d701af8c8d0)] -> css selector: #signOutButton]]
+19:49:03.353 INFO - Executing: [delete session: 9c50199e-2377-40e0-be50-7ffa85d41700])
+19:49:03.467 INFO - Done: [delete session: 9c50199e-2377-40e0-be50-7ffa85d41700]
+19:49:03.596 INFO - Executing: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, name=B  Post And Comment}]])
+19:49:03.597 INFO - Creating a new session for Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, name=B  Post And Comment}]
+19:49:06.019 INFO - Done: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, name=B  Post And Comment}]]
+19:49:06.025 INFO - Executing: [get: http://localhost:3000])
+19:49:07.985 INFO - Done: [get: http://localhost:3000]
+19:49:07.990 INFO - Executing: [set window size])
+19:49:08.120 INFO - Done: [set window size]
+19:49:08.125 INFO - Executing: [switch to frame: null])
+19:49:08.183 INFO - Done: [switch to frame: null]
+19:49:08.187 INFO - Executing: [find elements: By.cssSelector: body])
+19:49:08.297 INFO - Done: [find elements: By.cssSelector: body]
+19:49:08.308 INFO - Executing: [is displayed: 0 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: body]])
+19:49:08.365 INFO - Done: [is displayed: 0 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: body]]
+19:49:08.368 INFO - Executing: [find element: By.cssSelector: body])
+19:49:08.426 INFO - Done: [find element: By.cssSelector: body]
+19:49:08.429 INFO - Executing: [find element: By.cssSelector: body])
+19:49:08.487 INFO - Done: [find element: By.cssSelector: body]
+19:49:08.491 INFO - Executing: [find element: By.cssSelector: #userMenu])
+19:49:09.194 WARN - Exception thrown
 org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"css selector","selector":"#userMenu"}
 Command duration or timeout: 58 milliseconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '2.45.0', revision: '5017cb8', time: '2015-02-26 23:59:50'
 System info: host: 'Abigails-Mini', ip: '192.168.1.105', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.2', java.version: '1.6.0_65'
 *** Element info: {Using=css selector, value=#userMenu}
-Session ID: 8236b853-d8d3-1b48-a00d-baa71487e84b
+Session ID: 15c9ef27-c1aa-bd4b-b850-7fc25f951365
 Driver info: org.openqa.selenium.firefox.FirefoxDriver
 Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, rotatable=false, locationContextEnabled=true, version=35.0, cssSelectorsEnabled=true, databaseEnabled=true, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, applicationCacheEnabled=true, takesScreenshot=true}]
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
@@ -336,215 +336,215 @@ For documentation on this error, please visit: http://seleniumhq.org/exceptions/
 Build info: version: '2.45.0', revision: '5017cb8', time: '2015-02-26 23:59:50'
 System info: host: 'Abigails-Mini', ip: '192.168.1.105', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.2', java.version: '1.6.0_65'
 Driver info: driver.version: unknown
-	at <anonymous class>.FirefoxDriver.prototype.findElementInternal_(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous7867266032761900613webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10271)
-	at <anonymous class>.FirefoxDriver.prototype.findElement(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous7867266032761900613webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10280)
-	at <anonymous class>.DelayedCommand.prototype.executeInternal_/h(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous7867266032761900613webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12274)
-	at <anonymous class>.DelayedCommand.prototype.executeInternal_(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous7867266032761900613webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12279)
-	at <anonymous class>.DelayedCommand.prototype.execute/<(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous7867266032761900613webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12221)
-19:18:25.755 WARN - Exception: Unable to locate element: {"method":"css selector","selector":"#userMenu"}
+	at <anonymous class>.FirefoxDriver.prototype.findElementInternal_(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous7861793028323818337webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10271)
+	at <anonymous class>.FirefoxDriver.prototype.findElement(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous7861793028323818337webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10280)
+	at <anonymous class>.DelayedCommand.prototype.executeInternal_/h(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous7861793028323818337webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12274)
+	at <anonymous class>.DelayedCommand.prototype.executeInternal_(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous7861793028323818337webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12279)
+	at <anonymous class>.DelayedCommand.prototype.execute/<(file:///var/folders/wy/x2wnhsd15rxbcnwr07g161b00000gn/T/anonymous7861793028323818337webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12221)
+19:49:09.196 WARN - Exception: Unable to locate element: {"method":"css selector","selector":"#userMenu"}
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '2.45.0', revision: '5017cb8', time: '2015-02-26 23:59:50'
 System info: host: 'Abigails-Mini', ip: '192.168.1.105', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.2', java.version: '1.6.0_65'
 Driver info: driver.version: unknown
-19:18:26.067 INFO - Executing: [find element: By.cssSelector: #signInLink])
-19:18:26.076 INFO - Done: [find element: By.cssSelector: #signInLink]
-19:18:26.082 INFO - Executing: [find element: By.cssSelector: #signInLink])
-19:18:26.131 INFO - Done: [find element: By.cssSelector: #signInLink]
-19:18:26.135 INFO - Executing: [find element: By.cssSelector: #signInLink])
-19:18:26.185 INFO - Done: [find element: By.cssSelector: #signInLink]
-19:18:26.188 INFO - Executing: [click: 1 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #signInLink]])
-19:18:26.444 INFO - Done: [click: 1 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #signInLink]]
-19:18:26.749 INFO - Executing: [find elements: By.cssSelector: #at-pwd-form])
-19:18:26.758 INFO - Done: [find elements: By.cssSelector: #at-pwd-form]
-19:18:26.760 INFO - Executing: [is displayed: 2 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #at-pwd-form]])
-19:18:26.816 INFO - Done: [is displayed: 2 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #at-pwd-form]]
-19:18:26.819 INFO - Executing: [find element: By.cssSelector: #at-field-username_and_email])
-19:18:26.882 INFO - Done: [find element: By.cssSelector: #at-field-username_and_email]
-19:18:26.885 INFO - Executing: [find element: By.cssSelector: #at-field-password])
-19:18:26.946 INFO - Done: [find element: By.cssSelector: #at-field-password]
-19:18:26.950 INFO - Executing: [find element: By.cssSelector: #at-btn])
-19:18:27.009 INFO - Done: [find element: By.cssSelector: #at-btn]
-19:18:27.013 INFO - Executing: [find element: By.cssSelector: #at-field-username_and_email])
-19:18:27.074 INFO - Done: [find element: By.cssSelector: #at-field-username_and_email]
-19:18:27.077 INFO - Executing: [send keys: 3 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #at-field-username_and_email], [j, a, n, e, d, o, e, 1, 2, 3]])
-19:18:27.200 INFO - Done: [send keys: 3 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #at-field-username_and_email], [j, a, n, e, d, o, e, 1, 2, 3]]
-19:18:27.203 INFO - Executing: [find element: By.cssSelector: #at-field-password])
-19:18:27.286 INFO - Done: [find element: By.cssSelector: #at-field-password]
-19:18:27.289 INFO - Executing: [send keys: 4 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #at-field-password], [j, a, n, e, d, o, e, 1, 2, 3]])
-19:18:27.458 INFO - Done: [send keys: 4 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #at-field-password], [j, a, n, e, d, o, e, 1, 2, 3]]
-19:18:27.462 INFO - Executing: [find element: By.cssSelector: #at-btn])
-19:18:27.528 INFO - Done: [find element: By.cssSelector: #at-btn]
-19:18:27.530 INFO - Executing: [click: 5 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #at-btn]])
-19:18:27.705 INFO - Done: [click: 5 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #at-btn]]
-19:18:28.712 INFO - Executing: [switch to frame: null])
-19:18:28.722 INFO - Done: [switch to frame: null]
-19:18:28.725 INFO - Executing: [find elements: By.cssSelector: body])
-19:18:28.786 INFO - Done: [find elements: By.cssSelector: body]
-19:18:28.788 INFO - Executing: [is displayed: 0 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: body]])
-19:18:28.851 INFO - Done: [is displayed: 0 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: body]]
-19:18:28.853 INFO - Executing: [find element: By.cssSelector: body])
-19:18:28.914 INFO - Done: [find element: By.cssSelector: body]
-19:18:28.918 INFO - Executing: [find element: By.cssSelector: #userMenu])
-19:18:28.978 INFO - Done: [find element: By.cssSelector: #userMenu]
-19:18:28.982 INFO - Executing: [find element: By.cssSelector: #currentUsername])
-19:18:29.049 INFO - Done: [find element: By.cssSelector: #currentUsername]
-19:18:29.051 INFO - Executing: [find element: By.cssSelector: #newPostLink])
-19:18:29.116 INFO - Done: [find element: By.cssSelector: #newPostLink]
-19:18:29.119 INFO - Executing: [find element: By.cssSelector: #newPostLink])
-19:18:29.179 INFO - Done: [find element: By.cssSelector: #newPostLink]
-19:18:29.182 INFO - Executing: [click: 8 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #newPostLink]])
-19:18:29.474 INFO - Done: [click: 8 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #newPostLink]]
-19:18:30.479 INFO - Executing: [switch to frame: null])
-19:18:30.487 INFO - Done: [switch to frame: null]
-19:18:30.490 INFO - Executing: [find elements: By.cssSelector: body])
-19:18:30.547 INFO - Done: [find elements: By.cssSelector: body]
-19:18:30.550 INFO - Executing: [is displayed: 0 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: body]])
-19:18:30.612 INFO - Done: [is displayed: 0 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: body]]
-19:18:30.616 INFO - Executing: [find element: By.cssSelector: body])
-19:18:30.679 INFO - Done: [find element: By.cssSelector: body]
-19:18:30.682 INFO - Executing: [find elements: By.cssSelector: #postSubmitPage])
-19:18:30.741 INFO - Done: [find elements: By.cssSelector: #postSubmitPage]
-19:18:30.744 INFO - Executing: [is displayed: 9 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #postSubmitPage]])
-19:18:30.807 INFO - Done: [is displayed: 9 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #postSubmitPage]]
-19:18:30.810 INFO - Executing: [find element: By.cssSelector: #postSubmitPage])
-19:18:30.872 INFO - Done: [find element: By.cssSelector: #postSubmitPage]
-19:18:30.875 INFO - Executing: [find element: By.cssSelector: #title])
-19:18:30.938 INFO - Done: [find element: By.cssSelector: #title]
-19:18:30.941 INFO - Executing: [find element: By.cssSelector: #postBody])
-19:18:31.006 INFO - Done: [find element: By.cssSelector: #postBody]
-19:18:31.011 INFO - Executing: [find element: By.cssSelector: #url])
-19:18:31.068 INFO - Done: [find element: By.cssSelector: #url]
-19:18:31.072 INFO - Executing: [find element: By.cssSelector: #postSubmitPage])
-19:18:31.132 INFO - Done: [find element: By.cssSelector: #postSubmitPage]
-19:18:31.136 INFO - Executing: [find element: By.cssSelector: #title])
-19:18:31.225 INFO - Done: [find element: By.cssSelector: #title]
-19:18:31.228 INFO - Executing: [send keys: 10 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #title], [T, e, s, t,  , T, i, t, l, e]])
-19:18:31.370 INFO - Done: [send keys: 10 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #title], [T, e, s, t,  , T, i, t, l, e]]
-19:18:31.372 INFO - Executing: [find element: By.cssSelector: #postBody])
-19:18:31.438 INFO - Done: [find element: By.cssSelector: #postBody]
-19:18:31.441 INFO - Executing: [send keys: 11 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #postBody], [L, o, r, e, m,  , i, p, s, u, m,  , d, o, l, a, r,  , s, e, t,  , e, t, ., ., .]])
-19:18:31.630 INFO - Done: [send keys: 11 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #postBody], [L, o, r, e, m,  , i, p, s, u, m,  , d, o, l, a, r,  , s, e, t,  , e, t, ., ., .]]
-19:18:31.633 INFO - Executing: [find element: By.cssSelector: #url])
-19:18:31.697 INFO - Done: [find element: By.cssSelector: #url]
-19:18:31.701 INFO - Executing: [send keys: 12 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #url], [h, t, t, p, :, /, /, w, w, w, ., w, i, k, i, p, e, d, i, a, ., c, o, m]])
-19:18:31.863 INFO - Done: [send keys: 12 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #url], [h, t, t, p, :, /, /, w, w, w, ., w, i, k, i, p, e, d, i, a, ., c, o, m]]
-19:18:31.867 INFO - Executing: [find element: By.cssSelector: #submitNewPostButton])
-19:18:31.927 INFO - Done: [find element: By.cssSelector: #submitNewPostButton]
-19:18:31.930 INFO - Executing: [find element: By.cssSelector: #submitNewPostButton])
-19:18:31.985 INFO - Done: [find element: By.cssSelector: #submitNewPostButton]
-19:18:31.989 INFO - Executing: [click: 13 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #submitNewPostButton]])
-19:18:32.519 INFO - Done: [click: 13 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #submitNewPostButton]]
-19:18:37.523 INFO - Executing: [switch to frame: null])
-19:18:37.532 INFO - Done: [switch to frame: null]
-19:18:37.535 INFO - Executing: [find elements: By.cssSelector: body])
-19:18:37.595 INFO - Done: [find elements: By.cssSelector: body]
-19:18:37.597 INFO - Executing: [is displayed: 0 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: body]])
-19:18:37.653 INFO - Done: [is displayed: 0 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: body]]
-19:18:37.656 INFO - Executing: [find element: By.cssSelector: body])
-19:18:37.713 INFO - Done: [find element: By.cssSelector: body]
-19:18:37.716 INFO - Executing: [find element: By.cssSelector: #singlePostPage])
-19:18:37.772 INFO - Done: [find element: By.cssSelector: #singlePostPage]
-19:18:37.776 INFO - Executing: [find element: By.cssSelector: #mainContent .single-post])
-19:18:37.833 INFO - Done: [find element: By.cssSelector: #mainContent .single-post]
-19:18:37.837 INFO - Executing: [find element: By.cssSelector: #mainContent .post-upvote])
-19:18:37.892 INFO - Done: [find element: By.cssSelector: #mainContent .post-upvote]
-19:18:37.897 INFO - Executing: [find element: By.cssSelector: #mainContent .post-actions])
-19:18:37.954 INFO - Done: [find element: By.cssSelector: #mainContent .post-actions]
-19:18:37.959 INFO - Executing: [find element: By.cssSelector: #mainContent .post-content])
-19:18:38.016 INFO - Done: [find element: By.cssSelector: #mainContent .post-content]
-19:18:38.020 INFO - Executing: [find element: By.cssSelector: #mainContent .post-info])
-19:18:38.076 INFO - Done: [find element: By.cssSelector: #mainContent .post-info]
-19:18:38.079 INFO - Executing: [find element: By.cssSelector: #mainContent .post-info .post-heading])
-19:18:38.136 INFO - Done: [find element: By.cssSelector: #mainContent .post-info .post-heading]
-19:18:38.139 INFO - Executing: [find element: By.cssSelector: #mainContent .post-info .post-heading .postTitle])
-19:18:38.197 INFO - Done: [find element: By.cssSelector: #mainContent .post-info .post-heading .postTitle]
-19:18:38.200 INFO - Executing: [find element: By.cssSelector: #mainContent .post-info .post-heading .collaborationTagList])
-19:18:38.258 INFO - Done: [find element: By.cssSelector: #mainContent .post-info .post-heading .collaborationTagList]
-19:18:38.262 INFO - Executing: [find element: By.cssSelector: #mainContent .post-info .post-heading .collaborationTagListEditor])
-19:18:38.328 INFO - Done: [find element: By.cssSelector: #mainContent .post-info .post-heading .collaborationTagListEditor]
-19:18:38.332 INFO - Executing: [find element: By.cssSelector: #mainContent .post-info .post-heading .addCollaborators])
-19:18:38.401 INFO - Done: [find element: By.cssSelector: #mainContent .post-info .post-heading .addCollaborators]
-19:18:38.404 INFO - Executing: [find element: By.cssSelector: #mainContent .post-share])
-19:18:38.467 INFO - Done: [find element: By.cssSelector: #mainContent .post-share]
-19:18:38.470 INFO - Executing: [find element: By.cssSelector: #mainContent .post-discuss])
-19:18:38.525 INFO - Done: [find element: By.cssSelector: #mainContent .post-discuss]
-19:18:38.528 INFO - Executing: [find element: By.cssSelector: #mainContent .post-meta])
-19:18:38.584 INFO - Done: [find element: By.cssSelector: #mainContent .post-meta]
-19:18:38.587 INFO - Executing: [find element: By.cssSelector: #mainContent .post-meta .post-meta-item])
-19:18:38.642 INFO - Done: [find element: By.cssSelector: #mainContent .post-meta .post-meta-item]
-19:18:38.646 INFO - Executing: [find element: By.cssSelector: #mainContent .post-meta .points])
-19:18:38.709 INFO - Done: [find element: By.cssSelector: #mainContent .post-meta .points]
-19:18:38.712 INFO - Executing: [find element: By.cssSelector: #mainContent .post-meta .comments-link])
-19:18:38.769 INFO - Done: [find element: By.cssSelector: #mainContent .post-meta .comments-link]
-19:18:38.772 INFO - Executing: [find element: By.cssSelector: #mainContent .post-body])
-19:18:38.831 INFO - Done: [find element: By.cssSelector: #mainContent .post-body]
-19:18:38.835 INFO - Executing: [find element: By.cssSelector: #mainContent .post-body p])
-19:18:38.893 INFO - Done: [find element: By.cssSelector: #mainContent .post-body p]
-19:18:38.898 INFO - Executing: [find element: By.cssSelector: #mainContent .comment-new])
-19:18:38.956 INFO - Done: [find element: By.cssSelector: #mainContent .comment-new]
-19:18:38.961 INFO - Executing: [find element: By.cssSelector: #mainContent .comment-new #commentTextarea])
-19:18:39.021 INFO - Done: [find element: By.cssSelector: #mainContent .comment-new #commentTextarea]
-19:18:39.024 INFO - Executing: [find element: By.cssSelector: #mainContent .comment-new .comment-submit .button])
-19:18:39.088 INFO - Done: [find element: By.cssSelector: #mainContent .comment-new .comment-submit .button]
-19:18:39.092 INFO - Executing: [find element: By.cssSelector: #mainContent .post-info .post-heading .postTitle])
-19:18:39.158 INFO - Done: [find element: By.cssSelector: #mainContent .post-info .post-heading .postTitle]
-19:18:39.162 INFO - Executing: [get text: 20 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #mainContent .post-info .post-heading .postTitle]])
-19:18:39.227 INFO - Done: [get text: 20 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #mainContent .post-info .post-heading .postTitle]]
-19:18:39.231 INFO - Executing: [find element: By.cssSelector: #mainContent .post-body p])
-19:18:39.286 INFO - Done: [find element: By.cssSelector: #mainContent .post-body p]
-19:18:39.289 INFO - Executing: [get text: 31 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #mainContent .post-body p]])
-19:18:39.377 INFO - Done: [get text: 31 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #mainContent .post-body p]]
-19:18:39.381 INFO - Executing: [find element: By.cssSelector: #mainContent .comment-new])
-19:18:39.443 INFO - Done: [find element: By.cssSelector: #mainContent .comment-new]
-19:18:39.446 INFO - Executing: [find element: By.cssSelector: #mainContent .comment-new #commentTextarea])
-19:18:39.502 INFO - Done: [find element: By.cssSelector: #mainContent .comment-new #commentTextarea]
-19:18:39.505 INFO - Executing: [find element: By.cssSelector: #mainContent .comment-new .comment-submit .button])
-19:18:39.561 INFO - Done: [find element: By.cssSelector: #mainContent .comment-new .comment-submit .button]
-19:18:39.565 INFO - Executing: [find element: By.cssSelector: #mainContent .comment-new #commentTextarea])
-19:18:39.620 INFO - Done: [find element: By.cssSelector: #mainContent .comment-new #commentTextarea]
-19:18:39.623 INFO - Executing: [send keys: 33 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #mainContent .comment-new #commentTextarea], [T, h, e, s, e,  , a, r, e,  , s, o, m, e,  , w, o, r, d, s, ., ., .]])
-19:18:39.769 INFO - Done: [send keys: 33 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #mainContent .comment-new #commentTextarea], [T, h, e, s, e,  , a, r, e,  , s, o, m, e,  , w, o, r, d, s, ., ., .]]
-19:18:39.772 INFO - Executing: [find element: By.cssSelector: #mainContent .comment-new .comment-submit .button])
-19:18:39.834 INFO - Done: [find element: By.cssSelector: #mainContent .comment-new .comment-submit .button]
-19:18:39.836 INFO - Executing: [click: 34 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #mainContent .comment-new .comment-submit .button]])
-19:18:40.317 INFO - Done: [click: 34 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #mainContent .comment-new .comment-submit .button]]
-19:18:40.821 INFO - Executing: [find element: By.cssSelector: #mainContent .comments .comment-displayed])
-19:18:40.931 INFO - Done: [find element: By.cssSelector: #mainContent .comments .comment-displayed]
-19:18:40.935 INFO - Executing: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body])
-19:18:40.994 INFO - Done: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body]
-19:18:40.997 INFO - Executing: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content])
-19:18:41.060 INFO - Done: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content]
-19:18:41.063 INFO - Executing: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .user-avatar])
-19:18:41.130 INFO - Done: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .user-avatar]
-19:18:41.133 INFO - Executing: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main])
-19:18:41.197 INFO - Done: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main]
-19:18:41.201 INFO - Executing: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main .comment-meta])
-19:18:41.264 INFO - Done: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main .comment-meta]
-19:18:41.267 INFO - Executing: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main .comment-text])
-19:18:41.348 INFO - Done: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main .comment-text]
-19:18:41.354 INFO - Executing: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main .comment-text])
-19:18:41.422 INFO - Done: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main .comment-text]
-19:18:41.424 INFO - Executing: [get text: 41 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main .comment-text]])
-19:18:41.497 INFO - Done: [get text: 41 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main .comment-text]]
-19:18:41.500 INFO - Executing: [switch to frame: null])
-19:18:41.564 INFO - Done: [switch to frame: null]
-19:18:41.566 INFO - Executing: [find elements: By.cssSelector: body])
-19:18:41.634 INFO - Done: [find elements: By.cssSelector: body]
-19:18:41.636 INFO - Executing: [is displayed: 0 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: body]])
-19:18:41.695 INFO - Done: [is displayed: 0 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: body]]
-19:18:41.697 INFO - Executing: [find element: By.cssSelector: body])
-19:18:41.755 INFO - Done: [find element: By.cssSelector: body]
-19:18:41.758 INFO - Executing: [find element: By.cssSelector: #currentUsername])
-19:18:41.814 INFO - Done: [find element: By.cssSelector: #currentUsername]
-19:18:41.817 INFO - Executing: [click: 7 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #currentUsername]])
-19:18:41.946 INFO - Done: [click: 7 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #currentUsername]]
-19:18:42.249 INFO - Executing: [find element: By.cssSelector: #myAccountLink])
-19:18:42.258 INFO - Done: [find element: By.cssSelector: #myAccountLink]
-19:18:42.261 INFO - Executing: [find element: By.cssSelector: #signOutButton])
-19:18:42.325 INFO - Done: [find element: By.cssSelector: #signOutButton]
-19:18:42.334 INFO - Executing: [find element: By.cssSelector: #signOutButton])
-19:18:42.397 INFO - Done: [find element: By.cssSelector: #signOutButton]
-19:18:42.399 INFO - Executing: [click: 43 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #signOutButton]])
-19:18:42.638 INFO - Done: [click: 43 [[FirefoxDriver: firefox on MAC (8236b853-d8d3-1b48-a00d-baa71487e84b)] -> css selector: #signOutButton]]
-19:18:43.140 INFO - Executing: [delete session: 3e05b7ba-5c3a-476e-8fb8-ae52251fa76e])
-19:18:43.253 INFO - Done: [delete session: 3e05b7ba-5c3a-476e-8fb8-ae52251fa76e]
+19:49:09.550 INFO - Executing: [find element: By.cssSelector: #signInLink])
+19:49:09.559 INFO - Done: [find element: By.cssSelector: #signInLink]
+19:49:09.562 INFO - Executing: [find element: By.cssSelector: #signInLink])
+19:49:09.615 INFO - Done: [find element: By.cssSelector: #signInLink]
+19:49:09.618 INFO - Executing: [find element: By.cssSelector: #signInLink])
+19:49:09.672 INFO - Done: [find element: By.cssSelector: #signInLink]
+19:49:09.675 INFO - Executing: [click: 1 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #signInLink]])
+19:49:09.933 INFO - Done: [click: 1 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #signInLink]]
+19:49:10.242 INFO - Executing: [find elements: By.cssSelector: #at-pwd-form])
+19:49:10.251 INFO - Done: [find elements: By.cssSelector: #at-pwd-form]
+19:49:10.254 INFO - Executing: [is displayed: 2 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #at-pwd-form]])
+19:49:10.331 INFO - Done: [is displayed: 2 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #at-pwd-form]]
+19:49:10.335 INFO - Executing: [find element: By.cssSelector: #at-field-username_and_email])
+19:49:10.408 INFO - Done: [find element: By.cssSelector: #at-field-username_and_email]
+19:49:10.413 INFO - Executing: [find element: By.cssSelector: #at-field-password])
+19:49:10.630 INFO - Done: [find element: By.cssSelector: #at-field-password]
+19:49:10.634 INFO - Executing: [find element: By.cssSelector: #at-btn])
+19:49:10.712 INFO - Done: [find element: By.cssSelector: #at-btn]
+19:49:10.716 INFO - Executing: [find element: By.cssSelector: #at-field-username_and_email])
+19:49:10.798 INFO - Done: [find element: By.cssSelector: #at-field-username_and_email]
+19:49:10.801 INFO - Executing: [send keys: 3 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #at-field-username_and_email], [j, a, n, e, d, o, e, 1, 2, 3]])
+19:49:10.930 INFO - Done: [send keys: 3 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #at-field-username_and_email], [j, a, n, e, d, o, e, 1, 2, 3]]
+19:49:10.933 INFO - Executing: [find element: By.cssSelector: #at-field-password])
+19:49:10.998 INFO - Done: [find element: By.cssSelector: #at-field-password]
+19:49:11.001 INFO - Executing: [send keys: 4 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #at-field-password], [j, a, n, e, d, o, e, 1, 2, 3]])
+19:49:11.121 INFO - Done: [send keys: 4 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #at-field-password], [j, a, n, e, d, o, e, 1, 2, 3]]
+19:49:11.124 INFO - Executing: [find element: By.cssSelector: #at-btn])
+19:49:11.188 INFO - Done: [find element: By.cssSelector: #at-btn]
+19:49:11.191 INFO - Executing: [click: 5 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #at-btn]])
+19:49:11.419 INFO - Done: [click: 5 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #at-btn]]
+19:49:12.426 INFO - Executing: [switch to frame: null])
+19:49:12.436 INFO - Done: [switch to frame: null]
+19:49:12.439 INFO - Executing: [find elements: By.cssSelector: body])
+19:49:12.516 INFO - Done: [find elements: By.cssSelector: body]
+19:49:12.519 INFO - Executing: [is displayed: 0 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: body]])
+19:49:12.877 INFO - Done: [is displayed: 0 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: body]]
+19:49:12.881 INFO - Executing: [find element: By.cssSelector: body])
+19:49:12.951 INFO - Done: [find element: By.cssSelector: body]
+19:49:12.955 INFO - Executing: [find element: By.cssSelector: #userMenu])
+19:49:13.019 INFO - Done: [find element: By.cssSelector: #userMenu]
+19:49:13.021 INFO - Executing: [find element: By.cssSelector: #currentUsername])
+19:49:13.085 INFO - Done: [find element: By.cssSelector: #currentUsername]
+19:49:13.089 INFO - Executing: [find element: By.cssSelector: #newPostLink])
+19:49:13.154 INFO - Done: [find element: By.cssSelector: #newPostLink]
+19:49:13.157 INFO - Executing: [find element: By.cssSelector: #newPostLink])
+19:49:13.229 INFO - Done: [find element: By.cssSelector: #newPostLink]
+19:49:13.232 INFO - Executing: [click: 8 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #newPostLink]])
+19:49:13.539 INFO - Done: [click: 8 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #newPostLink]]
+19:49:14.546 INFO - Executing: [switch to frame: null])
+19:49:14.556 INFO - Done: [switch to frame: null]
+19:49:14.559 INFO - Executing: [find elements: By.cssSelector: body])
+19:49:14.618 INFO - Done: [find elements: By.cssSelector: body]
+19:49:14.621 INFO - Executing: [is displayed: 0 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: body]])
+19:49:14.686 INFO - Done: [is displayed: 0 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: body]]
+19:49:14.689 INFO - Executing: [find element: By.cssSelector: body])
+19:49:14.752 INFO - Done: [find element: By.cssSelector: body]
+19:49:14.755 INFO - Executing: [find elements: By.cssSelector: #postSubmitPage])
+19:49:14.838 INFO - Done: [find elements: By.cssSelector: #postSubmitPage]
+19:49:14.841 INFO - Executing: [is displayed: 9 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #postSubmitPage]])
+19:49:14.903 INFO - Done: [is displayed: 9 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #postSubmitPage]]
+19:49:14.906 INFO - Executing: [find element: By.cssSelector: #postSubmitPage])
+19:49:14.969 INFO - Done: [find element: By.cssSelector: #postSubmitPage]
+19:49:14.972 INFO - Executing: [find element: By.cssSelector: #title])
+19:49:15.034 INFO - Done: [find element: By.cssSelector: #title]
+19:49:15.037 INFO - Executing: [find element: By.cssSelector: #postBody])
+19:49:15.099 INFO - Done: [find element: By.cssSelector: #postBody]
+19:49:15.104 INFO - Executing: [find element: By.cssSelector: #url])
+19:49:15.164 INFO - Done: [find element: By.cssSelector: #url]
+19:49:15.169 INFO - Executing: [find element: By.cssSelector: #postSubmitPage])
+19:49:15.227 INFO - Done: [find element: By.cssSelector: #postSubmitPage]
+19:49:15.231 INFO - Executing: [find element: By.cssSelector: #title])
+19:49:15.312 INFO - Done: [find element: By.cssSelector: #title]
+19:49:15.325 INFO - Executing: [send keys: 10 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #title], [T, e, s, t,  , T, i, t, l, e]])
+19:49:15.438 INFO - Done: [send keys: 10 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #title], [T, e, s, t,  , T, i, t, l, e]]
+19:49:15.441 INFO - Executing: [find element: By.cssSelector: #postBody])
+19:49:15.507 INFO - Done: [find element: By.cssSelector: #postBody]
+19:49:15.510 INFO - Executing: [send keys: 11 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #postBody], [L, o, r, e, m,  , i, p, s, u, m,  , d, o, l, a, r,  , s, e, t,  , e, t, ., ., .]])
+19:49:15.709 INFO - Done: [send keys: 11 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #postBody], [L, o, r, e, m,  , i, p, s, u, m,  , d, o, l, a, r,  , s, e, t,  , e, t, ., ., .]]
+19:49:15.712 INFO - Executing: [find element: By.cssSelector: #url])
+19:49:15.775 INFO - Done: [find element: By.cssSelector: #url]
+19:49:15.779 INFO - Executing: [send keys: 12 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #url], [h, t, t, p, :, /, /, w, w, w, ., w, i, k, i, p, e, d, i, a, ., c, o, m]])
+19:49:15.946 INFO - Done: [send keys: 12 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #url], [h, t, t, p, :, /, /, w, w, w, ., w, i, k, i, p, e, d, i, a, ., c, o, m]]
+19:49:15.951 INFO - Executing: [find element: By.cssSelector: #submitNewPostButton])
+19:49:16.016 INFO - Done: [find element: By.cssSelector: #submitNewPostButton]
+19:49:16.019 INFO - Executing: [find element: By.cssSelector: #submitNewPostButton])
+19:49:16.074 INFO - Done: [find element: By.cssSelector: #submitNewPostButton]
+19:49:16.076 INFO - Executing: [click: 13 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #submitNewPostButton]])
+19:49:16.524 INFO - Done: [click: 13 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #submitNewPostButton]]
+19:49:21.528 INFO - Executing: [switch to frame: null])
+19:49:21.536 INFO - Done: [switch to frame: null]
+19:49:21.539 INFO - Executing: [find elements: By.cssSelector: body])
+19:49:21.596 INFO - Done: [find elements: By.cssSelector: body]
+19:49:21.599 INFO - Executing: [is displayed: 0 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: body]])
+19:49:21.654 INFO - Done: [is displayed: 0 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: body]]
+19:49:21.657 INFO - Executing: [find element: By.cssSelector: body])
+19:49:21.713 INFO - Done: [find element: By.cssSelector: body]
+19:49:21.716 INFO - Executing: [find element: By.cssSelector: #singlePostPage])
+19:49:21.772 INFO - Done: [find element: By.cssSelector: #singlePostPage]
+19:49:21.776 INFO - Executing: [find element: By.cssSelector: #mainContent .single-post])
+19:49:21.832 INFO - Done: [find element: By.cssSelector: #mainContent .single-post]
+19:49:21.835 INFO - Executing: [find element: By.cssSelector: #mainContent .post-upvote])
+19:49:21.897 INFO - Done: [find element: By.cssSelector: #mainContent .post-upvote]
+19:49:21.901 INFO - Executing: [find element: By.cssSelector: #mainContent .post-actions])
+19:49:21.956 INFO - Done: [find element: By.cssSelector: #mainContent .post-actions]
+19:49:21.961 INFO - Executing: [find element: By.cssSelector: #mainContent .post-content])
+19:49:22.016 INFO - Done: [find element: By.cssSelector: #mainContent .post-content]
+19:49:22.018 INFO - Executing: [find element: By.cssSelector: #mainContent .post-info])
+19:49:22.080 INFO - Done: [find element: By.cssSelector: #mainContent .post-info]
+19:49:22.083 INFO - Executing: [find element: By.cssSelector: #mainContent .post-info .post-heading])
+19:49:22.137 INFO - Done: [find element: By.cssSelector: #mainContent .post-info .post-heading]
+19:49:22.141 INFO - Executing: [find element: By.cssSelector: #mainContent .post-info .post-heading .postTitle])
+19:49:22.197 INFO - Done: [find element: By.cssSelector: #mainContent .post-info .post-heading .postTitle]
+19:49:22.200 INFO - Executing: [find element: By.cssSelector: #mainContent .post-info .post-heading .collaborationTagList])
+19:49:22.259 INFO - Done: [find element: By.cssSelector: #mainContent .post-info .post-heading .collaborationTagList]
+19:49:22.263 INFO - Executing: [find element: By.cssSelector: #mainContent .post-info .post-heading .collaborationTagListEditor])
+19:49:22.338 INFO - Done: [find element: By.cssSelector: #mainContent .post-info .post-heading .collaborationTagListEditor]
+19:49:22.340 INFO - Executing: [find element: By.cssSelector: #mainContent .post-info .post-heading .addCollaborators])
+19:49:22.395 INFO - Done: [find element: By.cssSelector: #mainContent .post-info .post-heading .addCollaborators]
+19:49:22.398 INFO - Executing: [find element: By.cssSelector: #mainContent .post-share])
+19:49:22.457 INFO - Done: [find element: By.cssSelector: #mainContent .post-share]
+19:49:22.461 INFO - Executing: [find element: By.cssSelector: #mainContent .post-discuss])
+19:49:22.519 INFO - Done: [find element: By.cssSelector: #mainContent .post-discuss]
+19:49:22.522 INFO - Executing: [find element: By.cssSelector: #mainContent .post-meta])
+19:49:22.580 INFO - Done: [find element: By.cssSelector: #mainContent .post-meta]
+19:49:22.583 INFO - Executing: [find element: By.cssSelector: #mainContent .post-meta .post-meta-item])
+19:49:22.637 INFO - Done: [find element: By.cssSelector: #mainContent .post-meta .post-meta-item]
+19:49:22.640 INFO - Executing: [find element: By.cssSelector: #mainContent .post-meta .points])
+19:49:22.698 INFO - Done: [find element: By.cssSelector: #mainContent .post-meta .points]
+19:49:22.701 INFO - Executing: [find element: By.cssSelector: #mainContent .post-meta .comments-link])
+19:49:22.757 INFO - Done: [find element: By.cssSelector: #mainContent .post-meta .comments-link]
+19:49:22.761 INFO - Executing: [find element: By.cssSelector: #mainContent .post-body])
+19:49:22.819 INFO - Done: [find element: By.cssSelector: #mainContent .post-body]
+19:49:22.824 INFO - Executing: [find element: By.cssSelector: #mainContent .post-body p])
+19:49:22.880 INFO - Done: [find element: By.cssSelector: #mainContent .post-body p]
+19:49:22.884 INFO - Executing: [find element: By.cssSelector: #mainContent .comment-new])
+19:49:22.942 INFO - Done: [find element: By.cssSelector: #mainContent .comment-new]
+19:49:22.945 INFO - Executing: [find element: By.cssSelector: #mainContent .comment-new #commentTextarea])
+19:49:23.000 INFO - Done: [find element: By.cssSelector: #mainContent .comment-new #commentTextarea]
+19:49:23.003 INFO - Executing: [find element: By.cssSelector: #mainContent .comment-new .comment-submit .button])
+19:49:23.063 INFO - Done: [find element: By.cssSelector: #mainContent .comment-new .comment-submit .button]
+19:49:23.066 INFO - Executing: [find element: By.cssSelector: #mainContent .post-info .post-heading .postTitle])
+19:49:23.122 INFO - Done: [find element: By.cssSelector: #mainContent .post-info .post-heading .postTitle]
+19:49:23.126 INFO - Executing: [get text: 20 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #mainContent .post-info .post-heading .postTitle]])
+19:49:23.188 INFO - Done: [get text: 20 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #mainContent .post-info .post-heading .postTitle]]
+19:49:23.191 INFO - Executing: [find element: By.cssSelector: #mainContent .post-body p])
+19:49:23.248 INFO - Done: [find element: By.cssSelector: #mainContent .post-body p]
+19:49:23.250 INFO - Executing: [get text: 31 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #mainContent .post-body p]])
+19:49:23.336 INFO - Done: [get text: 31 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #mainContent .post-body p]]
+19:49:23.339 INFO - Executing: [find element: By.cssSelector: #mainContent .comment-new])
+19:49:23.402 INFO - Done: [find element: By.cssSelector: #mainContent .comment-new]
+19:49:23.407 INFO - Executing: [find element: By.cssSelector: #mainContent .comment-new #commentTextarea])
+19:49:23.463 INFO - Done: [find element: By.cssSelector: #mainContent .comment-new #commentTextarea]
+19:49:23.466 INFO - Executing: [find element: By.cssSelector: #mainContent .comment-new .comment-submit .button])
+19:49:23.524 INFO - Done: [find element: By.cssSelector: #mainContent .comment-new .comment-submit .button]
+19:49:23.528 INFO - Executing: [find element: By.cssSelector: #mainContent .comment-new #commentTextarea])
+19:49:23.583 INFO - Done: [find element: By.cssSelector: #mainContent .comment-new #commentTextarea]
+19:49:23.586 INFO - Executing: [send keys: 33 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #mainContent .comment-new #commentTextarea], [T, h, e, s, e,  , a, r, e,  , s, o, m, e,  , w, o, r, d, s, ., ., .]])
+19:49:23.730 INFO - Done: [send keys: 33 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #mainContent .comment-new #commentTextarea], [T, h, e, s, e,  , a, r, e,  , s, o, m, e,  , w, o, r, d, s, ., ., .]]
+19:49:23.734 INFO - Executing: [find element: By.cssSelector: #mainContent .comment-new .comment-submit .button])
+19:49:23.792 INFO - Done: [find element: By.cssSelector: #mainContent .comment-new .comment-submit .button]
+19:49:23.794 INFO - Executing: [click: 34 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #mainContent .comment-new .comment-submit .button]])
+19:49:24.278 INFO - Done: [click: 34 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #mainContent .comment-new .comment-submit .button]]
+19:49:24.793 INFO - Executing: [find element: By.cssSelector: #mainContent .comments .comment-displayed])
+19:49:25.610 INFO - Done: [find element: By.cssSelector: #mainContent .comments .comment-displayed]
+19:49:25.614 INFO - Executing: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body])
+19:49:25.678 INFO - Done: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body]
+19:49:25.682 INFO - Executing: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content])
+19:49:25.744 INFO - Done: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content]
+19:49:25.747 INFO - Executing: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .user-avatar])
+19:49:25.806 INFO - Done: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .user-avatar]
+19:49:25.809 INFO - Executing: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main])
+19:49:25.864 INFO - Done: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main]
+19:49:25.867 INFO - Executing: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main .comment-meta])
+19:49:25.921 INFO - Done: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main .comment-meta]
+19:49:25.924 INFO - Executing: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main .comment-text])
+19:49:25.984 INFO - Done: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main .comment-text]
+19:49:25.987 INFO - Executing: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main .comment-text])
+19:49:26.043 INFO - Done: [find element: By.cssSelector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main .comment-text]
+19:49:26.045 INFO - Executing: [get text: 41 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main .comment-text]])
+19:49:26.111 INFO - Done: [get text: 41 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #mainContent .comments .comment-displayed .comment-body .comment-content .comment-main .comment-text]]
+19:49:26.114 INFO - Executing: [switch to frame: null])
+19:49:26.173 INFO - Done: [switch to frame: null]
+19:49:26.175 INFO - Executing: [find elements: By.cssSelector: body])
+19:49:26.233 INFO - Done: [find elements: By.cssSelector: body]
+19:49:26.236 INFO - Executing: [is displayed: 0 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: body]])
+19:49:26.307 INFO - Done: [is displayed: 0 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: body]]
+19:49:26.313 INFO - Executing: [find element: By.cssSelector: body])
+19:49:26.371 INFO - Done: [find element: By.cssSelector: body]
+19:49:26.374 INFO - Executing: [find element: By.cssSelector: #currentUsername])
+19:49:26.432 INFO - Done: [find element: By.cssSelector: #currentUsername]
+19:49:26.434 INFO - Executing: [click: 7 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #currentUsername]])
+19:49:26.566 INFO - Done: [click: 7 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #currentUsername]]
+19:49:26.870 INFO - Executing: [find element: By.cssSelector: #myAccountLink])
+19:49:26.882 INFO - Done: [find element: By.cssSelector: #myAccountLink]
+19:49:26.885 INFO - Executing: [find element: By.cssSelector: #signOutButton])
+19:49:26.943 INFO - Done: [find element: By.cssSelector: #signOutButton]
+19:49:26.951 INFO - Executing: [find element: By.cssSelector: #signOutButton])
+19:49:27.002 INFO - Done: [find element: By.cssSelector: #signOutButton]
+19:49:27.007 INFO - Executing: [click: 43 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #signOutButton]])
+19:49:27.248 INFO - Done: [click: 43 [[FirefoxDriver: firefox on MAC (15c9ef27-c1aa-bd4b-b850-7fc25f951365)] -> css selector: #signOutButton]]
+19:49:27.753 INFO - Executing: [delete session: 8ededbf4-d57f-4ce9-bd3a-d8b4baa4ec07])
+19:49:27.867 INFO - Done: [delete session: 8ededbf4-d57f-4ce9-bd3a-d8b4baa4ec07]

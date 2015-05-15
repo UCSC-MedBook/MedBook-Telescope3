@@ -70,16 +70,9 @@ Template[getTemplate('post_submit')].events({
     var post = {
       title: $('#title').val(),
       body: $('#postBody').val(),
-      //body: instance.editor.exportFile(),
       sticky: $('#sticky').is(':checked'),
       userId: $('#postUser').val(),
       status: 2,
-
-      /*timeSinceLastPost=timeSinceLast(user, Posts),
-      numberOfPostsInPast24Hours=numberOfItemsInPast24Hours(user, Posts),
-      postInterval = Math.abs(parseInt(getSetting('postInterval', 30))),
-      maxPostsPer24Hours = Math.abs(parseInt(getSetting('maxPostsPerDay', 30))),*/
-
       author: getDisplayNameById(Meteor.userId()),
       userId: Meteor.userId(),
       upvotes: 0,
@@ -91,6 +84,10 @@ Template[getTemplate('post_submit')].events({
       score: 0,
       inactive: false,
       collaboration: []
+      /*timeSinceLastPost=timeSinceLast(user, Posts),
+      numberOfPostsInPast24Hours=numberOfItemsInPast24Hours(user, Posts),
+      postInterval = Math.abs(parseInt(getSetting('postInterval', 30))),
+      maxPostsPer24Hours = Math.abs(parseInt(getSetting('maxPostsPerDay', 30))),*/
     };
 
 
@@ -144,7 +141,7 @@ Template[getTemplate('post_submit')].events({
 
 
     Meteor.call("logPost", post);
-    console.log("post", post);
+    //console.log("post", post);
 
     // ------------------------------ Insert ------------------------------ //
     if (post) {
@@ -174,6 +171,10 @@ Template[getTemplate('post_submit')].events({
         if(error){
           console.log("error", error);
         }
+        if(result){
+          console.log("result", result);
+          Router.go('/posts/' + postId);
+        }
         console.log("after insert post.medbookfiles", post.medbookfiles);
 
         //
@@ -187,7 +188,6 @@ Template[getTemplate('post_submit')].events({
 
 
       console.log("postId", postId);
-      Router.go('/posts/' + postId);
 
       /*
       //======================================================================
