@@ -201,7 +201,7 @@ Posts.before.update(function (userId, doc, fieldNames, modifier, options) {
 Meteor.methods({
   logMethodResults: function(error, result){
     console.log("==================================");
-    console.log("logMethodResults");    
+    console.log("logMethodResults");
     console.log("error", error);
     console.log("result", result);
   },
@@ -210,7 +210,7 @@ Meteor.methods({
 
   },
   postInsertHook: function(post){
-
+    // ISSUE:  be sure to call postInsertHook in the Collection2 insert hook for Posts collection
     if(!!post.url){
       // check that there are no previous posts with the same link in the past 6 months
       var sixMonthsAgo = moment().subtract(6, 'months').toDate();

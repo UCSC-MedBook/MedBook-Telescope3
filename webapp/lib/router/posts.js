@@ -179,10 +179,14 @@ PostPageController = RouteController.extend({
 
   template: getTemplate('post_page'),
 
+  // lets try subscribing to all the posts an dcomments
+  postSubscription: Meteor.allPostsSubscription,
+  commentSubscription: Meteor.allCommentsSubscription,
+
   waitOn: function() {
-    this.postSubscription = coreSubscriptions.subscribe('singlePost', this.params._id);
+    /*this.postSubscription = coreSubscriptions.subscribe('singlePost', this.params._id);
+    this.commentSubscription = coreSubscriptions.subscribe('postComments', this.params._id);*/
     this.postUsersSubscription = coreSubscriptions.subscribe('postUsers', this.params._id);
-    this.commentSubscription = coreSubscriptions.subscribe('postComments', this.params._id);
   },
 
   post: function() {
