@@ -11,29 +11,33 @@ module.exports = {
     client
       .url("http://localhost:3000")
       .resizeWindow(1024, 768)
-      .verify.elementPresent("body")
 
+
+      .sectionBreak("A.  Sign In")
+      .verify.elementPresent("body")
       .verify.elementNotPresent("#userMenu")
       .verify.elementPresent("#signInLink")
-
       .verify.elementPresent("#signInLink")
       .click("#signInLink").pause(300)
-
       .signIn("janedoe123", "janedoe123")
 
+      .sectionBreak("B.  Home Page")
       .verify.elementPresent("#userMenu")
       .verify.elementPresent("#currentUsername")
-
       .verify.elementPresent("#newPostLink")
       .click("#newPostLink").pause(1000)
 
+      .sectionBreak("C.  Create Post")
       .waitForElementVisible("#postSubmitPage", 3000)
-
       .reviewPostSubmitPage()
       .submitPost(newPostTitle, newPostDescription, newPostUrl)
+      .pause(5000)
+
+      .sectionBreak("D.  View Post")
       .reviewSinglePostPage(newPostTitle, newPostDescription)
       .addCommentToPost("These are some words...")
 
+      .sectionBreak("E.  Sign Out")
       .signOut()
       .end();
   }

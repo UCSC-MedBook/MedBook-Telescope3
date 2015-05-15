@@ -61,7 +61,7 @@ telescope-search
 telescope-tags
 telescope-theme-hubble
 telescope-email
-telescope-module-embedly
+#telescope-module-embedly
 #telescope-newsletter
 telescope-daily
 telescope-kadira
@@ -88,7 +88,7 @@ natestrauser:accounts-saml
 #cfs:access-point@0.1.46
 #cfs:base-package@0.0.29
 #cfs:file@0.1.17
-# cfs:graphicsmagick@0.0.18
+#cfs:graphicsmagick@0.0.18
 #cfs:gridfs@0.0.33
 #cfs:http-methods@0.0.27
 #cfs:http-publish@0.0.13

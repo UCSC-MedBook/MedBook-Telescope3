@@ -76,7 +76,8 @@ postSchemaObject = {
   },
   status: {
     type: Number,
-    optional: true
+    optional: true,
+    defaultValue: 2
   },
   sticky: {
     type: Boolean,
@@ -99,10 +100,14 @@ postSchemaObject = {
     optional: true
   },
   collaboration: {
-      type: [String],
-      minCount: 1,
-
+    type: [String],
+    minCount: 1,
   },
+  medbookfiles:{
+    type: [String],
+    trim: false,
+    optional: true
+  }
 
 };
 
@@ -136,6 +141,7 @@ Posts.deny({
 });
 
 Posts.allow({
+  insert: canEditById,
   update: canEditById,
   remove: canEditById
 });
@@ -155,7 +161,7 @@ getPostProperties = function(post) {
     // linkUrl: !!post.url ? getOutgoingUrl(post.url) : getPostPageUrl(post._id)
     linkUrl: getPostPageUrl(post._id)
   };
-  
+
   if(post.url)
     p.url = post.url;
 
@@ -193,6 +199,58 @@ Posts.before.update(function (userId, doc, fieldNames, modifier, options) {
 });
 
 Meteor.methods({
+  logMethodResults: function(methodName, error, result){
+    console.log("==================================");
+    console.log("method: ", methodName);
+    console.log("error", error);
+    console.log("result", result);
+  },
+  logPost: function(post){
+    console.log("post", post);
+
+  },
+  postInsertHook: function(post){
+    // ISSUE:  be sure to call postInsertHook in the Collection2 insert hook for Posts collection
+    if(!!post.url){
+      // check that there are no previous posts with the same link in the past 6 months
+      var sixMonthsAgo = moment().subtract(6, 'months').toDate();
+      var postWithSameLink = Posts.findOne({url: post.url, postedAt: {$gte: sixMonthsAgo}});
+
+      if(typeof postWithSameLink !== 'undefined'){
+        Meteor.call('upvotePost', postWithSameLink);
+        throw new Meteor.Error(603, i18n.t('this_link_has_already_been_posted'), postWithSameLink._id);
+      }
+    }
+
+
+    // UserId
+    if(isAdmin(Meteor.user()) && !!post.userId){ // only let admins post as other users
+      properties.userId = post.userId;
+    }
+
+
+    // Status
+    var defaultPostStatus = getSetting('requirePostsApproval') ? STATUS_PENDING : STATUS_APPROVED;
+    if(isAdmin(Meteor.user()) && !!post.status){ // if user is admin and a custom status has been set
+      properties.status = post.status;
+    }else{ // else use default status
+      properties.status = defaultPostStatus;
+    }
+
+    // CreatedAt
+    properties.createdAt = new Date();
+
+    // PostedAt
+    if(properties.status == 2){ // only set postedAt if post is approved
+      if(isAdmin(Meteor.user()) && !!post.postedAt){ // if user is admin and a custom postDate has been set
+        properties.postedAt = post.postedAt;
+      }else{ // else use current time
+        properties.postedAt = new Date();
+      }
+    }
+
+
+  },
   post: function(post){
     var title = cleanUp(post.title),
         body = post.body,
@@ -204,7 +262,7 @@ Meteor.methods({
         postInterval = Math.abs(parseInt(getSetting('postInterval', 30))),
         maxPostsPer24Hours = Math.abs(parseInt(getSetting('maxPostsPerDay', 30))),
         postId = '';
-    
+
 
     // ------------------------------ Checks ------------------------------ //
 
@@ -256,18 +314,21 @@ Meteor.methods({
       inactive: false
     };
 
-    // UserId    
+    // UserId
     if(isAdmin(Meteor.user()) && !!post.userId){ // only let admins post as other users
-      properties.userId = post.userId; 
+      properties.userId = post.userId;
     }
 
     // Status
-    var defaultPostStatus = getSetting('requirePostsApproval') ? STATUS_PENDING : STATUS_APPROVED;
+    // added defaultValue to schema
+    // the rest of this should be moved into the allow/deny rules
+
+    /*var defaultPostStatus = getSetting('requirePostsApproval') ? STATUS_PENDING : STATUS_APPROVED;
     if(isAdmin(Meteor.user()) && !!post.status){ // if user is admin and a custom status has been set
       properties.status = post.status;
     }else{ // else use default status
-      properties.status = defaultPostStatus; 
-    }
+      properties.status = defaultPostStatus;
+    }*/
 
     // CreatedAt
     properties.createdAt = new Date();
@@ -292,35 +353,40 @@ Meteor.methods({
 
     // ------------------------------ Insert ------------------------------ //
 
-    // console.log(post)
-    console.log("before insert post.medbookfiles", post.medbookfiles);
-    post._id = Posts.insert(post);
-    console.log("after insert post.medbookfiles", post.medbookfiles);
+    console.log("post", post);
 
-    console.log("find after insert post.medbookfiles", Posts.find({_id: post._id}))
+    //console.log("before insert post.medbookfiles", post.medbookfiles);
+    var postId = Posts.insert(post, function(error, result){
+      console.log("after insert post.medbookfiles", post.medbookfiles);
+
+      //
+      console.log("find after insert post.medbookfiles", Posts.find({_id: post._id}).fetch());
+
+      // increment posts count
+      Meteor.users.update({_id: userId}, {$inc: {postCount: 1}});
+
+      Meteor.call('upvotePost', post, Meteor.users.findOne(post.userId));
+    });
+
+    console.log("postId", postId);
+
+    return postId;
+
 
     // ------------------------------ Callbacks ------------------------------ //
 
-    // run all post submit server callbacks on post object successively
+    /*// run all post submit server callbacks on post object successively
     post = postAfterSubmitMethodCallbacks.reduce(function(result, currentFunction) {
         return currentFunction(result);
     }, post);
+    */
 
-    // ------------------------------ Post-Insert ------------------------------ //
-
-    // increment posts count
-    Meteor.users.update({_id: userId}, {$inc: {postCount: 1}});
-
-    var postAuthor =  Meteor.users.findOne(post.userId);
-
-    Meteor.call('upvotePost', post, postAuthor);
-
-    return post;
+    //return post;
   },
   setPostedAt: function(post, customPostedAt){
 
     var postedAt = new Date(); // default to current date and time
-        
+
     if(isAdmin(Meteor.user()) && typeof customPostedAt !== 'undefined') // if user is admin and a custom datetime has been set
       postedAt = customPostedAt;
 
@@ -376,7 +442,7 @@ Meteor.methods({
     // decrement post count
     var post = Posts.findOne({_id: postId});
     if(!Meteor.userId() || !canEditById(Meteor.userId(), post)) throw new Meteor.Error(606, 'You need permission to edit or delete a post');
-    
+
     Meteor.users.update({_id: post.userId}, {$inc: {postCount: -1}});
     Posts.remove(postId);
   }

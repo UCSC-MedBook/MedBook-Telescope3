@@ -75,14 +75,16 @@ Comments.attachSchema(CommentSchema);
 
 Comments.deny({
   update: function(userId, post, fieldNames) {
-    if(isAdminById(userId))
+    if(isAdminById(userId)){
       return false;
+    }
     // deny the update if it contains something other than the following fields
     return (_.without(fieldNames, 'body').length > 0);
   }
 });
 
 Comments.allow({
+  insert: canEditById,
   update: canEditById,
   remove: canEditById
 });
@@ -101,6 +103,10 @@ Comments.before.update(function (userId, doc, fieldNames, modifier, options) {
 });
 
 Meteor.methods({
+  commentInsertHook: function(postId, parentCommentId, text){
+    // ISSUE:  be sure to call postInsertHook in the Collection2 insert hook for Comments collection
+
+  },
   comment: function(postId, parentCommentId, text){
     var user = Meteor.user(),
         post = Posts.findOne(postId),
@@ -112,7 +118,7 @@ Meteor.methods({
     // check that user can comment
     if (!user || !canComment(user))
       throw new Meteor.Error(i18n.t('you_need_to_login_or_be_invited_to_post_new_comments'));
-    
+
     // check that user waits more than 15 seconds between comments
     if(!this.isSimulation && (timeSinceLastComment < commentInterval))
       throw new Meteor.Error(704, i18n.t('please_wait')+(commentInterval-timeSinceLastComment)+i18n.t('seconds_before_commenting_again'));
@@ -120,7 +126,7 @@ Meteor.methods({
     // Don't allow empty comments
     if (!text)
       throw new Meteor.Error(704,i18n.t('your_comment_is_empty'));
-          
+
     var comment = {
       postId: postId,
       body: text,
@@ -133,7 +139,7 @@ Meteor.methods({
       score: 0,
       author: getDisplayName(user)
     };
-    
+
     if(parentCommentId)
       comment.parentCommentId = parentCommentId;
 
@@ -157,17 +163,17 @@ Meteor.methods({
     }, comment);
 
     // increment comment count
-    Meteor.users.update({_id: user._id}, {
+    /*Meteor.users.update({_id: user._id}, {
       $inc:       {'commentCount': 1}
-    });
+    });*/
 
-    Posts.update(postId, {
+    /*Posts.update(postId, {
       $inc:       {commentCount: 1},
       $set:       {lastCommentedAt: now},
       $addToSet:  {commenters: user._id}
-    });
+    });*/
 
-    Meteor.call('upvoteComment', comment);
+    //Meteor.call('upvoteComment', comment);
 
     return comment;
   },

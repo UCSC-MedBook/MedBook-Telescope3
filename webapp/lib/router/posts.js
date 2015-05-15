@@ -179,17 +179,27 @@ PostPageController = RouteController.extend({
 
   template: getTemplate('post_page'),
 
-  waitOn: function() {
-    this.postSubscription = coreSubscriptions.subscribe('singlePost', this.params._id);
-    this.postUsersSubscription = coreSubscriptions.subscribe('postUsers', this.params._id);
+  // ack; this is good for initial page-loads
+  // but is really bad for subsequent page performance
+  //waitOn: function() {
+    /*this.postSubscription = coreSubscriptions.subscribe('singlePost', this.params._id);
     this.commentSubscription = coreSubscriptions.subscribe('postComments', this.params._id);
-  },
+    this.postUsersSubscription = coreSubscriptions.subscribe('postUsers', this.params._id);*/
+  //},
 
   post: function() {
     return Posts.findOne(this.params._id);
   },
 
   onBeforeAction: function() {
+    // so, instead of waiting for subscriptions to initialize as the route is being parsed
+    // we're going to prefetch our subscriptions in /client/subscriptions.js
+    // and attach our subscriptions in the onBeforeAction
+
+    this.postSubscription = Meteor.allPostsSubscription;
+    this.commentSubscription = Meteor.allCommentsSubscription;
+    this.postUsersSubscription = Meteor.allUsersSubscription;
+
     if (! this.post()) {
       if (this.postSubscription.ready()) {
         this.render(getTemplate('not_found'));
@@ -277,17 +287,21 @@ Meteor.startup(function () {
 
   Router.route('/posts/:_id', {
     name: 'post_page',
-    controller: PostPageController,
-    onBeforeAction: function() {
-      console.log("Post_id", this.params._id);
-      Session.set("Post_id", this.params._id);
-      this.next();
-    },
-    waitOn: function () {
-      //return coreSubscriptions.subscribe('postedFiles', this.params._id)
+    template: 'post_page',
+    data: function(){
+      return Posts.findOne(this.params._id);
     }
+    //controller: PostPageController,
+    //onBeforeAction: function() {
+      //console.log("Post_id", this.params._id);
+      //Session.set("Post_id", this.params._id);
+      //this.next();
+    //},
+    //waitOn: function () {
+      //coreSubscriptions.subscribe('postedFiles', this.params._id)
+      //coreSubscriptions.subscribe('singlePost', this.params._id);
+    //}
   });
-
   Router.route('/posts/:_id/comment/:commentId', {
     name: 'post_page_comment',
     controller: PostPageController,

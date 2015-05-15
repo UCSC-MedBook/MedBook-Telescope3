@@ -72,6 +72,11 @@ Template[getTemplate('nav')].rendered = function(){
 };
 
 Template[getTemplate('nav')].events({
+  'click #collaborationListButton': function(){
+    Router.go('/list/collaborations', function(error, result){
+      if(error){console.log("error", error);}
+    });
+  },
   'click #newPostLink': function(){
     Router.go('/submit');
   },
