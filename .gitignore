@@ -29,3 +29,5 @@ scratch
 .meteor/local
 .meteor/meteorite
 mup.json
+
+webapp/tests/nightwatch/reports/*
