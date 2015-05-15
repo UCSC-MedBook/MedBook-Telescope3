@@ -287,20 +287,20 @@ Meteor.startup(function () {
 
   Router.route('/posts/:_id', {
     name: 'post_page',
-    controller: PostPageController,
-    onBeforeAction: function() {
+    template: 'post_page',
+    data: function(){
+      return Posts.findOne(this.params._id);
+    }
+    //controller: PostPageController,
+    //onBeforeAction: function() {
       //console.log("Post_id", this.params._id);
       //Session.set("Post_id", this.params._id);
-      Meteor.call("logMethodResults", "onBeforeAction", "", "");
-      this.next();
-    },
+      //this.next();
+    //},
     //waitOn: function () {
       //coreSubscriptions.subscribe('postedFiles', this.params._id)
       //coreSubscriptions.subscribe('singlePost', this.params._id);
     //}
-    onAfterAction: function(){
-      Meteor.call("logMethodResults", "onAfterAction", "", "");
-    }
   });
   Router.route('/posts/:_id/comment/:commentId', {
     name: 'post_page_comment',
