@@ -64,6 +64,7 @@ Package.onUse(function (api) {
 
     'client/views/posts/post_page.html',
     'client/views/posts/post_page.js',
+    'client/views/posts/post_page.css',
 
     'client/posts.js',
     ], ['client']);
