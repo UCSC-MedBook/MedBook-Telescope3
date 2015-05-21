@@ -7,7 +7,9 @@
       {{> UI.dynamic template=post_body}}
     {{/if}}
 
-    <div id="svgHome">{{{this.svg}}}</div>
+    {{#if this.svg}}
+        <div id="svgHome">{{{this.svg}}}</div>
+    {{/if}}
 
     {{> postedFiles}}
 
