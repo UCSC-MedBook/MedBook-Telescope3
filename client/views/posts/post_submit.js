@@ -184,11 +184,14 @@ Template[getTemplate('post_submit')].events({
   });
 Template[getTemplate('post_submit')].hooks( {
   rendered: function() {
-      if (parent.document.medbookpost) {
-          var mp = parent.document.medbookpost; 
+      if (parent.medbookpost) {
+          var mp = parent.medbookpost; 
           $('#title').val(mp.title);
           $('#body').val(mp.body);
-          $('#medbookfiles').val(mp.medbookfiles.join(","));
+		  if (mp.medbookfiles)
+			  $('#medbookfiles').val(mp.medbookfiles.join(","));
+		  if (mp.url)
+			  $('#url').val(mp.url);
       }
       var $svg = (parent != window) && parent.getSvg ? parent.getSvg() : null;
       if ($svg) {
