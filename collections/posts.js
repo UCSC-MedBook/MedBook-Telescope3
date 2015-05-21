@@ -197,6 +197,7 @@ Meteor.methods({
     var title = cleanUp(post.title),
         body = post.body,
         svg = post.svg,
+	    url = post.url,
         userId = this.userId,
         user = Meteor.users.findOne(userId),
         timeSinceLastPost=timeSinceLast(user, Posts),
@@ -244,6 +245,7 @@ Meteor.methods({
     properties = {
       title: title,
       body: body,
+	  url: url,
       userId: userId,
       author: getDisplayNameById(userId),
       upvotes: 0,
@@ -294,6 +296,7 @@ Meteor.methods({
 
     // console.log(post)
     console.log("before insert post.medbookfiles", post.medbookfiles);
+	console.log('post',post)
     post._id = Posts.insert(post);
     console.log("after insert post.medbookfiles", post.medbookfiles);
 
