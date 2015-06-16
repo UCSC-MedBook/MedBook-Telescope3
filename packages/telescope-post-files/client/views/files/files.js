@@ -103,34 +103,38 @@ Meteor.startup(function () {
   Template.handsontablePreview.rendered = function() {
       var template = this;
       var hotDiv = template.find('.HOTdiv');
-      var url = template.data.url();
-      $.get(url, function(data, status) {
-          var split2 = data.split("\n").map(function (line) { return line.split("\t") });
-          $(hotDiv).handsontable( { 
-                readOnly: true,
-                rowHeaders: true,
-                colHeaders: true,
-                height: 300,
-                data: split2,
+      var MAXTRIES = 5;
+      var n = 0;
+      var url = template.data.url({brokenIsFine: true});
+      if (url == null) {
+          // debugger;
+      } else
+          $.get(url, function(data, status) {
+              var split2 = data.split("\n").map(function (line) { return line.split("\t") });
+              $(hotDiv).handsontable( { 
+                    readOnly: true,
+                    rowHeaders: true,
+                    colHeaders: true,
+                    height: 300,
+                    data: split2,
 
-                afterChange: function (change, source) {
-                  if (source === 'loadData') {
-                    return; //don't save this change
-                  }
-                  var hot = $(template.find(".HOTdiv")).handsontable('getInstance');
-                  var all = hot.getData().map(function(row) { return row.join("\t") }).join("\n") + "\n";
-                  console.log("change", all);
+                    afterChange: function (change, source) {
+                      if (source === 'loadData') {
+                        return; //don't save this change
+                      }
+                      var hot = $(template.find(".HOTdiv")).handsontable('getInstance');
+                      var all = hot.getData().map(function(row) { return row.join("\t") }).join("\n") + "\n";
+                      console.log("change", all);
 
-                  $.ajax({ 
-                      url: url, type: "PUT", data: all, 
-                      success: function(result) { console.log("PUT success", url, result); },
-                      error: function(result) { console.log("PUT error", url, result); }
-                  });
-                }
-                
-            } );
-      });
-  }
-
+                      $.ajax({ 
+                          url: url, type: "PUT", data: all, 
+                          success: function(result) { console.log("PUT success", url, result); },
+                          error: function(result) { console.log("PUT error", url, result); }
+                      });
+                    }
+                    
+                } );
+        }); // get
+    } // rendered
 });
 
