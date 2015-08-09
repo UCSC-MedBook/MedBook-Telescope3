@@ -153,7 +153,7 @@ getPostProperties = function(post) {
     postUrl: getPostPageUrl(post),
     thumbnailUrl: post.thumbnailUrl,
     // linkUrl: !!post.url ? getOutgoingUrl(post.url) : getPostPageUrl(post._id)
-    linkUrl: getPostPageUrl(post._id)
+    linkUrl: getPostPageUrl(post)
   };
   
   if(post.url)
