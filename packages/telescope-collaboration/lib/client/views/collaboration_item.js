@@ -36,11 +36,14 @@ function Sel()  {
         }
     });
 
+
     // $(".collaboratorListClass").select2({tags: names});
     $(".collaboratorListClass").select2({
           initSelection : function (element, callback) {
             var data = element.val();
             if (data) {
+		if (typeof data === 'string' || data instanceof String)
+		   data = data.split(",");
 		if (!Array.isArray(data)) 
 		   data = [data];
                 callback( data.map(function(g) { return { id: g, text: g }}) );
@@ -60,13 +63,18 @@ function Sel()  {
               return qp;
             },
             results: function (data, page, query) { 
+		console.log("results", data, page, query);
+		if (data.items.length == 0) {
+		   var term = query.term;
+		   data.items = [ { id: term, text: term} ];
+	        }
 		return { results: data.items };
 	    },
             cache: true
           },
           escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
-          minimumInputLength: 2,
-     });
+          minimumInputLength: 3,
+    });
 
 
 
