@@ -84,6 +84,16 @@ Meteor.startup(function () {
 
 
   Meteor.methods({
+
+    refreshUserProfileCollaborations: function(callback) {
+	  if (this.userId == null)
+	      return;
+	  refreshUserProfileCollaborations(Meteor.users.findOne({_id: this.userId}));
+	  var vv = Meteor.users.findOne({_id: this.userId}).profile.collaborations;
+	  console.log( "refreshUserProfileCollaborations", vv);
+	  // callback(vv);
+    },
+
     createCollaborationMethod: function(collaboration){
               if (!Meteor.user())
                   throw new Meteor.Error(i18n.t('You need to login to add a new collaboration.'));
@@ -153,6 +163,49 @@ Meteor.startup(function () {
 
     var querystring =  Npm.require("querystring");
     HTTP.methods({
+
+     collaborators: function(data){
+        var items = [];
+	console.log("collaborators 1");
+
+
+	var pat = new RegExp(this.query.q, "i");
+	console.log("collab q=", this.query.q, pat);
+	var cursor = Meteor.users.find( 
+	    { $or: [
+		{"username":        {$regex: pat}},
+		{"emails.address":  {$regex: pat}},
+		{"profile.name":    {$regex: pat}},
+	    ] }, 
+	    {
+	       fields: {
+		"username":        1,
+		"emails.address":  1,
+		"profile.name":    1
+	       },
+	       sort: {
+		  "profile.name": 1
+	       }
+	    }
+	);
+
+
+        cursor.forEach(function(user) {
+	   var text = String(user.emails[0].address) + " <" + user.profile.name + ">";
+	   items.push( {id: user.emails[0].address, text: text} );
+	});
+        Collaboration.find({ name: pat }, {fields: {name:1}}).forEach(function(col) {
+	   items.push( {id: col.name, text: col.name} );
+	});
+
+
+	console.log("collaborators 2", data, this.query.q, "=>", items);
+        this.setContentType("application/javascript");
+        return JSON.stringify({
+            items:items
+        });
+     },
+
      medbookUser: function(data){
         data = String(data)
         var token = null;
