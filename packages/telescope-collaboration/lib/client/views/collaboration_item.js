@@ -36,12 +36,58 @@ function Sel()  {
         }
     });
 
-    $(".collaboratorListClass").select2({tags: names});
+
+    // $(".collaboratorListClass").select2({tags: names});
+    $(".collaboratorListClass").select2({
+          initSelection : function (element, callback) {
+            var data = element.val();
+            if (data) {
+		if (typeof data === 'string' || data instanceof String)
+		   data = data.split(",");
+		if (!Array.isArray(data)) 
+		   data = [data];
+                callback( data.map(function(g) { return { id: g, text: g }}) );
+	    }
+          },
+	  tags: true,
+	  tokenSeparators: [",", " "],
+          multiple: true,
+          ajax: {
+            url:  "/collaborators",
+            dataType: 'json',
+            delay: 250,
+            data: function (term) {
+              var qp = {
+                q: term
+              };
+              return qp;
+            },
+            results: function (data, page, query) { 
+		console.log("results", data, page, query);
+		if (data.items.length == 0) {
+		   var term = query.term;
+		   data.items = [ { id: term, text: term} ];
+	        }
+		return { results: data.items };
+	    },
+            cache: true
+          },
+          escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+          minimumInputLength: 3,
+    });
+
+
+
     $(".form-control[name*='.']").select2({tags: names});
     $(".collaboratorListClass").addClass("allowToGrow");
     $(".form-control[name*='.']").addClass("allowToGrow");
 
 
+    $('.collaboratorListClass').on("change", function(e){
+	if (e.added) {
+	   console.log(".collaboratorListClass change", e.added);
+	}
+    });
 }
 
 Template.collaborationAdd.hooks({ rendered: Sel })
@@ -85,4 +131,13 @@ Template["collaborationForm"].events(  {
      }
 });
 
+
+AutoForm.hooks({
+   addCollaboration: {
+      onSuccess: function(formType, onResult) {
+         console.log("addCollaboration onSuccess", formType, onResult);
+	 Meteor.call("refreshUserProfileCollaborations");
+      }
+   }
+});
 
