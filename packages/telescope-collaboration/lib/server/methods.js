@@ -76,7 +76,13 @@ function refreshUserProfileCollaborations(user) {
 
     var collaborations = Object.keys(collaborationSet).sort();
     ret = Meteor.users.update( user._id, {$set: { "profile.collaborations": collaborations}});
+    ret = Meteor.users.update( user._id, {$set: { "collaborations": collaborations}});
+    console.log("refresh", emails, collaborations, ret);
     return collaborations;
+}
+
+refreshAllUserCollaborations = function() {
+    Meteor.users.find().forEach( refreshUserProfileCollaborations );
 }
 
 
@@ -110,8 +116,7 @@ Meteor.startup(function () {
               Collaboration.update({_id: collaboration_id}, { $addToSet: { collaborators:{$each: me} }}, function (err, err2){
                   }
               );
-              return refreshUserProfileCollaborations(Meteor.users.findOne({_id: this.userId}));
-          } else {
+              return refreshUserProfileCollaborations(Meteor.users.findOne({_id: this.userId})); } else {
               throw new Meteor.Error("requires administrator approval", "You must have administrator approval to join this collaboration.");
           }
       },
@@ -311,7 +316,8 @@ Meteor.startup(function () {
 
   Accounts.onLogin(
       function(args) {
-        console.log("onLogin", args.user.username, Date.now());
+        var emails = getEmailsFor(args.user);
+        console.log("onLogin", emails, Date.now());
         refreshUserProfileCollaborations(args.user);
       }
   );
