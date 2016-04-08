@@ -9,7 +9,7 @@ dependencies:
     - docker info
     - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
     #TODO figure out how to pass tag in here
-    - docker build -t medbook/telescope .
+    - docker build -t medbook/telescope:$CIRCLE_TAG .
     - mkdir -p ~/docker; docker save medbook/telescope > ~/docker/image.tar
 
 test:
