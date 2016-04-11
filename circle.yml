@@ -10,7 +10,7 @@ dependencies:
     - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
     # CIRCLE_TAG is the git tag name if that's what triggered the build
     - docker build -t medbook/telescope:$CIRCLE_TAG .
-    - mkdir -p ~/docker; docker save medbook/telescope > ~/docker/image.tar
+    - mkdir -p ~/docker; docker save medbook/telescope:$CIRCLE_TAG > ~/docker/image.tar
 
 test:
   override:
