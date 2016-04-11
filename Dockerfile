@@ -1,5 +1,3 @@
-FROM medbook/meteor-base:0.3
-
+FROM medbook/meteor-base:0.5
 MAINTAINER Mike Risse
 
-RUN apt-get install -y imagemagick
