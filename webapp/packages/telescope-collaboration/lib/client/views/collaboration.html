@@ -1,6 +1,12 @@
 <template name="collaborationGrid" xmlns="http://www.w3.org/1999/html">
   <h3 class="collaborationGridTitle">Browse Collaborations</h3>
-  {{> collaborationAdd }}
+
+  {{#if currentUser}}
+		{{> collaborationAdd }}
+	{{else}}
+		{{> loginToAddCollaboration }}
+	{{/if}}
+
   <div class="collaboration posts list">
     {{#each collaboration}}
       {{> collaborationGridElement}}

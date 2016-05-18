@@ -159,6 +159,21 @@ Meteor.startup(function () {
         }
     } );
 
+		this.route('addCollaboration', { 
+			path: '/addCollaboration/',
+			template: "collaborationAddForm",
+			
+			// Only logged-in users may add collaborations
+			onBeforeAction: function(){
+				if(!Meteor.user()){
+					// render the login template but keep the url in the browser the same
+					alert("please sign in (or sign up) first by clicking the button on the top right");
+					this.redirect("/sign-in");
+				}else{
+					this.next();
+				}
+			}
+		});
 
   });
 

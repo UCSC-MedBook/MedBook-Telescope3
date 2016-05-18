@@ -90,8 +90,10 @@ function Sel()  {
     });
 }
 
-Template.collaborationAdd.hooks({ rendered: Sel })
-Template.collaborationEdit.hooks({ rendered: Sel })
+Template.collaborationForm.hooks({ rendered: Sel })
+
+
+
 
 Template["collaborationReview"].events(  { 
     'click .cancelAndGoCollaborationList': goCollaborationlist ,

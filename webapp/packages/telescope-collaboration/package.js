@@ -39,6 +39,7 @@ Package.onUse(function (api) {
     'lib/client/views/collaboration.js',
     'lib/client/views/collaboration_item.css',
     'lib/client/views/collaboration_item.html',
+    'lib/client/views/collaboration_add.html',
     'lib/client/views/collaboration_item.js',
     'lib/client/views/collaboration_menu.html',
     'lib/client/views/collaboration_menu.js',
