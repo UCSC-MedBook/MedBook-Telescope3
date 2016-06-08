@@ -1,7 +1,10 @@
 // add new post notification callback on post submit
 postAfterSubmitMethodCallbacks.push(function (post) {
   if(Meteor.isServer){
-    var userIds = Meteor.users.find({'profile.notifications.posts': 1}, {fields: {}}).map(function (user) {
+    var userIds = Meteor.users.find({'profile.notifications.posts': 1 ,
+                                     'collaborations' : { $in: post.collaboration} },
+                                    {fields: {}}
+                                   ).map(function (user) {
       return user._id
     });
     Herald.createNotification(userIds, {courier: 'newPost', data: post})
