@@ -1,0 +1,10 @@
+<template name="postShare">
+  <a href="#" class="share-link"><i class="icon-share"></i><span class="action">{{_ 'share'}}</span></a>
+  <div class="share-options hidden">
+    <a class="mt-facebook mt-share-inline-square-sm" href="https://www.facebook.com/sharer/sharer.php?u={{sourceLink}}" target="_blank"><img src="//mojotech-static.s3.amazonaws.com/facebook@2x.png"></a>
+    <a class="mt-twitter mt-share-inline-square-sm" href="//twitter.com/intent/tweet?text={{title}}&url={{sourceLink}}&{{viaTwitter}}" target="_blank"><img src="//mojotech-static.s3.amazonaws.com/twitter@2x.png"></a>
+    <a class="mt-linkedin mt-share-inline-square-sm" href="//www.linkedin.com/shareArticle?mini=true&url={{sourceLink}}&amp;summary={{title}}" target="_blank"><img src="//mojotech-static.s3.amazonaws.com/linkedin@2x.png"></a>
+    <a class="mt-google mt-share-inline-square-sm" href="https://plus.google.com/share?url={{sourceLink}}" target="_blank"><img src="//mojotech-static.s3.amazonaws.com/google@2x.png"></a>
+    <a class="mt-email mt-share-inline-square-sm" href="mailto:?subject=Post%20from%20MedBook:%20{{title}}&body=View%20this%20post%20at:%20{{sourceLink}}" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAQAAABIkb+zAAAB9UlEQVR4Ae3aMW4TQQCF4ZFc4MLcIJwARUbkIPgmhJOQKAm2uAQ+AeQAoaFI5BafANx4YdkfbcnK4o2ZYWcQ701nydJ8Wv3dBG84z/M8z/M8z/N4xpINDaXXsGHJnHD4HP55yls6alrHimksYMoHatwt0zjAG2rdMgbwlI5a1zHXgEtq3o0GfKLmPWjAF2reXgP2/Lo1J4RC5wlrBtOAhuF2nDMZ/fITXrGDHIB+d5yNev0zPgLkA0DLBbNRLv+YS1rIDei3ZfHXr79gC5AfoKPOH21+gI46Ndp0wDfERNSZo00HLNimRZ0Q7WdepAMCMy5oRdT5o215zYyQDJCfuI86f7R3PCcQ8gH6yM7ZiajzRPuVl0wIuQH9OWGto06M9t3gix4N+P77P+ioE6MNg5MdoKNOi3YEgI46JdqRADrq46MdF6CjPjraAgAddXy02QDtkQAVtY62ECA2ah1teYCIWkdbHiCj1tGWB4iodbSlASJqHW0mwI94gI5aR1seoKPW0ZYFiKh1tOUB+hjwPwE6AwwwwICiAAwwwAADDDDAgD8/BjT/+oOnDTXvXgOW1LwrDZhX/ezyVAMCK2rddezT41tq3HsexT/+XlX3+Pu6v74ADFq44YE9pbfnnitO9fP7+o8BBhhggAEGGGCAAQYYkPf8BFgVlrU7n9UjAAAAAElFTkSuQmCC"></a>
+  </div>
+</template>
